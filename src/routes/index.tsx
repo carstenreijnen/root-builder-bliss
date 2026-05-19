@@ -218,7 +218,7 @@ function HomePage() {
       </section>
 
       {/* TRUST BAR */}
-      <section className="border-y border-foreground/8 bg-section-alt">
+      <section className="border-y border-border bg-section-alt">
         <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-center gap-x-6 gap-y-3 px-5 py-5 text-center md:gap-x-10 md:px-10 md:py-6">
           {TRUST_BAR.map((t, i) => (
             <div key={t} className="flex items-center gap-3 md:gap-5">
@@ -461,7 +461,7 @@ function YachtCard({ y }: { y: Yacht }) {
     `Hi, I'd like to book ${y.name}`,
   )}`;
   return (
-    <div className="group flex flex-col overflow-hidden rounded-2xl border border-foreground/8 bg-card shadow-[var(--shadow-card)] transition-all duration-300 hover:border-gold/40 hover:shadow-[0_12px_40px_rgba(186,163,108,0.15)]">
+    <div className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-all duration-300 hover:border-gold/40 hover:shadow-[0_12px_40px_rgba(186,163,108,0.15)]">
       <a
         href={`/our-yachts/${y.slug_en}`}
         className="relative block aspect-[4/3] overflow-hidden"
@@ -486,7 +486,7 @@ function YachtCard({ y }: { y: Yacht }) {
           {y.capacity && y.size_ft && <span className="h-1 w-1 rounded-full bg-gold" />}
           {y.size_ft && <span>{y.size_ft}ft</span>}
         </div>
-        <div className="mt-5 flex items-end justify-between border-t border-foreground/8 pt-5">
+        <div className="mt-5 flex items-end justify-between border-t border-border pt-5">
           <div className="flex flex-col">
             {y.price_4h && (
               <span className="text-[12px] text-muted-foreground line-through">
@@ -520,7 +520,7 @@ function YachtCard({ y }: { y: Yacht }) {
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="overflow-hidden rounded-2xl border border-foreground/8 bg-card shadow-[var(--shadow-card)] transition-all duration-300 hover:border-gold/30">
+    <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-all duration-300 hover:border-gold/30">
       <button
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-foreground/[0.02]"
