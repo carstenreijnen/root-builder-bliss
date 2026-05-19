@@ -31,13 +31,8 @@ export function SiteNav() {
       }`}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-8 md:py-5">
-        <Link to="/" className="flex items-baseline gap-2">
-          <span className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-[26px]">
-            Royal
-          </span>
-          <span className="font-display text-2xl font-semibold tracking-tight text-gold md:text-[26px]">
-            Yachts
-          </span>
+        <Link to="/" className="flex items-center" aria-label="Royal Yachts Miami">
+          <img src={logo} alt="Royal Yachts Miami" className="h-10 w-auto md:h-12" />
         </Link>
 
         <nav className="hidden items-center gap-10 lg:flex">
