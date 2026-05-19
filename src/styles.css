@@ -32,6 +32,8 @@
   --color-gold: var(--gold);
   --color-gold-foreground: var(--gold-foreground);
   --color-section-alt: var(--section-alt);
+  --color-section-deep: var(--section-deep);
+  --color-caption: var(--caption);
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);
   --shadow-luxe: var(--shadow-luxe);
