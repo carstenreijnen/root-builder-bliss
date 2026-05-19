@@ -1,4 +1,5 @@
 import { Instagram, Facebook } from "lucide-react";
+import logo from "@/assets/logo.svg";
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -10,13 +11,12 @@ function TikTokIcon({ className }: { className?: string }) {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-foreground/8 bg-section-alt px-5 pb-12 pt-20 md:px-10 md:pt-24">
+    <footer className="border-t border-border bg-section-alt px-5 pb-12 pt-20 md:px-10 md:pt-24">
+      <div className="mx-auto mb-14 flex max-w-[1400px] justify-center">
+        <img src={logo} alt="Royal Yachts Miami" className="h-16 w-auto md:h-20" />
+      </div>
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 md:grid-cols-12 md:gap-16">
         <div className="md:col-span-4">
-          <div className="mb-5 flex items-baseline gap-2">
-            <span className="font-display text-3xl font-semibold tracking-tight text-foreground">Royal</span>
-            <span className="font-display text-3xl font-semibold tracking-tight text-gold">Yachts</span>
-          </div>
           <p className="mb-8 max-w-sm text-[15px] leading-relaxed text-muted-foreground">
             Miami's premier private yacht charter experience. All-inclusive luxury on the water — every detail handled.
           </p>
