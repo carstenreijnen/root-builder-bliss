@@ -20,13 +20,6 @@ export function SiteFooter() {
           <p className="mb-8 max-w-sm text-[15px] leading-relaxed text-muted-foreground">
             Miami's premier private yacht charter experience. All-inclusive luxury on the water — every detail handled.
           </p>
-          <div className="mb-5 flex items-baseline gap-2">
-            <span className="font-display text-3xl font-semibold tracking-tight text-foreground">Royal</span>
-            <span className="font-display text-3xl font-semibold tracking-tight text-gold">Yachts</span>
-          </div>
-          <p className="mb-8 max-w-sm text-[15px] leading-relaxed text-muted-foreground">
-            Miami's premier private yacht charter experience. All-inclusive luxury on the water — every detail handled.
-          </p>
           <div className="flex gap-4">
             <a href="https://instagram.com/royalyachtmiami" target="_blank" rel="noopener noreferrer"
               className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-foreground/15 text-foreground/70 transition-all duration-300 hover:border-gold hover:text-gold" aria-label="Instagram">
