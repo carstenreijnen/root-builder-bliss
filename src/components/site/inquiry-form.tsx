@@ -83,8 +83,8 @@ export function InquiryForm() {
   const departure = watch("departure_time");
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="grid gap-5 md:grid-cols-2">
-      <Field label="Full name" error={errors.name?.message}>
+    <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4 md:grid-cols-2">
+      <Field label="Full Name" error={errors.name?.message}>
         <Input {...register("name")} placeholder="Your name" className="luxe-input" />
       </Field>
       <Field label="Email" error={errors.email?.message}>
@@ -102,19 +102,19 @@ export function InquiryForm() {
           <SelectContent>{DURATIONS.map((d) => <SelectItem key={d} value={d}>{d}</SelectItem>)}</SelectContent>
         </Select>
       </Field>
-      <Field label="Yacht preference">
+      <Field label="Yacht Preference">
         <Select value={yachtPref} onValueChange={(v) => setValue("yacht_preference", v)}>
-          <SelectTrigger className="luxe-input"><SelectValue placeholder="Any / not sure" /></SelectTrigger>
+          <SelectTrigger className="luxe-input"><SelectValue placeholder="No preference" /></SelectTrigger>
           <SelectContent>
             <SelectItem value="any">No preference</SelectItem>
             {yachts.map((n) => <SelectItem key={n} value={n}>{n}</SelectItem>)}
           </SelectContent>
         </Select>
       </Field>
-      <Field label="Number of guests">
-        <Input {...register("guests")} type="number" min={1} max={200} placeholder="e.g. 10" className="luxe-input" />
+      <Field label="Guests">
+        <Input {...register("guests")} type="number" min={1} max={13} placeholder="Max 13" className="luxe-input" />
       </Field>
-      <Field label="Preferred departure">
+      <Field label="Departure">
         <Select value={departure} onValueChange={(v) => setValue("departure_time", v)}>
           <SelectTrigger className="luxe-input"><SelectValue placeholder="Select time" /></SelectTrigger>
           <SelectContent>{DEPARTURES.map((d) => <SelectItem key={d} value={d}>{d}</SelectItem>)}</SelectContent>
@@ -122,28 +122,38 @@ export function InquiryForm() {
       </Field>
       <div className="md:col-span-2">
         <Field label="Message (optional)">
-          <Textarea {...register("message")} rows={4} placeholder="Tell us about your event..." className="luxe-input" />
+          <Textarea {...register("message")} rows={4} placeholder="Tell us about your event..." className="luxe-input min-h-[110px]" />
         </Field>
       </div>
-      <div className="md:col-span-2">
+      <div className="md:col-span-2 mt-2">
         <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex w-full items-center justify-center rounded-sm bg-gold px-8 py-4 text-sm font-medium uppercase tracking-[0.2em] text-gold-foreground transition hover:bg-gold/90 disabled:opacity-60"
+          className="inline-flex w-full items-center justify-center rounded-full bg-gold px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-gold-foreground transition-all duration-300 hover:opacity-90 hover:shadow-[0_8px_32px_rgba(186,163,108,0.35)] disabled:opacity-60"
         >
           {isSubmitting ? "Submitting..." : "Request Your Charter"}
         </button>
       </div>
       <style>{`
         .luxe-input {
-          background: transparent;
-          border: 1px solid color-mix(in oklab, var(--foreground) 18%, transparent);
+          background: color-mix(in oklab, var(--color-foreground) 4%, transparent);
+          border: 1px solid color-mix(in oklab, var(--color-foreground) 12%, transparent);
           color: var(--color-foreground);
-          border-radius: 2px;
+          border-radius: 12px;
           height: 48px;
+          padding-left: 16px;
+          padding-right: 16px;
+          font-size: 15px;
+          transition: all 0.3s ease;
         }
-        .luxe-input:focus-visible { border-color: var(--color-gold); box-shadow: 0 0 0 1px var(--color-gold); }
-        textarea.luxe-input { height: auto; }
+        .luxe-input::placeholder { color: color-mix(in oklab, var(--color-foreground) 35%, transparent); }
+        .luxe-input:focus,
+        .luxe-input:focus-visible {
+          border-color: var(--color-gold);
+          box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-gold) 18%, transparent);
+          outline: none;
+        }
+        textarea.luxe-input { height: auto; padding-top: 12px; padding-bottom: 12px; }
       `}</style>
     </form>
   );
@@ -160,7 +170,7 @@ function Field({
 }) {
   return (
     <div className="space-y-2">
-      <Label className="text-xs font-medium uppercase tracking-[0.18em] text-foreground/60">
+      <Label className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
         {label}
       </Label>
       {children}

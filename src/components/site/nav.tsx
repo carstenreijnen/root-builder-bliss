@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 
 const LINKS = [
-  { href: "/our-yachts", label: "The Fleet" },
+  { href: "/our-yachts", label: "Fleet" },
   { href: "/packages", label: "Experiences" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
@@ -23,52 +23,47 @@ export function SiteNav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-out ${
         scrolled
-          ? "bg-background/60 backdrop-blur-xl border-b border-gold/10"
-          : "bg-gradient-to-b from-background/60 to-transparent backdrop-blur-sm"
+          ? "bg-background/80 backdrop-blur-xl border-b border-gold/10"
+          : "bg-gradient-to-b from-background/70 to-transparent backdrop-blur-sm"
       }`}
     >
-      <div className="flex items-center justify-between px-6 py-6 md:px-10 md:py-7">
-        <Link to="/" className="flex items-center gap-3">
-          <span className="font-display text-3xl font-bold uppercase tracking-[0.18em] text-foreground">
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-8 md:py-5">
+        <Link to="/" className="flex items-baseline gap-2">
+          <span className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-[26px]">
             Royal
           </span>
-          <span className="font-display text-3xl font-bold uppercase tracking-[0.18em] text-gold">
+          <span className="font-display text-2xl font-semibold tracking-tight text-gold md:text-[26px]">
             Yachts
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-14 lg:flex">
+        <nav className="hidden items-center gap-10 lg:flex">
           {LINKS.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium uppercase tracking-[0.25em] text-foreground/80 transition-colors duration-300 hover:text-gold"
+              className="text-[13px] font-medium uppercase tracking-[0.15em] text-foreground/75 transition-colors duration-300 hover:text-gold"
             >
               {l.label}
             </a>
           ))}
         </nav>
 
-        <div className="flex items-center gap-6">
-          <div className="hidden items-center gap-3 border-r border-foreground/20 pr-6 text-xs uppercase tracking-[0.3em] text-gold md:flex">
-            <button className="text-gold">EN</button>
-            <span className="opacity-40">/</span>
-            <a href="/es" className="text-foreground/50 transition hover:text-gold">ES</a>
-          </div>
+        <div className="flex items-center gap-3 md:gap-5">
           <ThemeToggle />
           <a
             href="https://wa.me/16452149666"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-3 border border-gold px-7 py-3 text-xs font-medium uppercase tracking-[0.2em] text-gold transition-all duration-500 hover:bg-gold hover:text-gold-foreground md:inline-flex"
+            className="hidden items-center justify-center rounded-full bg-gold px-6 py-2.5 text-[12px] font-semibold uppercase tracking-[0.15em] text-gold-foreground transition-all duration-300 hover:opacity-90 hover:shadow-[0_4px_24px_rgba(186,163,108,0.35)] md:inline-flex"
           >
-            Book via WhatsApp
+            Book Now
           </a>
           <button
             onClick={() => setOpen(!open)}
-            className="inline-flex h-10 w-10 items-center justify-center border border-foreground/20 text-foreground/80 lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-foreground/15 text-foreground/80 transition hover:border-gold/50 hover:text-gold lg:hidden"
             aria-label="Menu"
           >
             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
@@ -83,14 +78,14 @@ export function SiteNav() {
               <a
                 key={l.href}
                 href={l.href}
-                className="px-2 py-4 text-sm font-medium uppercase tracking-[0.25em] text-foreground/80 transition hover:text-gold"
+                className="px-2 py-3 text-sm font-medium uppercase tracking-[0.15em] text-foreground/80 transition hover:text-gold"
               >
                 {l.label}
               </a>
             ))}
             <a
               href="https://wa.me/16452149666"
-              className="mt-4 inline-flex items-center justify-center border border-gold px-4 py-4 text-xs font-medium uppercase tracking-[0.2em] text-gold"
+              className="mt-4 inline-flex items-center justify-center rounded-full bg-gold px-6 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-gold-foreground"
             >
               Book via WhatsApp
             </a>
