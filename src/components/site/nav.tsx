@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { MessageCircle, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 
 const LINKS = [
-  { href: "/our-yachts", label: "Yachts" },
-  { href: "/packages", label: "Packages" },
-  { href: "/extras", label: "Extras" },
+  { href: "/our-yachts", label: "The Fleet" },
+  { href: "/packages", label: "Experiences" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -24,50 +23,52 @@ export function SiteNav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/85 backdrop-blur-md border-b border-foreground/10"
-          : "bg-transparent"
+          ? "bg-background/60 backdrop-blur-xl border-b border-gold/10"
+          : "bg-gradient-to-b from-background/60 to-transparent backdrop-blur-sm"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-2">
-          <span className="font-display text-2xl font-medium tracking-wide text-foreground">
-            Royal <span className="text-gold">Yachts</span>
+      <div className="flex items-center justify-between px-6 py-6 md:px-10 md:py-7">
+        <Link to="/" className="flex items-center gap-3">
+          <span className="font-display text-3xl font-bold uppercase tracking-[0.18em] text-foreground">
+            Royal
+          </span>
+          <span className="font-display text-3xl font-bold uppercase tracking-[0.18em] text-gold">
+            Yachts
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-14 lg:flex">
           {LINKS.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium uppercase tracking-[0.15em] text-foreground/75 transition hover:text-gold"
+              className="text-sm font-medium uppercase tracking-[0.25em] text-foreground/80 transition-colors duration-300 hover:text-gold"
             >
               {l.label}
             </a>
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <div className="hidden items-center gap-1 text-xs uppercase tracking-widest text-foreground/60 md:flex">
-            <button className="px-1 text-gold">EN</button>
-            <span className="opacity-30">/</span>
-            <a href="/es" className="px-1 transition hover:text-gold">ES</a>
+        <div className="flex items-center gap-6">
+          <div className="hidden items-center gap-3 border-r border-foreground/20 pr-6 text-xs uppercase tracking-[0.3em] text-gold md:flex">
+            <button className="text-gold">EN</button>
+            <span className="opacity-40">/</span>
+            <a href="/es" className="text-foreground/50 transition hover:text-gold">ES</a>
           </div>
           <ThemeToggle />
           <a
             href="https://wa.me/16452149666"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-2 rounded-sm border border-gold/60 bg-gold/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.18em] text-gold transition hover:bg-gold hover:text-gold-foreground md:inline-flex"
+            className="hidden items-center gap-3 border border-gold px-7 py-3 text-xs font-medium uppercase tracking-[0.2em] text-gold transition-all duration-500 hover:bg-gold hover:text-gold-foreground md:inline-flex"
           >
-            <MessageCircle className="h-4 w-4" />
-            Book on WhatsApp
+            Book via WhatsApp
           </a>
           <button
             onClick={() => setOpen(!open)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-sm border border-foreground/15 text-foreground/70 lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center border border-foreground/20 text-foreground/80 lg:hidden"
             aria-label="Menu"
           >
             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
@@ -76,22 +77,22 @@ export function SiteNav() {
       </div>
 
       {open && (
-        <div className="border-t border-foreground/10 bg-background/95 backdrop-blur-md lg:hidden">
-          <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
+        <div className="border-t border-gold/10 bg-background/95 backdrop-blur-xl lg:hidden">
+          <nav className="flex flex-col gap-1 px-6 py-6">
             {LINKS.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                className="rounded-sm px-2 py-3 text-sm font-medium uppercase tracking-[0.15em] text-foreground/80 transition hover:text-gold"
+                className="px-2 py-4 text-sm font-medium uppercase tracking-[0.25em] text-foreground/80 transition hover:text-gold"
               >
                 {l.label}
               </a>
             ))}
             <a
               href="https://wa.me/16452149666"
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-sm border border-gold/60 bg-gold/10 px-4 py-3 text-xs font-medium uppercase tracking-[0.18em] text-gold"
+              className="mt-4 inline-flex items-center justify-center border border-gold px-4 py-4 text-xs font-medium uppercase tracking-[0.2em] text-gold"
             >
-              <MessageCircle className="h-4 w-4" /> Book on WhatsApp
+              Book via WhatsApp
             </a>
           </nav>
         </div>
