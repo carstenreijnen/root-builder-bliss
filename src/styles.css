@@ -46,6 +46,8 @@
   --background: oklch(0.957 0.018 80);
   --foreground: oklch(0.21 0 0);
   --section-alt: oklch(0.94 0.018 80);
+  --section-deep: oklch(0.91 0.018 80);
+  --caption: oklch(0.55 0.01 80);
   --card: oklch(0.99 0.008 80);
   --card-foreground: oklch(0.21 0 0);
   --popover: oklch(0.99 0.008 80);
