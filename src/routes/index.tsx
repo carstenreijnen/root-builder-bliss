@@ -231,36 +231,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* BOOKING + IMAGE SPLIT */}
-      <section className="py-20 md:py-28">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 px-5 md:px-10 lg:grid-cols-2 lg:gap-16">
-          <div className="order-2 lg:order-1">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Inquire</span>
-            <h2 className="mt-3 font-display text-[28px] font-semibold leading-tight text-foreground md:text-[38px]">
-              Reserve Your Charter
-            </h2>
-            <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-              Tell us about your day on the water — our concierge replies within minutes.
-            </p>
-            <div className="mt-8">
-              <InquiryForm />
-            </div>
-          </div>
-          <div className="order-1 hidden lg:order-2 lg:block">
-            <div className="sticky top-28 overflow-hidden rounded-[24px] shadow-[var(--shadow-luxe)]">
-              <img
-                src={bookingSide}
-                alt="Miami yacht lifestyle"
-                width={1024}
-                height={1536}
-                loading="lazy"
-                className="h-[720px] w-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* FLEET */}
       <section className="bg-section-alt py-20 md:py-28">
         <div className="mx-auto max-w-[1400px] px-5 md:px-10">
@@ -294,7 +264,7 @@ function HomePage() {
       </section>
 
       {/* EXPERIENCES */}
-      <section className="py-20 md:py-28">
+      <section className="bg-background py-20 md:py-28">
         <div className="mx-auto max-w-[1400px] px-5 md:px-10">
           <div className="mb-3 text-center">
             <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Occasions</span>
@@ -307,7 +277,7 @@ function HomePage() {
               <a
                 key={e.title}
                 href={e.href}
-                className="group relative block aspect-[4/3] overflow-hidden rounded-2xl shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)]"
+                className="group relative block aspect-[4/3] overflow-hidden rounded-2xl border border-border shadow-[var(--shadow-card)] transition-all duration-300 hover:border-gold/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)]"
               >
                 <img
                   src={e.image}
@@ -330,66 +300,8 @@ function HomePage() {
         </div>
       </section>
 
-      {/* SOCIAL PROOF */}
-      <section className="bg-section-alt py-20 md:py-28">
-        <div className="mx-auto max-w-[1400px] px-5 md:px-10">
-          <div className="mb-3 text-center">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Reputation</span>
-          </div>
-          <h2 className="mx-auto max-w-3xl text-center font-display text-[28px] font-semibold leading-tight text-foreground md:text-[42px]">
-            Trusted by Thousands of Guests in Miami
-          </h2>
-
-          <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
-            {[
-              { stat: "5,000+", label: "Guests Hosted" },
-              { stat: "4.9★", label: "Average Rating" },
-              { stat: "Top Tier", label: "Miami Charter Company" },
-            ].map((s) => (
-              <div
-                key={s.label}
-                className="rounded-2xl border border-foreground/8 bg-card p-8 text-center shadow-[var(--shadow-card)]"
-              >
-                <div className="font-display text-[44px] font-semibold leading-none text-gold md:text-[52px]">
-                  {s.stat}
-                </div>
-                <div className="mt-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                  {s.label}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {testimonials.length > 0 && (
-            <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
-              {testimonials.map((t) => (
-                <figure
-                  key={t.id}
-                  className="relative rounded-2xl border border-foreground/8 bg-card p-8 shadow-[var(--shadow-card)] transition-all duration-300 hover:border-gold/40"
-                >
-                  <span className="absolute right-6 top-2 font-display text-[80px] leading-none text-gold/30">
-                    "
-                  </span>
-                  <div className="flex gap-1 text-gold">
-                    {Array.from({ length: t.rating ?? 5 }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-gold" />
-                    ))}
-                  </div>
-                  <blockquote className="mt-4 text-[15px] leading-relaxed text-foreground/80">
-                    {t.body_en}
-                  </blockquote>
-                  <figcaption className="mt-6 text-[12px] font-semibold uppercase tracking-[0.15em] text-gold">
-                    — {t.name}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
       {/* ABOUT */}
-      <section className="py-20 md:py-28">
+      <section className="bg-section-deep py-20 md:py-28">
         <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-12 px-5 md:px-10 lg:grid-cols-2 lg:gap-16">
           <div className="overflow-hidden rounded-[24px] shadow-[var(--shadow-luxe)]">
             <img
@@ -415,7 +327,7 @@ function HomePage() {
                 { stat: "2018", label: "Since" },
                 { stat: "5★", label: "Rated" },
               ].map((s) => (
-                <div key={s.label} className="rounded-2xl border border-foreground/8 bg-card p-4 text-center">
+                <div key={s.label} className="rounded-2xl border border-border bg-card p-4 text-center">
                   <div className="font-display text-2xl font-semibold text-gold md:text-3xl">{s.stat}</div>
                   <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
                     {s.label}
@@ -433,16 +345,104 @@ function HomePage() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* SOCIAL PROOF */}
       <section className="bg-section-alt py-20 md:py-28">
-        <div className="mx-auto max-w-3xl px-5 md:px-10">
+        <div className="mx-auto max-w-[1400px] px-5 md:px-10">
+          <div className="mb-3 text-center">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Reputation</span>
+          </div>
+          <h2 className="mx-auto max-w-3xl text-center font-display text-[28px] font-semibold leading-tight text-foreground md:text-[42px]">
+            Trusted by Thousands of Guests in Miami
+          </h2>
+
+          <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {[
+              { stat: "5,000+", label: "Guests Hosted" },
+              { stat: "4.9★", label: "Average Rating" },
+              { stat: "Top Tier", label: "Miami Charter Company" },
+            ].map((s) => (
+              <div
+                key={s.label}
+                className="rounded-2xl border border-border bg-card p-8 text-center shadow-[var(--shadow-card)]"
+              >
+                <div className="font-display text-[44px] font-semibold leading-none text-gold md:text-[52px]">
+                  {s.stat}
+                </div>
+                <div className="mt-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                  {s.label}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {testimonials.length > 0 && (
+            <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+              {testimonials.map((t) => (
+                <figure
+                  key={t.id}
+                  className="relative rounded-2xl border border-border bg-card p-8 shadow-[var(--shadow-card)] transition-all duration-300 hover:border-gold/40"
+                >
+                  <span className="absolute right-6 top-2 font-display text-[80px] leading-none text-gold/30">
+                    "
+                  </span>
+                  <div className="flex gap-1 text-gold">
+                    {Array.from({ length: t.rating ?? 5 }).map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-gold" />
+                    ))}
+                  </div>
+                  <blockquote className="mt-4 text-[15px] leading-relaxed text-foreground/80">
+                    {t.body_en}
+                  </blockquote>
+                  <figcaption className="mt-6 text-[12px] font-semibold uppercase tracking-[0.15em] text-gold">
+                    — {t.name}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* BOOKING + IMAGE SPLIT */}
+      <section className="bg-background py-20 md:py-28">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 px-5 md:px-10 lg:grid-cols-2 lg:gap-16">
+          <div className="order-2 lg:order-1">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Inquire</span>
+            <h2 className="mt-3 font-display text-[28px] font-semibold leading-tight text-foreground md:text-[38px]">
+              Reserve Your Charter
+            </h2>
+            <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
+              Tell us about your day on the water — our concierge replies within minutes.
+            </p>
+            <div className="mt-8">
+              <InquiryForm />
+            </div>
+          </div>
+          <div className="order-1 hidden lg:order-2 lg:block">
+            <div className="sticky top-28 overflow-hidden rounded-[24px] shadow-[var(--shadow-luxe)]">
+              <img
+                src={bookingSide}
+                alt="Miami yacht lifestyle"
+                width={1024}
+                height={1536}
+                loading="lazy"
+                className="h-[720px] w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-section-deep py-20 md:py-28">
+        <div className="mx-auto max-w-[1400px] px-5 md:px-10">
           <div className="mb-3 text-center">
             <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">FAQ</span>
           </div>
           <h2 className="text-center font-display text-[28px] font-semibold leading-tight text-foreground md:text-[42px]">
             Frequently Asked Questions
           </h2>
-          <div className="mt-12 space-y-3">
+          <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
             {FAQS.map((f, i) => (
               <FAQItem key={i} q={f.q} a={f.a} />
             ))}
