@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
+import logo from "@/assets/logo.svg";
 
 const LINKS = [
   { href: "/our-yachts", label: "Fleet" },
