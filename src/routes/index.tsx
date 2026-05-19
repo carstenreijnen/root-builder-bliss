@@ -172,13 +172,17 @@ function HomePage() {
 
         <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 md:px-10">
           <div className="max-w-3xl">
+            {/* SEO H1 — visually hidden, read by Google */}
+            <h1 className="sr-only">Luxury Yacht Rental Miami — Private Charter Experiences</h1>
+
             <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.25em] text-gold">
               Miami Luxury Yacht Charters
             </span>
-            <h1 className="mt-5 font-display text-[36px] font-semibold leading-[1.05] text-white md:text-[52px] lg:text-[56px]">
+            {/* Visible display headline (brand voice) */}
+            <p className="mt-5 font-display text-[36px] font-semibold leading-[1.05] text-white md:text-[52px] lg:text-[56px]">
               Your Moment. <br className="hidden sm:block" />
               <span className="italic text-gold">Our Signature</span> Experience.
-            </h1>
+            </p>
             <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-white/75 md:text-base">
               Private yacht charters from 38ft to 120ft — taxes, gratuity &amp; crew always included.
             </p>
