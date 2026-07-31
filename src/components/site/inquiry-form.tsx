@@ -23,7 +23,7 @@ const schema = z.object({
   date: z.string().optional(),
   duration: z.string().optional(),
   yacht_preference: z.string().optional(),
-  guests: z.coerce.number().int().min(1).max(200).optional(),
+  guests: z.number().int().min(1).max(200).optional(),
   departure_time: z.string().optional(),
   message: z.string().max(1000).optional(),
 });
@@ -112,7 +112,7 @@ export function InquiryForm() {
         </Select>
       </Field>
       <Field label="Guests">
-        <Input {...register("guests")} type="number" min={1} max={13} placeholder="Max 13" className="luxe-input" />
+        <Input {...register("guests", { setValueAs: (v) => (v === "" || v == null ? undefined : Number(v)) })} type="number" min={1} max={13} placeholder="Max 13" className="luxe-input" />
       </Field>
       <Field label="Departure">
         <Select value={departure} onValueChange={(v) => setValue("departure_time", v)}>
