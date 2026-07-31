@@ -121,16 +121,17 @@ function YachtDetailPage() {
           height={1280}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-background/70" />
-        <div className="absolute inset-0 bg-[radial-gradient(120%_80%_at_50%_100%,transparent_20%,var(--color-background)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/25" />
+        <div className="absolute inset-0 bg-[radial-gradient(130%_75%_at_50%_105%,transparent_25%,var(--color-background)_100%)]" />
 
         {/* oversized ghost wordmark */}
         <div
           aria-hidden
-          className="pointer-events-none absolute bottom-[18%] left-1/2 w-full -translate-x-1/2 select-none text-center font-teko text-[22vw] leading-[0.75] tracking-[0.06em] text-foreground/[0.06]"
+          className="pointer-events-none absolute inset-x-0 top-[22%] select-none text-center font-teko text-[18vw] leading-[0.75] tracking-[0.14em] text-foreground/[0.05]"
         >
           SUNSEEKER
         </div>
+
 
         <div className="relative mx-auto flex min-h-[92vh] max-w-[1400px] flex-col justify-end px-5 pb-16 pt-32 md:px-8 md:pb-24">
           <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.3em] text-gold">
