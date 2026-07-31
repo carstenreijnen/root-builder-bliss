@@ -36,6 +36,7 @@
   --color-caption: var(--caption);
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);
+  --font-teko: var(--font-teko);
   --shadow-luxe: var(--shadow-luxe);
   --shadow-card: var(--shadow-card);
 }
@@ -69,6 +70,7 @@
   --gold-foreground: oklch(0.13 0 0);
   --font-display: "Playfair Display", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-teko: "Teko", "Inter", ui-sans-serif, system-ui, sans-serif;
   --shadow-luxe: 0 20px 60px -20px rgba(0,0,0,0.18);
   --shadow-card: 0 4px 24px rgba(0,0,0,0.08);
 }
