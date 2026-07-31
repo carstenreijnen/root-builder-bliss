@@ -13,6 +13,7 @@ import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EsIndexRouteImport } from './routes/es/index'
+import { Route as YachtsRoyalSunseekerSmuRouteImport } from './routes/yachts.royal-sunseeker-smu'
 
 const ThankYouRoute = ThankYouRouteImport.update({
   id: '/thank-you',
@@ -34,17 +35,24 @@ const EsIndexRoute = EsIndexRouteImport.update({
   path: '/es/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const YachtsRoyalSunseekerSmuRoute = YachtsRoyalSunseekerSmuRouteImport.update({
+  id: '/yachts/royal-sunseeker-smu',
+  path: '/yachts/royal-sunseeker-smu',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteRoute
   '/thank-you': typeof ThankYouRoute
+  '/yachts/royal-sunseeker-smu': typeof YachtsRoyalSunseekerSmuRoute
   '/es/': typeof EsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteRoute
   '/thank-you': typeof ThankYouRoute
+  '/yachts/royal-sunseeker-smu': typeof YachtsRoyalSunseekerSmuRoute
   '/es': typeof EsIndexRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,33 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteRoute
   '/thank-you': typeof ThankYouRoute
+  '/yachts/royal-sunseeker-smu': typeof YachtsRoyalSunseekerSmuRoute
   '/es/': typeof EsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/admin' | '/thank-you' | '/es/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/thank-you'
+    | '/yachts/royal-sunseeker-smu'
+    | '/es/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/thank-you' | '/es'
-  id: '__root__' | '/' | '/admin' | '/thank-you' | '/es/'
+  to: '/' | '/admin' | '/thank-you' | '/yachts/royal-sunseeker-smu' | '/es'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/thank-you'
+    | '/yachts/royal-sunseeker-smu'
+    | '/es/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRouteRoute: typeof AdminRouteRoute
   ThankYouRoute: typeof ThankYouRoute
+  YachtsRoyalSunseekerSmuRoute: typeof YachtsRoyalSunseekerSmuRoute
   EsIndexRoute: typeof EsIndexRoute
 }
 
@@ -99,6 +120,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/yachts/royal-sunseeker-smu': {
+      id: '/yachts/royal-sunseeker-smu'
+      path: '/yachts/royal-sunseeker-smu'
+      fullPath: '/yachts/royal-sunseeker-smu'
+      preLoaderRoute: typeof YachtsRoyalSunseekerSmuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -106,6 +134,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRouteRoute: AdminRouteRoute,
   ThankYouRoute: ThankYouRoute,
+  YachtsRoyalSunseekerSmuRoute: YachtsRoyalSunseekerSmuRoute,
   EsIndexRoute: EsIndexRoute,
 }
 export const routeTree = rootRouteImport
