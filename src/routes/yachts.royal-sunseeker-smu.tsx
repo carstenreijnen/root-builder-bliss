@@ -36,6 +36,9 @@ import stepSwimImg from "@/assets/smu-step-swim.jpg";
 import stepReturnImg from "@/assets/smu-step-return.jpg";
 import detailInteriorImg from "@/assets/smu-detail-interior.jpg";
 import detailJetskiImg from "@/assets/smu-detail-jetski.jpg";
+import videoPosterImg from "@/assets/smu-video-poster.jpg";
+import { GalleryLightbox, type LightboxPhoto } from "@/components/site/gallery-lightbox";
+import { VideoBlock } from "@/components/site/video-block";
 
 const WHATSAPP = "16452149666";
 
