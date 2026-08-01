@@ -42,6 +42,11 @@ import { VideoBlock } from "@/components/site/video-block";
 
 const WHATSAPP = "16452149666";
 
+// Set to undefined for a yacht with no film — the video section then renders
+// as an intentional still cinematic breaker (no play button).
+const SMU_VIDEO_SRC: string | undefined = smuFilm.url;
+
+
 const DURATIONS = [
   { hours: 4, price: 4700, label: "4 Hours", note: "Sunset classic" },
   { hours: 6, price: 5900, label: "6 Hours", note: "Most booked" },
