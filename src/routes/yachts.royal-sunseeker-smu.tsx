@@ -560,6 +560,16 @@ function YachtDetailPage() {
       />
 
 
+      {/* ---------- CINEMATIC VIDEO (conditional: renders as a still breaker when no videoSrc) ---------- */}
+      <VideoBlock
+        poster={videoPosterImg}
+        posterAlt="Royal Sunseeker SMU crossing Biscayne Bay against the Miami skyline at dusk"
+        videoSrc={SMU_VIDEO_SRC}
+        eyebrow="The film"
+        headline="SMU on the water"
+        caption={SMU_VIDEO_SRC ? "SMU on the water — 0:45" : "Biscayne Bay, golden hour"}
+      />
+
       {/* ---------- ABOUT / HERITAGE ---------- */}
       <section className="relative border-y border-border bg-section-deep py-20 md:py-28">
         <div className="mx-auto grid max-w-[1400px] items-center gap-12 px-5 md:px-8 lg:grid-cols-2 lg:gap-16">
