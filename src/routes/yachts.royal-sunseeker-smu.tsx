@@ -131,6 +131,9 @@ export const Route = createFileRoute("/yachts/royal-sunseeker-smu")({
 function YachtDetailPage() {
   const [duration, setDuration] = useState<(typeof DURATIONS)[number]>(DURATIONS[1]);
   const [date, setDate] = useState("");
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
   
 
   const waLink = useMemo(() => {
