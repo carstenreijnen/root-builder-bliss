@@ -238,7 +238,7 @@ function YachtDetailPage() {
                 </h2>
               </div>
               <div className="text-[11px] uppercase tracking-[0.25em] text-caption">
-                {GALLERY.length} photographs
+                {ALL_PHOTOS.length} photographs
               </div>
             </div>
             <div className="grid auto-rows-[150px] grid-cols-2 gap-3 md:auto-rows-[170px] md:grid-cols-6">
@@ -249,6 +249,15 @@ function YachtDetailPage() {
                     i === 0 ? "col-span-2 row-span-2" : ""
                   }`}
                 >
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setLightboxIndex(i);
+                      setLightboxOpen(true);
+                    }}
+                    aria-label={`Open gallery — ${g.alt}`}
+                    className="absolute inset-0 z-10 h-full w-full cursor-zoom-in"
+                  />
                   <img
                     src={g.src}
                     alt={g.alt}
@@ -258,12 +267,21 @@ function YachtDetailPage() {
                     className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/75 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-95" />
-                  <figcaption className="pointer-events-none absolute inset-x-4 bottom-3 translate-y-2 text-[10px] uppercase tracking-[0.22em] text-foreground/85 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                    {g.alt}
-                  </figcaption>
+                  {i === GALLERY.length - 1 ? (
+                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-background/55">
+                      <span className="rounded-pill border border-gold px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.2em] text-gold transition-colors duration-500 group-hover:bg-gold group-hover:text-gold-foreground">
+                        View all {ALL_PHOTOS.length} photos
+                      </span>
+                    </div>
+                  ) : (
+                    <figcaption className="pointer-events-none absolute inset-x-4 bottom-3 translate-y-2 text-[10px] uppercase tracking-[0.22em] text-foreground/85 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                      {g.alt}
+                    </figcaption>
+                  )}
                 </figure>
               ))}
             </div>
+
 
 
             {/* Trust row */}
