@@ -48,9 +48,9 @@ const DURATIONS = [
 const GALLERY = [
   { src: heroImg, alt: "Royal Sunseeker SMU cruising off Miami Beach at golden hour", span: "md:col-span-4 md:row-span-2" },
   { src: deckImg, alt: "Sun deck loungers with champagne service at sunset", span: "md:col-span-2 md:row-span-1" },
-  { src: detailJetskiImg, alt: "Jetski riding alongside the yacht at golden hour", span: "md:col-span-2 md:row-span-2" },
   { src: salonImg, alt: "Interior salon with cream leather seating and ambient lighting", span: "md:col-span-2 md:row-span-1" },
-  { src: aerialImg, alt: "Aerial view of the yacht anchored off Miami at dusk", span: "md:col-span-3 md:row-span-2" },
+  { src: detailJetskiImg, alt: "Jetski riding alongside the yacht at golden hour", span: "md:col-span-2 md:row-span-2" },
+  { src: aerialImg, alt: "Aerial view of the yacht anchored off Miami at dusk", span: "md:col-span-4 md:row-span-2" },
   { src: detailInteriorImg, alt: "Champagne service in the yacht salon", span: "md:col-span-3 md:row-span-1" },
   { src: swimImg, alt: "Swim platform with jetski and floating mat", span: "md:col-span-3 md:row-span-1" },
   { src: breakerGoldenImg, alt: "Golden hour aerial over Biscayne Bay", span: "md:col-span-4 md:row-span-1" },
