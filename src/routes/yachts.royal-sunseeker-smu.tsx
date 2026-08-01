@@ -26,6 +26,16 @@ import deckImg from "@/assets/smu-deck.jpg";
 import salonImg from "@/assets/smu-salon.jpg";
 import swimImg from "@/assets/smu-swim.jpg";
 import aerialImg from "@/assets/smu-aerial.jpg";
+import breakerGoldenImg from "@/assets/smu-breaker-goldenhour.jpg";
+import breakerSkylineImg from "@/assets/smu-breaker-skyline.jpg";
+import amenitiesImg from "@/assets/smu-amenities.jpg";
+import stepBoardingImg from "@/assets/smu-step-boarding.jpg";
+import stepBriefingImg from "@/assets/smu-step-briefing.jpg";
+import stepCruiseImg from "@/assets/smu-step-cruise.jpg";
+import stepSwimImg from "@/assets/smu-step-swim.jpg";
+import stepReturnImg from "@/assets/smu-step-return.jpg";
+import detailInteriorImg from "@/assets/smu-detail-interior.jpg";
+import detailJetskiImg from "@/assets/smu-detail-jetski.jpg";
 
 const WHATSAPP = "16452149666";
 
@@ -36,11 +46,15 @@ const DURATIONS = [
 ] as const;
 
 const GALLERY = [
-  { src: heroImg, alt: "Royal Sunseeker SMU cruising off Miami Beach at golden hour" },
-  { src: deckImg, alt: "Sun deck loungers with champagne service at sunset" },
-  { src: salonImg, alt: "Interior salon with cream leather seating and ambient lighting" },
-  { src: swimImg, alt: "Swim platform with jetski and floating mat" },
-  { src: aerialImg, alt: "Aerial view of the yacht anchored off Miami at dusk" },
+  { src: heroImg, alt: "Royal Sunseeker SMU cruising off Miami Beach at golden hour", span: "md:col-span-4 md:row-span-2" },
+  { src: deckImg, alt: "Sun deck loungers with champagne service at sunset", span: "md:col-span-2 md:row-span-1" },
+  { src: salonImg, alt: "Interior salon with cream leather seating and ambient lighting", span: "md:col-span-2 md:row-span-1" },
+  { src: detailJetskiImg, alt: "Jetski riding alongside the yacht at golden hour", span: "md:col-span-2 md:row-span-2" },
+  { src: aerialImg, alt: "Aerial view of the yacht anchored off Miami at dusk", span: "md:col-span-4 md:row-span-2" },
+  { src: detailInteriorImg, alt: "Champagne service in the yacht salon", span: "md:col-span-3 md:row-span-1" },
+  { src: swimImg, alt: "Swim platform with jetski and floating mat", span: "md:col-span-3 md:row-span-1" },
+  { src: breakerGoldenImg, alt: "Golden hour aerial over Biscayne Bay", span: "md:col-span-4 md:row-span-1" },
+  { src: stepSwimImg, alt: "Guests swimming at the Miami sandbar beside the yacht", span: "md:col-span-2 md:row-span-1" },
 ];
 
 const AMENITIES = [
@@ -59,11 +73,11 @@ const ADDONS = [
 ];
 
 const TIMELINE = [
-  { step: "01", title: "Boarding", copy: "Meet your captain at Miami Beach Marina. Champagne poured, bags stowed, no queue." },
-  { step: "02", title: "Safety Briefing", copy: "Five minutes with the crew — layout, life vests, water toys, your route." },
-  { step: "03", title: "The Cruise", copy: "Star Island, Fisher Island and the Downtown skyline at cruising speed." },
-  { step: "04", title: "Swim & Anchor", copy: "Drop anchor on the sandbar. Jetski out, float, swim, stay as long as you like." },
-  { step: "05", title: "Return", copy: "Golden-hour cruise back into the marina with the skyline behind you." },
+  { step: "01", title: "Boarding", copy: "Meet your captain at Miami Beach Marina. Champagne poured, bags stowed, no queue.", img: stepBoardingImg },
+  { step: "02", title: "Safety Briefing", copy: "Five minutes with the crew — layout, life vests, water toys, your route.", img: stepBriefingImg },
+  { step: "03", title: "The Cruise", copy: "Star Island, Fisher Island and the Downtown skyline at cruising speed.", img: stepCruiseImg },
+  { step: "04", title: "Swim & Anchor", copy: "Drop anchor on the sandbar. Jetski out, float, swim, stay as long as you like.", img: stepSwimImg },
+  { step: "05", title: "Return", copy: "Golden-hour cruise back into the marina with the skyline behind you.", img: stepReturnImg },
 ];
 
 const SIMILAR = [
@@ -99,7 +113,7 @@ export const Route = createFileRoute("/yachts/royal-sunseeker-smu")({
 function YachtDetailPage() {
   const [duration, setDuration] = useState<(typeof DURATIONS)[number]>(DURATIONS[1]);
   const [date, setDate] = useState("");
-  const [active, setActive] = useState(0);
+  
 
   const waLink = useMemo(() => {
     const text = `Hi Royal Yachts Miami — I'd like to book the Royal Sunseeker 'SMU' (80ft) for ${duration.label}${
@@ -197,44 +211,42 @@ function YachtDetailPage() {
       <section className="mx-auto max-w-[1400px] px-5 py-16 md:px-8 md:py-24">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-14">
           <div className="min-w-0">
-            {/* Gallery */}
-            <div className="group relative overflow-hidden rounded-[16px] border border-border bg-card">
-              <img
-                src={GALLERY[active].src}
-                alt={GALLERY[active].alt}
-                loading="lazy"
-                width={1200}
-                height={912}
-                className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03] md:aspect-[16/10]"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-5 text-[11px] uppercase tracking-[0.25em] text-foreground/80">
-                {active + 1} / {GALLERY.length}
+            {/* Gallery — mosaic */}
+            <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <SectionLabel>Portfolio</SectionLabel>
+                <h2 className="mt-3 font-teko text-4xl font-bold uppercase tracking-[0.06em] md:text-5xl">
+                  The <span className="text-gold">gallery</span>
+                </h2>
+              </div>
+              <div className="text-[11px] uppercase tracking-[0.25em] text-caption">
+                {GALLERY.length} photographs
               </div>
             </div>
-            <div className="mt-3 grid grid-cols-5 gap-3">
+            <div className="grid auto-rows-[150px] grid-cols-2 gap-3 md:auto-rows-[170px] md:grid-cols-6">
               {GALLERY.map((g, i) => (
-                <button
+                <figure
                   key={g.alt}
-                  onClick={() => setActive(i)}
-                  aria-label={`View photo ${i + 1}`}
-                  className={`overflow-hidden rounded-[12px] border transition-all duration-300 ${
-                    i === active
-                      ? "border-gold opacity-100 shadow-[0_0_0_1px_var(--color-gold)]"
-                      : "border-border opacity-55 hover:opacity-90"
+                  className={`group relative overflow-hidden rounded-[16px] border border-border bg-card ${g.span} ${
+                    i === 0 ? "col-span-2 row-span-2" : ""
                   }`}
                 >
                   <img
                     src={g.src}
-                    alt=""
+                    alt={g.alt}
                     loading="lazy"
                     width={1200}
-                    height={912}
-                    className="aspect-[4/3] w-full object-cover"
+                    height={900}
+                    className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
                   />
-                </button>
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/75 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-95" />
+                  <figcaption className="pointer-events-none absolute inset-x-4 bottom-3 translate-y-2 text-[10px] uppercase tracking-[0.22em] text-foreground/85 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    {g.alt}
+                  </figcaption>
+                </figure>
               ))}
             </div>
+
 
             {/* Trust row */}
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
@@ -369,31 +381,70 @@ function YachtDetailPage() {
         </div>
       </section>
 
+
+      {/* ---------- PHOTO BREAKER 1 ---------- */}
+      <PhotoBreaker
+        src={breakerGoldenImg}
+        alt="Aerial view of Biscayne Bay at golden hour with a luxury yacht cutting across the water"
+        eyebrow="Biscayne Bay"
+        line="Golden hour, exactly on time."
+      />
+
       {/* ---------- AMENITIES ---------- */}
       <section className="border-y border-border bg-section-alt py-20 md:py-28">
         <div className="mx-auto max-w-[1400px] px-5 md:px-8">
-          <SectionLabel>Onboard</SectionLabel>
-          <h2 className="mt-3 max-w-2xl font-teko text-5xl font-bold uppercase leading-[0.95] tracking-[0.06em] md:text-6xl">
-            Amenities &amp; <span className="text-gold">water toys</span>
-          </h2>
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
+            {/* Photo side */}
+            <div className="relative">
+              <img
+                src={amenitiesImg}
+                alt="Sun deck loungers, champagne and the jetski at the swim platform"
+                loading="lazy"
+                width={1024}
+                height={1280}
+                className="aspect-[4/5] w-full rounded-[16px] border border-border object-cover shadow-luxe"
+              />
+              <img
+                src={detailJetskiImg}
+                alt="Jetski riding alongside the yacht"
+                loading="lazy"
+                width={1024}
+                height={1280}
+                className="absolute -bottom-8 -right-4 hidden w-40 rounded-[16px] border border-gold/30 object-cover shadow-luxe lg:block"
+              />
+            </div>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {AMENITIES.map((a) => (
-              <div
-                key={a.title}
-                className="group relative overflow-hidden rounded-[16px] border border-border bg-card p-6 transition-all duration-500 hover:border-gold/40 hover:shadow-card"
-              >
-                <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-gold/[0.07] blur-2xl transition-opacity duration-500 group-hover:bg-gold/[0.16]" />
-                <div className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/30 text-gold">
-                  <a.icon className="h-5 w-5" />
-                </div>
-                <div className="mt-5 font-teko text-3xl font-semibold uppercase tracking-[0.08em]">
-                  {a.title}
-                </div>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{a.copy}</p>
+            {/* Copy + amenities */}
+            <div>
+              <SectionLabel>Onboard</SectionLabel>
+              <h2 className="mt-3 max-w-2xl font-teko text-5xl font-bold uppercase leading-[0.95] tracking-[0.06em] md:text-6xl">
+                Amenities &amp; <span className="text-gold">water toys</span>
+              </h2>
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
+                Everything aboard is set before you arrive — toys fueled, deck dressed, salon
+                chilled.
+              </p>
+
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                {AMENITIES.map((a) => (
+                  <div
+                    key={a.title}
+                    className="group relative overflow-hidden rounded-[16px] border border-border bg-card p-5 transition-all duration-500 hover:border-gold/40 hover:shadow-card"
+                  >
+                    <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-gold/[0.07] blur-2xl transition-opacity duration-500 group-hover:bg-gold/[0.16]" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 text-gold">
+                      <a.icon className="h-4.5 w-4.5" />
+                    </div>
+                    <div className="mt-4 font-teko text-2xl font-semibold uppercase tracking-[0.08em]">
+                      {a.title}
+                    </div>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{a.copy}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
+
 
           {/* Add-ons */}
           <div className="mt-16">
@@ -430,20 +481,45 @@ function YachtDetailPage() {
           What to expect
         </h2>
 
-        <div className="mt-12 grid gap-px overflow-hidden rounded-[16px] border border-border bg-border md:grid-cols-5">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {TIMELINE.map((t) => (
-            <div key={t.step} className="group relative bg-background p-6 transition-colors duration-500 hover:bg-section-alt md:p-7">
-              <div className="font-teko text-6xl font-bold leading-none tracking-[0.02em] text-gold/25 transition-colors duration-500 group-hover:text-gold/60">
-                {t.step}
+            <article
+              key={t.step}
+              className="group overflow-hidden rounded-[16px] border border-border bg-card transition-all duration-500 hover:border-gold/40 hover:shadow-luxe"
+            >
+              <div className="relative overflow-hidden">
+                <img
+                  src={t.img}
+                  alt={t.title}
+                  loading="lazy"
+                  width={1024}
+                  height={1024}
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105 lg:aspect-[3/4]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+                <div className="absolute left-5 top-4 font-teko text-5xl font-bold leading-none tracking-[0.02em] text-gold/80">
+                  {t.step}
+                </div>
               </div>
-              <div className="mt-4 font-teko text-2xl font-semibold uppercase tracking-[0.1em]">
-                {t.title}
+              <div className="p-5">
+                <div className="font-teko text-2xl font-semibold uppercase tracking-[0.1em]">
+                  {t.title}
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.copy}</p>
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.copy}</p>
-            </div>
+            </article>
           ))}
         </div>
       </section>
+
+      {/* ---------- PHOTO BREAKER 2 ---------- */}
+      <PhotoBreaker
+        src={breakerSkylineImg}
+        alt="Miami downtown skyline at blue hour seen from the bow of a yacht"
+        eyebrow="Downtown Miami"
+        line="The skyline, from the only seat that matters."
+      />
+
 
       {/* ---------- ABOUT / HERITAGE ---------- */}
       <section className="relative border-y border-border bg-section-deep py-20 md:py-28">
@@ -603,3 +679,41 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+
+function PhotoBreaker({
+  src,
+  alt,
+  eyebrow,
+  line,
+}: {
+  src: string;
+  alt: string;
+  eyebrow: string;
+  line: string;
+}) {
+  return (
+    <section className="relative h-[60vh] min-h-[380px] w-full overflow-hidden md:h-[75vh]">
+      <div className="absolute inset-0 md:bg-fixed md:bg-cover md:bg-center" style={{ backgroundImage: `url(${src})` }}>
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          width={1920}
+          height={1088}
+          className="h-full w-full object-cover md:hidden"
+        />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/35 to-background/60" />
+      <div className="absolute inset-x-0 bottom-0 mx-auto max-w-[1400px] px-5 pb-12 md:px-8 md:pb-16">
+        <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-gold">
+          <span className="h-px w-10 bg-gold/70" />
+          {eyebrow}
+        </div>
+        <p className="mt-4 max-w-3xl font-teko text-[clamp(2.2rem,6vw,5rem)] font-bold uppercase leading-[0.9] tracking-[0.05em]">
+          {line}
+        </p>
+      </div>
+    </section>
+  );
+}
+
