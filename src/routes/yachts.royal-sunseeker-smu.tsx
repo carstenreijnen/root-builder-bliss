@@ -697,6 +697,14 @@ function YachtDetailPage() {
 
       <SiteFooter />
 
+      <GalleryLightbox
+        photos={ALL_PHOTOS}
+        startIndex={lightboxIndex}
+        open={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+      />
+
+
       {/* ---------- MOBILE STICKY BAR ---------- */}
       <div className="fixed inset-x-0 bottom-0 z-50 border-t border-gold/20 bg-background/95 backdrop-blur-xl lg:hidden">
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-5 py-3">
