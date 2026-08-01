@@ -37,6 +37,7 @@ import stepReturnImg from "@/assets/smu-step-return.jpg";
 import detailInteriorImg from "@/assets/smu-detail-interior.jpg";
 import detailJetskiImg from "@/assets/smu-detail-jetski.jpg";
 import videoPosterImg from "@/assets/smu-video-poster.jpg";
+import smuFilm from "@/assets/smu-film.mp4.asset.json";
 import { GalleryLightbox, type LightboxPhoto } from "@/components/site/gallery-lightbox";
 import { VideoBlock } from "@/components/site/video-block";
 
