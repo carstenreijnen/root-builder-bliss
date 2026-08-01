@@ -36,8 +36,17 @@ import stepSwimImg from "@/assets/smu-step-swim.jpg";
 import stepReturnImg from "@/assets/smu-step-return.jpg";
 import detailInteriorImg from "@/assets/smu-detail-interior.jpg";
 import detailJetskiImg from "@/assets/smu-detail-jetski.jpg";
+import videoPosterImg from "@/assets/smu-video-poster.jpg";
+import smuFilm from "@/assets/smu-film.mp4.asset.json";
+import { GalleryLightbox, type LightboxPhoto } from "@/components/site/gallery-lightbox";
+import { VideoBlock } from "@/components/site/video-block";
 
 const WHATSAPP = "16452149666";
+
+// Set to undefined for a yacht with no film — the video section then renders
+// as an intentional still cinematic breaker (no play button).
+const SMU_VIDEO_SRC: string | undefined = smuFilm.url;
+
 
 const DURATIONS = [
   { hours: 4, price: 4700, label: "4 Hours", note: "Sunset classic" },
@@ -45,6 +54,8 @@ const DURATIONS = [
   { hours: 8, price: 7200, label: "8 Hours", note: "Full day" },
 ] as const;
 
+// Inline mosaic is capped — the page never renders more than these tiles,
+// regardless of how many photos the yacht has.
 const GALLERY = [
   { src: heroImg, alt: "Royal Sunseeker SMU cruising off Miami Beach at golden hour", span: "md:col-span-4 md:row-span-2" },
   { src: deckImg, alt: "Sun deck loungers with champagne service at sunset", span: "md:col-span-2 md:row-span-1" },
@@ -56,6 +67,19 @@ const GALLERY = [
   { src: breakerGoldenImg, alt: "Golden hour aerial over Biscayne Bay", span: "md:col-span-4 md:row-span-1" },
   { src: stepSwimImg, alt: "Guests swimming at the Miami sandbar beside the yacht", span: "md:col-span-2 md:row-span-1" },
 ];
+
+// Full set — only rendered inside the fullscreen lightbox.
+const ALL_PHOTOS: LightboxPhoto[] = [
+  ...GALLERY.map(({ src, alt }) => ({ src, alt })),
+  { src: breakerSkylineImg, alt: "Downtown Miami skyline at blue hour from the bow" },
+  { src: amenitiesImg, alt: "Golden-hour deck lounge and water toys" },
+  { src: stepBoardingImg, alt: "Boarding at Miami Beach Marina" },
+  { src: stepBriefingImg, alt: "Crew safety briefing on deck" },
+  { src: stepCruiseImg, alt: "Cruising past Star Island" },
+  { src: stepReturnImg, alt: "Golden-hour return into the marina" },
+  { src: videoPosterImg, alt: "SMU crossing Biscayne Bay against the Miami skyline" },
+];
+
 
 const AMENITIES = [
   { icon: Zap, title: "Jetski", copy: "Seadoo on the swim platform, fueled and ready." },
@@ -113,6 +137,9 @@ export const Route = createFileRoute("/yachts/royal-sunseeker-smu")({
 function YachtDetailPage() {
   const [duration, setDuration] = useState<(typeof DURATIONS)[number]>(DURATIONS[1]);
   const [date, setDate] = useState("");
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
   
 
   const waLink = useMemo(() => {
@@ -220,7 +247,7 @@ function YachtDetailPage() {
                 </h2>
               </div>
               <div className="text-[11px] uppercase tracking-[0.25em] text-caption">
-                {GALLERY.length} photographs
+                {ALL_PHOTOS.length} photographs
               </div>
             </div>
             <div className="grid auto-rows-[150px] grid-cols-2 gap-3 md:auto-rows-[170px] md:grid-cols-6">
@@ -231,6 +258,15 @@ function YachtDetailPage() {
                     i === 0 ? "col-span-2 row-span-2" : ""
                   }`}
                 >
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setLightboxIndex(i);
+                      setLightboxOpen(true);
+                    }}
+                    aria-label={`Open gallery — ${g.alt}`}
+                    className="absolute inset-0 z-10 h-full w-full cursor-zoom-in"
+                  />
                   <img
                     src={g.src}
                     alt={g.alt}
@@ -240,12 +276,21 @@ function YachtDetailPage() {
                     className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/75 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-95" />
-                  <figcaption className="pointer-events-none absolute inset-x-4 bottom-3 translate-y-2 text-[10px] uppercase tracking-[0.22em] text-foreground/85 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                    {g.alt}
-                  </figcaption>
+                  {i === GALLERY.length - 1 ? (
+                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-background/55">
+                      <span className="rounded-pill border border-gold px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.2em] text-gold transition-colors duration-500 group-hover:bg-gold group-hover:text-gold-foreground">
+                        View all {ALL_PHOTOS.length} photos
+                      </span>
+                    </div>
+                  ) : (
+                    <figcaption className="pointer-events-none absolute inset-x-4 bottom-3 translate-y-2 text-[10px] uppercase tracking-[0.22em] text-foreground/85 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                      {g.alt}
+                    </figcaption>
+                  )}
                 </figure>
               ))}
             </div>
+
 
 
             {/* Trust row */}
@@ -521,6 +566,16 @@ function YachtDetailPage() {
       />
 
 
+      {/* ---------- CINEMATIC VIDEO (conditional: renders as a still breaker when no videoSrc) ---------- */}
+      <VideoBlock
+        poster={videoPosterImg}
+        posterAlt="Royal Sunseeker SMU crossing Biscayne Bay against the Miami skyline at dusk"
+        videoSrc={SMU_VIDEO_SRC}
+        eyebrow="The film"
+        headline="SMU on the water"
+        caption={SMU_VIDEO_SRC ? "SMU on the water — 0:45" : "Biscayne Bay, golden hour"}
+      />
+
       {/* ---------- ABOUT / HERITAGE ---------- */}
       <section className="relative border-y border-border bg-section-deep py-20 md:py-28">
         <div className="mx-auto grid max-w-[1400px] items-center gap-12 px-5 md:px-8 lg:grid-cols-2 lg:gap-16">
@@ -641,6 +696,14 @@ function YachtDetailPage() {
       </section>
 
       <SiteFooter />
+
+      <GalleryLightbox
+        photos={ALL_PHOTOS}
+        startIndex={lightboxIndex}
+        open={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+      />
+
 
       {/* ---------- MOBILE STICKY BAR ---------- */}
       <div className="fixed inset-x-0 bottom-0 z-50 border-t border-gold/20 bg-background/95 backdrop-blur-xl lg:hidden">
