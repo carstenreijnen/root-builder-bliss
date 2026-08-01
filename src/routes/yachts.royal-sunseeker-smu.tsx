@@ -45,6 +45,8 @@ const DURATIONS = [
   { hours: 8, price: 7200, label: "8 Hours", note: "Full day" },
 ] as const;
 
+// Inline mosaic is capped — the page never renders more than these tiles,
+// regardless of how many photos the yacht has.
 const GALLERY = [
   { src: heroImg, alt: "Royal Sunseeker SMU cruising off Miami Beach at golden hour", span: "md:col-span-4 md:row-span-2" },
   { src: deckImg, alt: "Sun deck loungers with champagne service at sunset", span: "md:col-span-2 md:row-span-1" },
@@ -56,6 +58,19 @@ const GALLERY = [
   { src: breakerGoldenImg, alt: "Golden hour aerial over Biscayne Bay", span: "md:col-span-4 md:row-span-1" },
   { src: stepSwimImg, alt: "Guests swimming at the Miami sandbar beside the yacht", span: "md:col-span-2 md:row-span-1" },
 ];
+
+// Full set — only rendered inside the fullscreen lightbox.
+const ALL_PHOTOS: LightboxPhoto[] = [
+  ...GALLERY.map(({ src, alt }) => ({ src, alt })),
+  { src: breakerSkylineImg, alt: "Downtown Miami skyline at blue hour from the bow" },
+  { src: amenitiesImg, alt: "Golden-hour deck lounge and water toys" },
+  { src: stepBoardingImg, alt: "Boarding at Miami Beach Marina" },
+  { src: stepBriefingImg, alt: "Crew safety briefing on deck" },
+  { src: stepCruiseImg, alt: "Cruising past Star Island" },
+  { src: stepReturnImg, alt: "Golden-hour return into the marina" },
+  { src: videoPosterImg, alt: "SMU crossing Biscayne Bay against the Miami skyline" },
+];
+
 
 const AMENITIES = [
   { icon: Zap, title: "Jetski", copy: "Seadoo on the swim platform, fueled and ready." },
