@@ -230,17 +230,18 @@ function YachtDetailPage() {
           </div>
 
 
-          <h1 className="mt-5 break-words font-teko text-[clamp(2.6rem,9.5vw,7.5rem)] font-bold uppercase leading-[0.85] tracking-[0.04em]">
+          <h1 className="relative mt-5 break-words font-teko text-[clamp(2.6rem,9.5vw,7.5rem)] font-bold uppercase leading-[0.85] tracking-[0.04em]">
             Royal Sunseeker
             <span className="block text-gold">&lsquo;SMU&rsquo; · 80FT</span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+          <p className="relative mt-6 max-w-xl text-base leading-relaxed text-foreground/80 md:text-lg">
             A British-built flagship sport yacht, crewed and provisioned for thirteen guests.
             Golden hour on Biscayne Bay, exactly as it should be done.
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
+          <div className="relative mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
+
             <div>
               <div className="text-[10px] uppercase tracking-[0.25em] text-caption">From</div>
               <div className="font-teko text-5xl font-bold leading-none tracking-[0.03em] text-gold">
