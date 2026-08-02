@@ -732,9 +732,17 @@ function YachtDetailPage() {
       />
 
 
+      <BookingRequestModal
+        open={formOpen}
+        onClose={() => setFormOpen(false)}
+        yachtName="Royal Sunseeker 'SMU'"
+        duration={duration.label}
+        date={date}
+      />
+
       {/* ---------- MOBILE STICKY BAR ---------- */}
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-gold/20 bg-background/95 backdrop-blur-xl lg:hidden">
-        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-5 py-3">
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-gold/20 bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden">
+        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 sm:px-5">
           <div className="min-w-0">
             <div className="font-teko text-3xl font-bold leading-none tracking-[0.02em]">
               {usd(duration.price)}
@@ -746,17 +754,27 @@ function YachtDetailPage() {
               80 ft · 13 guests · all-inclusive
             </div>
           </div>
-          <a
-            href={waLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 rounded-full bg-gold px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-foreground"
-          >
-            WhatsApp
-          </a>
+          <div className="flex shrink-0 flex-col items-stretch gap-1.5">
+            <a
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-gold px-6 py-2.5 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-foreground"
+            >
+              WhatsApp
+            </a>
+            <button
+              type="button"
+              onClick={() => setFormOpen(true)}
+              className="rounded-full border border-gold/50 px-6 py-2 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-gold"
+            >
+              Booking form
+            </button>
+          </div>
         </div>
       </div>
-      <div className="h-20 lg:hidden" />
+      <div className="h-28 lg:hidden" />
+
     </div>
   );
 }
