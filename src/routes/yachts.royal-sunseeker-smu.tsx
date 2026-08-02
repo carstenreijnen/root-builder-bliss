@@ -536,31 +536,49 @@ function YachtDetailPage() {
           </div>
 
 
-          {/* Add-ons */}
-          <div className="mt-16">
-            <SectionLabel>Enhance your charter</SectionLabel>
-            <div className="mt-5 grid gap-4 lg:grid-cols-3">
+          {/* Add-ons — curated service menu */}
+          <div className="mt-20">
+            <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4">
+              <div className="min-w-0">
+                <SectionLabel>Enhance your charter</SectionLabel>
+                <h3 className="mt-3 font-teko text-4xl font-bold uppercase tracking-[0.06em] md:text-5xl">
+                  Concierge <span className="text-gold">services</span>
+                </h3>
+              </div>
+              <Sparkles className="h-6 w-6 shrink-0 text-gold/50" />
+            </div>
+
+            <div className="-mx-5 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-3 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-5">
               {ADDONS.map((a) => (
-                <div
+                <a
                   key={a.title}
-                  className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-4 rounded-[16px] border border-border bg-background p-6 transition-colors duration-300 hover:border-gold/40"
+                  href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
+                    `Hi Royal Yachts Miami — I'd like to add ${a.title} to my Royal Sunseeker 'SMU' charter.`,
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block w-[74vw] shrink-0 snap-start overflow-hidden rounded-[16px] border border-border no-underline transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/50 hover:no-underline hover:shadow-luxe sm:w-[46vw] md:w-auto"
                 >
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold">
-                    <a.icon className="h-5 w-5" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <div className="font-teko text-2xl font-semibold uppercase tracking-[0.08em]">
-                        {a.title}
-                      </div>
-                      <div className="text-xs uppercase tracking-[0.15em] text-gold">{a.price}</div>
+                  <img
+                    src={a.img}
+                    alt={a.title}
+                    loading="lazy"
+                    width={800}
+                    height={1000}
+                    className="aspect-[4/5] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.07]"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/55 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-4">
+                    <div className="font-teko text-2xl font-semibold uppercase leading-tight tracking-[0.08em] text-gold">
+                      {a.title}
                     </div>
-                    <p className="mt-1 text-sm text-muted-foreground">{a.copy}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-foreground/70">{a.copy}</p>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
+
         </div>
       </section>
 
