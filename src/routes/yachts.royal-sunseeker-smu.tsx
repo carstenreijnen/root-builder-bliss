@@ -422,6 +422,13 @@ function YachtDetailPage() {
                 >
                   Book via WhatsApp
                 </a>
+                <button
+                  type="button"
+                  onClick={() => setFormOpen(true)}
+                  className="mt-3 flex h-[50px] w-full items-center justify-center rounded-full border border-gold/50 text-[12px] font-semibold uppercase tracking-[0.2em] text-gold transition-colors duration-300 hover:bg-gold hover:text-gold-foreground"
+                >
+                  Request via booking form
+                </button>
                 <div className="mt-3 text-center text-[11px] text-caption">
                   No online checkout — a charter advisor confirms availability directly.
                 </div>
