@@ -342,9 +342,9 @@ function YachtDetailPage() {
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                 {[
                   "Professional captain & crew",
-                  "Soft drinks",
                   "Water & ice",
                   "Towels",
+                  "Water floats",
                 ].map((i) => (
                   <li
                     key={i}
