@@ -3,8 +3,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   Anchor,
   CalendarDays,
-  Camera,
-  ChefHat,
   Clock,
   Compass,
   Fan,
@@ -46,6 +44,16 @@ const detailInteriorImg = salonImg;
 const detailJetskiImg = swimImg;
 const videoPosterImg = aerialImg;
 import smuFilm from "@/assets/smu-film.mp4.asset.json";
+import addonCatering from "@/assets/addons/catering.jpg";
+import addonWatersports from "@/assets/addons/watersports.jpg";
+import addonDecoration from "@/assets/addons/decoration.jpg";
+import addonDj from "@/assets/addons/dj.jpg";
+import addonChef from "@/assets/addons/chef.jpg";
+import addonHostess from "@/assets/addons/hostess.jpg";
+import addonPhotographer from "@/assets/addons/photographer.jpg";
+import addonTransport from "@/assets/addons/transport.jpg";
+import addonBartender from "@/assets/addons/bartender.jpg";
+import addonGuide from "@/assets/addons/guide.jpg";
 import { GalleryLightbox, type LightboxPhoto } from "@/components/site/gallery-lightbox";
 import { VideoBlock } from "@/components/site/video-block";
 import { BookingRequestModal } from "@/components/site/booking-request-modal";
@@ -109,10 +117,18 @@ const AMENITIES = [
 ];
 
 const ADDONS = [
-  { icon: ChefHat, title: "Private Catering", copy: "Chef-prepared seafood, sushi or grazing boards.", price: "from $650" },
-  { icon: Camera, title: "Photographer", copy: "Two-hour onboard shoot, edited gallery in 48h.", price: "from $450" },
-  { icon: Zap, title: "Extra Jetski", copy: "A second Seadoo so nobody waits their turn.", price: "from $400" },
+  { title: "Catering Services", copy: "Chef-curated seafood, sushi and grazing boards.", img: addonCatering },
+  { title: "Watersport Activities", copy: "Jetskis, seabobs, floats and towables.", img: addonWatersports },
+  { title: "Yacht Decoration", copy: "Florals, balloons and signage for the occasion.", img: addonDecoration },
+  { title: "Private DJ", copy: "Live sets on deck, zoned sound, sunset to night.", img: addonDj },
+  { title: "Private Chef", copy: "Plated multi-course dining aboard.", img: addonChef },
+  { title: "Private Hostess / Waiters", copy: "Full service crew for your guests.", img: addonHostess },
+  { title: "Private Photo / Videographer", copy: "Editorial coverage, edited gallery in 48h.", img: addonPhotographer },
+  { title: "VIP Transport", copy: "Chauffeured arrivals from hotel or airport.", img: addonTransport },
+  { title: "Private Bartender", copy: "Craft cocktails mixed to order onboard.", img: addonBartender },
+  { title: "Private Tour Guide", copy: "Star Island stories and Miami landmarks.", img: addonGuide },
 ];
+
 
 const TIMELINE = [
   { step: "01", title: "Boarding", copy: "Meet your captain at Miami Beach Marina. Champagne poured, bags stowed, no queue.", img: stepBoardingImg },
@@ -297,11 +313,12 @@ function YachtDetailPage() {
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/75 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-95" />
                   {i === GALLERY.length - 1 ? (
-                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-background/55">
-                      <span className="rounded-pill border border-gold px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.2em] text-gold transition-colors duration-500 group-hover:bg-gold group-hover:text-gold-foreground">
+                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-background/80 backdrop-blur-[2px]">
+                      <span className="rounded-pill border border-foreground/80 bg-background/40 px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground transition-colors duration-500 group-hover:bg-foreground group-hover:text-background">
                         View all {ALL_PHOTOS.length} photos
                       </span>
                     </div>
+
                   ) : (
                     <figcaption className="pointer-events-none absolute inset-x-4 bottom-3 translate-y-2 text-[10px] uppercase tracking-[0.22em] text-foreground/85 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                       {g.alt}
@@ -518,31 +535,49 @@ function YachtDetailPage() {
           </div>
 
 
-          {/* Add-ons */}
-          <div className="mt-16">
-            <SectionLabel>Enhance your charter</SectionLabel>
-            <div className="mt-5 grid gap-4 lg:grid-cols-3">
+          {/* Add-ons — curated service menu */}
+          <div className="mt-20">
+            <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4">
+              <div className="min-w-0">
+                <SectionLabel>Enhance your charter</SectionLabel>
+                <h3 className="mt-3 font-teko text-4xl font-bold uppercase tracking-[0.06em] md:text-5xl">
+                  Concierge <span className="text-gold">services</span>
+                </h3>
+              </div>
+              <Sparkles className="h-6 w-6 shrink-0 text-gold/50" />
+            </div>
+
+            <div className="-mx-5 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-3 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-5">
               {ADDONS.map((a) => (
-                <div
+                <a
                   key={a.title}
-                  className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-4 rounded-[16px] border border-border bg-background p-6 transition-colors duration-300 hover:border-gold/40"
+                  href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
+                    `Hi Royal Yachts Miami — I'd like to add ${a.title} to my Royal Sunseeker 'SMU' charter.`,
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block w-[74vw] shrink-0 snap-start overflow-hidden rounded-[16px] border border-border no-underline transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/50 hover:no-underline hover:shadow-luxe sm:w-[46vw] md:w-auto"
                 >
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold">
-                    <a.icon className="h-5 w-5" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <div className="font-teko text-2xl font-semibold uppercase tracking-[0.08em]">
-                        {a.title}
-                      </div>
-                      <div className="text-xs uppercase tracking-[0.15em] text-gold">{a.price}</div>
+                  <img
+                    src={a.img}
+                    alt={a.title}
+                    loading="lazy"
+                    width={800}
+                    height={1000}
+                    className="aspect-[4/5] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.07]"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/80 via-45% to-background/15" />
+                  <div className="absolute inset-x-0 bottom-0 p-4">
+                    <div className="font-teko text-2xl font-semibold uppercase leading-tight tracking-[0.08em] text-gold">
+                      {a.title}
                     </div>
-                    <p className="mt-1 text-sm text-muted-foreground">{a.copy}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-foreground/70">{a.copy}</p>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
+
         </div>
       </section>
 
