@@ -215,11 +215,6 @@ function YachtDetailPage() {
 
 
         <div className="relative mx-auto flex min-h-[88svh] max-w-[1400px] flex-col justify-end px-5 pb-14 pt-28 sm:pb-16 md:min-h-[92vh] md:px-8 md:pb-24 md:pt-32">
-          {/* Localized soft scrim behind the text block only — the photo stays bright */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute bottom-0 left-0 h-[62%] w-full max-w-3xl rounded-t-[48px] bg-[radial-gradient(120%_100%_at_10%_100%,rgba(0,0,0,0.78)_0%,rgba(0,0,0,0.55)_45%,transparent_78%)] blur-[2px]"
-          />
           <div className="relative flex items-center gap-3 text-[10px] uppercase tracking-[0.25em] text-gold sm:text-[11px] sm:tracking-[0.3em]">
             <span className="h-px w-8 shrink-0 bg-gold/70 sm:w-10" />
             <span className="min-w-0 [text-shadow:0_1px_10px_rgba(0,0,0,0.8)]">
