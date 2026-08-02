@@ -46,6 +46,16 @@ const detailInteriorImg = salonImg;
 const detailJetskiImg = swimImg;
 const videoPosterImg = aerialImg;
 import smuFilm from "@/assets/smu-film.mp4.asset.json";
+import addonCatering from "@/assets/addons/catering.jpg";
+import addonWatersports from "@/assets/addons/watersports.jpg";
+import addonDecoration from "@/assets/addons/decoration.jpg";
+import addonDj from "@/assets/addons/dj.jpg";
+import addonChef from "@/assets/addons/chef.jpg";
+import addonHostess from "@/assets/addons/hostess.jpg";
+import addonPhotographer from "@/assets/addons/photographer.jpg";
+import addonTransport from "@/assets/addons/transport.jpg";
+import addonBartender from "@/assets/addons/bartender.jpg";
+import addonGuide from "@/assets/addons/guide.jpg";
 import { GalleryLightbox, type LightboxPhoto } from "@/components/site/gallery-lightbox";
 import { VideoBlock } from "@/components/site/video-block";
 import { BookingRequestModal } from "@/components/site/booking-request-modal";
@@ -109,10 +119,18 @@ const AMENITIES = [
 ];
 
 const ADDONS = [
-  { icon: ChefHat, title: "Private Catering", copy: "Chef-prepared seafood, sushi or grazing boards.", price: "from $650" },
-  { icon: Camera, title: "Photographer", copy: "Two-hour onboard shoot, edited gallery in 48h.", price: "from $450" },
-  { icon: Zap, title: "Extra Jetski", copy: "A second Seadoo so nobody waits their turn.", price: "from $400" },
+  { title: "Catering Services", copy: "Chef-curated seafood, sushi and grazing boards.", img: addonCatering },
+  { title: "Watersport Activities", copy: "Jetskis, seabobs, floats and towables.", img: addonWatersports },
+  { title: "Yacht Decoration", copy: "Florals, balloons and signage for the occasion.", img: addonDecoration },
+  { title: "Private DJ", copy: "Live sets on deck, zoned sound, sunset to night.", img: addonDj },
+  { title: "Private Chef", copy: "Plated multi-course dining aboard.", img: addonChef },
+  { title: "Private Hostess / Waiters", copy: "Full service crew for your guests.", img: addonHostess },
+  { title: "Private Photo / Videographer", copy: "Editorial coverage, edited gallery in 48h.", img: addonPhotographer },
+  { title: "VIP Transport", copy: "Chauffeured arrivals from hotel or airport.", img: addonTransport },
+  { title: "Private Bartender", copy: "Craft cocktails mixed to order onboard.", img: addonBartender },
+  { title: "Private Tour Guide", copy: "Star Island stories and Miami landmarks.", img: addonGuide },
 ];
+
 
 const TIMELINE = [
   { step: "01", title: "Boarding", copy: "Meet your captain at Miami Beach Marina. Champagne poured, bags stowed, no queue.", img: stepBoardingImg },
