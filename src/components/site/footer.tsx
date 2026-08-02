@@ -1,4 +1,4 @@
-import { Instagram, Facebook } from "lucide-react";
+import { Instagram, Facebook, Youtube, ShieldCheck, CreditCard, BadgeCheck, Star, Phone, Mail, MessageCircle, MapPin } from "lucide-react";
 import logo from "@/assets/logo.svg";
 
 function TikTokIcon({ className }: { className?: string }) {
@@ -9,68 +9,184 @@ function TikTokIcon({ className }: { className?: string }) {
   );
 }
 
+const TRUST = [
+  { icon: ShieldCheck, label: "USCG Licensed Captains" },
+  { icon: CreditCard, label: "Secure Payments via Stripe" },
+  { icon: BadgeCheck, label: "Verified Fleet" },
+  { icon: Star, label: "4.9 Guest Rating" },
+];
+
+const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
+  {
+    title: "Our Yachts",
+    links: [
+      { label: "All Yachts", href: "/our-yachts" },
+      { label: "By Size", href: "/our-yachts?filter=size" },
+      { label: "By Marina", href: "/our-yachts?filter=marina" },
+      { label: "Superyachts", href: "/our-yachts?filter=superyachts" },
+      { label: "New Arrivals", href: "/our-yachts?filter=new" },
+    ],
+  },
+  {
+    title: "Experiences",
+    links: [
+      { label: "Sunset Cruises", href: "/packages/sunset-cruises" },
+      { label: "Watersports Charters", href: "/packages/watersports" },
+      { label: "Birthdays & Celebrations", href: "/packages/birthdays" },
+      { label: "Corporate Events", href: "/packages/corporate" },
+      { label: "Bachelorette Parties", href: "/packages/bachelorette" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About Us", href: "/about" },
+      { label: "Blog", href: "/blog" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Contact", href: "/contact" },
+      { label: "Reviews", href: "/reviews" },
+    ],
+  },
+];
+
+const PAYMENTS = ["Visa", "Mastercard", "Amex", "Apple Pay", "Google Pay"];
+
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-section-alt px-5 pb-12 pt-20 md:px-10 md:pt-24">
-      <div className="mx-auto mb-14 flex max-w-[1400px] justify-center">
-        <img src={logo} alt="Royal Yachts Miami" className="h-16 w-auto md:h-20" />
+    <footer className="border-t border-border bg-section-alt">
+      {/* Pre-footer trust bar */}
+      <div className="border-b border-border/60 bg-section-deep">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-2 gap-y-6 px-5 py-7 md:grid-cols-4 md:px-10">
+          {TRUST.map(({ icon: Icon, label }) => (
+            <div key={label} className="flex items-center justify-center gap-3 text-center">
+              <Icon className="h-[18px] w-[18px] shrink-0 text-gold" />
+              <span className="font-teko text-[15px] uppercase tracking-[0.12em] text-foreground/85 md:text-base">
+                {label}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 md:grid-cols-12 md:gap-16">
-        <div className="md:col-span-4">
-          <p className="mb-8 max-w-sm text-[15px] leading-relaxed text-muted-foreground">
-            Miami's premier private yacht charter experience. All-inclusive luxury on the water — every detail handled.
+
+      {/* Main footer */}
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-14 px-5 pb-16 pt-20 md:grid-cols-12 md:gap-12 md:px-10 md:pt-24">
+        <div className="md:col-span-4 md:pr-10">
+          <img src={logo} alt="Royal Yachts Miami" className="h-16 w-auto md:h-20" loading="lazy" />
+          <p className="mt-6 text-[15px] leading-relaxed text-muted-foreground">
+            Luxury yacht charters in Miami.
           </p>
-          <div className="flex gap-4">
-            <a href="https://instagram.com/royalyachtmiami" target="_blank" rel="noopener noreferrer"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-foreground/15 text-foreground/70 transition-all duration-300 hover:border-gold hover:text-gold" aria-label="Instagram">
-              <Instagram className="h-4 w-4" />
-            </a>
-            <a href="https://www.facebook.com/RoyalYachtsMiami/" target="_blank" rel="noopener noreferrer"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-foreground/15 text-foreground/70 transition-all duration-300 hover:border-gold hover:text-gold" aria-label="Facebook">
-              <Facebook className="h-4 w-4" />
-            </a>
-            <a href="https://www.tiktok.com/@royalyachtsmiami" target="_blank" rel="noopener noreferrer"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-foreground/15 text-foreground/70 transition-all duration-300 hover:border-gold hover:text-gold" aria-label="TikTok">
-              <TikTokIcon className="h-4 w-4" />
-            </a>
+
+          <ul className="mt-7 space-y-3 text-[15px] text-foreground/75">
+            <li>
+              <a href="tel:+16452149666" className="inline-flex items-center gap-3 transition hover:text-gold">
+                <Phone className="h-4 w-4 text-gold" /> +1 (645) 214-9666
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://wa.me/16452399662"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 transition hover:text-gold"
+              >
+                <MessageCircle className="h-4 w-4 text-gold" /> WhatsApp +1 (645) 239-9662
+              </a>
+            </li>
+            <li>
+              <a href="mailto:info@royalyachtsmiami.com" className="inline-flex items-center gap-3 transition hover:text-gold">
+                <Mail className="h-4 w-4 text-gold" /> info@royalyachtsmiami.com
+              </a>
+            </li>
+            <li className="inline-flex items-center gap-3 text-foreground/60">
+              <MapPin className="h-4 w-4 text-gold" /> Miami Beach, FL
+            </li>
+          </ul>
+
+          <div className="mt-8 flex gap-3">
+            {[
+              { href: "https://instagram.com/royalyachtmiami", label: "Instagram", Icon: Instagram },
+              { href: "https://www.facebook.com/RoyalYachtsMiami/", label: "Facebook", Icon: Facebook },
+              { href: "https://www.youtube.com/@royalyachtsmiami", label: "YouTube", Icon: Youtube },
+              { href: "https://www.tiktok.com/@royalyachtsmiami", label: "TikTok", Icon: TikTokIcon },
+            ].map(({ href, label, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-foreground/15 text-foreground/70 transition-all duration-300 hover:border-gold hover:text-gold"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
           </div>
         </div>
 
+        {COLUMNS.map((col) => (
+          <div key={col.title} className="md:col-span-2 lg:col-span-2">
+            <h5 className="mb-6 font-teko text-lg font-bold uppercase tracking-[0.14em] text-gold">
+              {col.title}
+            </h5>
+            <ul className="space-y-3.5 text-[15px] text-foreground/70">
+              {col.links.map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} className="transition hover:text-gold">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+
         <div className="md:col-span-2">
-          <h5 className="mb-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Navigation</h5>
-          <ul className="space-y-3 text-[15px] text-foreground/70">
-            <li><a href="/our-yachts" className="transition hover:text-gold">Our Fleet</a></li>
-            <li><a href="/packages" className="transition hover:text-gold">Experiences</a></li>
-            <li><a href="/about" className="transition hover:text-gold">About</a></li>
-            <li><a href="/contact" className="transition hover:text-gold">Contact</a></li>
-          </ul>
-        </div>
-
-        <div className="md:col-span-3">
-          <h5 className="mb-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Help &amp; Support</h5>
-          <ul className="space-y-3 text-[15px] text-foreground/70">
-            <li><a href="/faq" className="transition hover:text-gold">FAQ</a></li>
-            <li><a href="/cancellation" className="transition hover:text-gold">Cancellation Policy</a></li>
-            <li><a href="/privacy" className="transition hover:text-gold">Privacy Policy</a></li>
-            <li><a href="/terms" className="transition hover:text-gold">Terms &amp; Conditions</a></li>
-          </ul>
-        </div>
-
-        <div className="md:col-span-3">
-          <h5 className="mb-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Get In Touch</h5>
-          <ul className="space-y-3 text-[15px] text-foreground/70">
-            <li><a href="tel:+16452149666" className="transition hover:text-gold">+1 (645) 214-9666</a></li>
-            <li><a href="https://wa.me/16452149666" target="_blank" rel="noopener noreferrer" className="transition hover:text-gold">WhatsApp</a></li>
-            <li className="leading-relaxed text-foreground/60">333 SE 2nd Ave, Suite 2000<br />Miami, FL 33131</li>
-          </ul>
+          <h5 className="mb-6 font-teko text-lg font-bold uppercase tracking-[0.14em] text-gold">
+            Reserve
+          </h5>
+          <p className="mb-5 text-[15px] leading-relaxed text-muted-foreground">
+            Same-day availability. Fast WhatsApp response.
+          </p>
+          <a
+            href="https://wa.me/16452399662"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-11 items-center justify-center rounded-full border border-gold px-6 font-teko text-[15px] uppercase tracking-[0.14em] text-gold transition hover:bg-gold hover:text-gold-foreground"
+          >
+            Book via WhatsApp
+          </a>
         </div>
       </div>
 
-      <div className="mx-auto mt-16 max-w-[1400px]">
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
-        <p className="mt-6 text-center text-xs text-muted-foreground">
-          © 2026 Royal Yachts Miami — All Rights Reserved
-        </p>
+      {/* Bottom bar */}
+      <div className="border-t border-border/60">
+        <div className="mx-auto flex max-w-[1400px] flex-col gap-6 px-5 py-8 md:flex-row md:items-center md:justify-between md:px-10">
+          <p className="text-xs leading-relaxed text-muted-foreground">
+            © 2026 Royal Yachts Miami · Experience Rental Group LLC
+          </p>
+
+          <div className="flex flex-wrap items-center gap-2">
+            {PAYMENTS.map((p) => (
+              <span
+                key={p}
+                className="rounded-md border border-border bg-card px-2.5 py-1 text-[11px] uppercase tracking-[0.1em] text-foreground/60"
+              >
+                {p}
+              </span>
+            ))}
+            <span className="ml-1 text-[11px] text-caption">Payments via Stripe</span>
+          </div>
+
+          <div className="flex items-center gap-5 text-xs text-muted-foreground">
+            <a href="/terms" className="transition hover:text-gold">Terms</a>
+            <a href="/privacy" className="transition hover:text-gold">Privacy</a>
+            <span className="flex items-center gap-2">
+              <a href="/" className="transition hover:text-gold">EN</a>
+              <span className="text-caption">|</span>
+              <a href="/es" className="transition hover:text-gold">ES</a>
+            </span>
+          </div>
+        </div>
       </div>
     </footer>
   );
