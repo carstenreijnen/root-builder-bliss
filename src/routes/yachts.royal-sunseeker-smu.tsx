@@ -3,8 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   Anchor,
   CalendarDays,
-  Camera,
-  ChefHat,
+  Clock,
   Clock,
   Compass,
   Fan,
