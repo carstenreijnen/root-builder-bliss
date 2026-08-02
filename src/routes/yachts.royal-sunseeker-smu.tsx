@@ -173,7 +173,7 @@ function YachtDetailPage() {
       <SiteNav />
 
       {/* ---------- HERO ---------- */}
-      <section className="relative min-h-[92vh] w-full overflow-hidden">
+      <section className="relative min-h-[88svh] w-full overflow-hidden md:min-h-[92vh]">
         <img
           src={heroImg}
           alt="Royal Sunseeker SMU 80ft yacht cruising off Miami at golden hour"
