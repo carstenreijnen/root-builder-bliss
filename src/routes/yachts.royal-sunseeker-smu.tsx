@@ -273,7 +273,7 @@ function YachtDetailPage() {
             { icon: Compass, label: "Crew", value: "Captain + Mate" },
           ].map((s) => (
             <div key={s.label} className="flex items-center gap-4 px-5 py-7 md:px-8 md:py-9">
-              <s.icon className="h-5 w-5 shrink-0 text-gold" />
+              <s.icon strokeWidth={1.25} className="h-7 w-7 shrink-0 text-gold" />
               <div className="min-w-0">
                 <div className="text-[10px] uppercase tracking-[0.25em] text-caption">{s.label}</div>
                 <div className="truncate font-teko text-3xl font-semibold leading-none tracking-[0.03em]">
@@ -356,7 +356,7 @@ function YachtDetailPage() {
                   key={t.title}
                   className="rounded-[16px] border border-border bg-card px-5 py-5"
                 >
-                  <t.icon className="h-5 w-5 text-gold" />
+                  <t.icon strokeWidth={1.25} className="h-7 w-7 text-gold" />
                   <div className="mt-3 font-teko text-2xl font-semibold uppercase tracking-[0.08em]">
                     {t.title}
                   </div>
@@ -437,7 +437,7 @@ function YachtDetailPage() {
                   Charter date
                 </div>
                 <div className="relative mt-2">
-                  <CalendarDays className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gold" />
+                  <CalendarDays strokeWidth={1.25} className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gold" />
                   <input
                     type="date"
                     value={date}
@@ -537,7 +537,7 @@ function YachtDetailPage() {
                   >
                     <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-gold/[0.07] blur-2xl transition-opacity duration-500 group-hover:bg-gold/[0.16]" />
                     <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 text-gold">
-                      <a.icon className="h-4.5 w-4.5" />
+                      <a.icon strokeWidth={1.25} className="h-5 w-5" />
                     </div>
                     <div className="mt-4 font-teko text-2xl font-semibold uppercase tracking-[0.08em]">
                       {a.title}
@@ -558,9 +558,8 @@ function YachtDetailPage() {
                 <h3 className="mt-3 font-teko text-4xl font-bold uppercase tracking-[0.06em] md:text-5xl">
                   Popular <span className="text-gold">add-ons</span>
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground">Chosen by most charters</p>
-              </div>
-              <Sparkles className="h-6 w-6 shrink-0 text-gold/50" />
+                              </div>
+              <Sparkles strokeWidth={1.25} className="h-7 w-7 shrink-0 text-gold/50" />
             </div>
 
             <div className="-mx-5 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-3 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-5">
@@ -720,7 +719,7 @@ function YachtDetailPage() {
               Similar yachts
             </h2>
           </div>
-          <Anchor className="h-6 w-6 shrink-0 text-gold/50" />
+          <Anchor strokeWidth={1.25} className="h-7 w-7 shrink-0 text-gold/50" />
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
