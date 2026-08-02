@@ -566,7 +566,7 @@ function YachtDetailPage() {
                     height={1000}
                     className="aspect-[4/5] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.07]"
                   />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/55 to-transparent" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/80 via-45% to-background/15" />
                   <div className="absolute inset-x-0 bottom-0 p-4">
                     <div className="font-teko text-2xl font-semibold uppercase leading-tight tracking-[0.08em] text-gold">
                       {a.title}
