@@ -34,15 +34,21 @@ const breakerSkylineImg = `${PHOTO_BASE}1785349414487-DJI_0139.jpg`;
 const amenitiesImg = `${PHOTO_BASE}1785349413252-DJI_0119.jpg`;
 const stepBoardingImg = `${PHOTO_BASE}1785349409091-DJI_0132__1_.jpg`;
 const stepBriefingImg = `${PHOTO_BASE}1785349410325-DJI_0240.jpg`;
-const stepCruiseImg = `${PHOTO_BASE}1785349411612-DJI_0187.jpg`;
-const stepSwimImg = `${PHOTO_BASE}1785349400637-DJI_0170.jpg`;
-const stepReturnImg = deckImg;
+// Wake / under-way shots
+const wakeCruiseImg = `${PHOTO_BASE}1785349411612-DJI_0187.jpg`;
+const wakeReturnImg = deckImg;
+// Anchored top-down with the floating mat
+const anchoredMatImg = `${PHOTO_BASE}1785349400637-DJI_0170.jpg`;
+const stepCruiseImg = wakeCruiseImg;
+const stepSwimImg = anchoredMatImg;
+const stepReturnImg = wakeReturnImg;
 const detailInteriorImg = salonImg;
 const detailJetskiImg = swimImg;
 const videoPosterImg = aerialImg;
 import smuFilm from "@/assets/smu-film.mp4.asset.json";
 import { GalleryLightbox, type LightboxPhoto } from "@/components/site/gallery-lightbox";
 import { VideoBlock } from "@/components/site/video-block";
+import { BookingRequestModal } from "@/components/site/booking-request-modal";
 
 const WHATSAPP = "16452149666";
 
@@ -57,31 +63,40 @@ const DURATIONS = [
   { hours: 8, price: 7200, label: "8 Hours", note: "Full day" },
 ] as const;
 
-// Inline mosaic is capped — the page never renders more than these tiles,
-// regardless of how many photos the yacht has.
-const GALLERY = [
-  { src: heroImg, alt: "Royal Sunseeker SMU cruising off Miami Beach at golden hour", span: "md:col-span-4 md:row-span-2" },
-  { src: deckImg, alt: "Aerial view of the 80ft Sunseeker SMU under way off Miami", span: "md:col-span-2 md:row-span-1" },
-  { src: salonImg, alt: "Overhead drone view of SMU's deck layout and sun pads", span: "md:col-span-2 md:row-span-1" },
-  { src: detailJetskiImg, alt: "Drone shot of SMU cutting through turquoise Biscayne Bay water", span: "md:col-span-2 md:row-span-2" },
-  { src: aerialImg, alt: "Aerial view of SMU anchored off Miami", span: "md:col-span-4 md:row-span-2" },
-  { src: detailInteriorImg, alt: "Top-down drone view of the SMU sun deck", span: "md:col-span-3 md:row-span-1" },
-  { src: swimImg, alt: "Swim platform with jetski and floating mat", span: "md:col-span-3 md:row-span-1" },
-  { src: breakerGoldenImg, alt: "Golden hour aerial over Biscayne Bay", span: "md:col-span-4 md:row-span-1" },
-  { src: stepSwimImg, alt: "Guests swimming at the Miami sandbar beside the yacht", span: "md:col-span-2 md:row-span-1" },
+// The complete photo set for this yacht. Every photo here appears in the gallery
+// (mosaic tiles + "View all" lightbox). Other sections reuse these same photos.
+const ALL_PHOTOS: LightboxPhoto[] = [
+  { src: heroImg, alt: "Royal Sunseeker SMU cruising off Miami Beach at golden hour" },
+  { src: deckImg, alt: "Aerial view of the 80ft Sunseeker SMU under way off Miami" },
+  { src: salonImg, alt: "Overhead drone view of SMU's deck layout and sun pads" },
+  { src: swimImg, alt: "Drone shot of SMU cutting through turquoise Biscayne Bay water" },
+  { src: aerialImg, alt: "Aerial view of SMU anchored off Miami" },
+  { src: breakerGoldenImg, alt: "Golden hour aerial over Biscayne Bay" },
+  { src: breakerSkylineImg, alt: "Downtown Miami skyline seen across the bay from SMU" },
+  { src: amenitiesImg, alt: "Aerial view of SMU's bow and foredeck lounge" },
+  { src: stepBoardingImg, alt: "SMU alongside at Miami Beach Marina" },
+  { src: stepBriefingImg, alt: "Drone view of SMU with the crew preparing the deck" },
+  { src: wakeCruiseImg, alt: "SMU at cruising speed with wake trailing behind" },
+  { src: anchoredMatImg, alt: "Top-down view of SMU anchored with the floating mat deployed" },
 ];
 
-// Full set — only rendered inside the fullscreen lightbox.
-const ALL_PHOTOS: LightboxPhoto[] = [
-  ...GALLERY.map(({ src, alt }) => ({ src, alt })),
-  { src: breakerSkylineImg, alt: "Downtown Miami skyline at blue hour from the bow" },
-  { src: amenitiesImg, alt: "Aerial view of SMU's bow and foredeck lounge" },
-  { src: stepBoardingImg, alt: "Boarding at Miami Beach Marina" },
-  { src: stepBriefingImg, alt: "Drone view of SMU at speed with wake trailing behind" },
-  { src: stepCruiseImg, alt: "Aerial profile of the 80ft Sunseeker SMU" },
-  { src: stepReturnImg, alt: "Aerial view of SMU returning across Biscayne Bay" },
-  { src: videoPosterImg, alt: "SMU crossing Biscayne Bay against the Miami skyline" },
+// Mosaic tile spans — index-matched to ALL_PHOTOS.
+const TILE_SPANS = [
+  "md:col-span-4 md:row-span-2",
+  "md:col-span-2 md:row-span-1",
+  "md:col-span-2 md:row-span-1",
+  "md:col-span-2 md:row-span-2",
+  "md:col-span-4 md:row-span-2",
+  "md:col-span-3 md:row-span-1",
+  "md:col-span-3 md:row-span-1",
+  "md:col-span-4 md:row-span-1",
+  "md:col-span-2 md:row-span-1",
 ];
+const GALLERY = ALL_PHOTOS.slice(0, TILE_SPANS.length).map((p, i) => ({
+  ...p,
+  span: TILE_SPANS[i],
+}));
+
 
 
 const AMENITIES = [
@@ -142,6 +157,7 @@ function YachtDetailPage() {
   const [date, setDate] = useState("");
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [formOpen, setFormOpen] = useState(false);
 
   
 
@@ -157,7 +173,7 @@ function YachtDetailPage() {
       <SiteNav />
 
       {/* ---------- HERO ---------- */}
-      <section className="relative min-h-[92vh] w-full overflow-hidden">
+      <section className="relative min-h-[88svh] w-full overflow-hidden md:min-h-[92vh]">
         <img
           src={heroImg}
           alt="Royal Sunseeker SMU 80ft yacht cruising off Miami at golden hour"
@@ -165,8 +181,9 @@ function YachtDetailPage() {
           height={1280}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/25" />
-        <div className="absolute inset-0 bg-[radial-gradient(130%_75%_at_50%_105%,transparent_25%,var(--color-background)_100%)]" />
+        {/* Overlay only where the text sits — keeps the photo bright */}
+        <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-background via-background/85 to-transparent md:h-[62%] md:via-background/70" />
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background/70 to-transparent" />
 
         {/* oversized ghost wordmark */}
         <div
@@ -177,13 +194,13 @@ function YachtDetailPage() {
         </div>
 
 
-        <div className="relative mx-auto flex min-h-[92vh] max-w-[1400px] flex-col justify-end px-5 pb-16 pt-32 md:px-8 md:pb-24">
-          <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.3em] text-gold">
-            <span className="h-px w-10 bg-gold/70" />
-            Miami Beach Marina · Flagship Fleet
+        <div className="relative mx-auto flex min-h-[88svh] max-w-[1400px] flex-col justify-end px-5 pb-14 pt-28 sm:pb-16 md:min-h-[92vh] md:px-8 md:pb-24 md:pt-32">
+          <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.25em] text-gold sm:text-[11px] sm:tracking-[0.3em]">
+            <span className="h-px w-8 shrink-0 bg-gold/70 sm:w-10" />
+            <span className="min-w-0">Miami Beach Marina · Flagship Fleet</span>
           </div>
 
-          <h1 className="mt-5 font-teko text-[clamp(3.2rem,11vw,9rem)] font-bold uppercase leading-[0.85] tracking-[0.04em]">
+          <h1 className="mt-5 break-words font-teko text-[clamp(2.6rem,9.5vw,7.5rem)] font-bold uppercase leading-[0.85] tracking-[0.04em]">
             Royal Sunseeker
             <span className="block text-gold">&lsquo;SMU&rsquo; · 80FT</span>
           </h1>
@@ -325,9 +342,9 @@ function YachtDetailPage() {
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                 {[
                   "Professional captain & crew",
-                  "Soft drinks",
                   "Water & ice",
                   "Towels",
+                  "Water floats",
                 ].map((i) => (
                   <li
                     key={i}
@@ -405,6 +422,13 @@ function YachtDetailPage() {
                 >
                   Book via WhatsApp
                 </a>
+                <button
+                  type="button"
+                  onClick={() => setFormOpen(true)}
+                  className="mt-3 flex h-[50px] w-full items-center justify-center rounded-full border border-gold/50 text-[12px] font-semibold uppercase tracking-[0.2em] text-gold transition-colors duration-300 hover:bg-gold hover:text-gold-foreground"
+                >
+                  Request via booking form
+                </button>
                 <div className="mt-3 text-center text-[11px] text-caption">
                   No online checkout — a charter advisor confirms availability directly.
                 </div>
@@ -708,9 +732,17 @@ function YachtDetailPage() {
       />
 
 
+      <BookingRequestModal
+        open={formOpen}
+        onClose={() => setFormOpen(false)}
+        yachtName="Royal Sunseeker 'SMU'"
+        duration={duration.label}
+        date={date}
+      />
+
       {/* ---------- MOBILE STICKY BAR ---------- */}
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-gold/20 bg-background/95 backdrop-blur-xl lg:hidden">
-        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-5 py-3">
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-gold/20 bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden">
+        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 sm:px-5">
           <div className="min-w-0">
             <div className="font-teko text-3xl font-bold leading-none tracking-[0.02em]">
               {usd(duration.price)}
@@ -722,17 +754,27 @@ function YachtDetailPage() {
               80 ft · 13 guests · all-inclusive
             </div>
           </div>
-          <a
-            href={waLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 rounded-full bg-gold px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-foreground"
-          >
-            WhatsApp
-          </a>
+          <div className="flex shrink-0 flex-col items-stretch gap-1.5">
+            <a
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-gold px-6 py-2.5 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-foreground"
+            >
+              WhatsApp
+            </a>
+            <button
+              type="button"
+              onClick={() => setFormOpen(true)}
+              className="rounded-full border border-gold/50 px-6 py-2 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-gold"
+            >
+              Booking form
+            </button>
+          </div>
         </div>
       </div>
-      <div className="h-20 lg:hidden" />
+      <div className="h-28 lg:hidden" />
+
     </div>
   );
 }
