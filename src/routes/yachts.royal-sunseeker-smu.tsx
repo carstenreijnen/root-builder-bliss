@@ -61,11 +61,11 @@ const DURATIONS = [
 // regardless of how many photos the yacht has.
 const GALLERY = [
   { src: heroImg, alt: "Royal Sunseeker SMU cruising off Miami Beach at golden hour", span: "md:col-span-4 md:row-span-2" },
-  { src: deckImg, alt: "Sun deck loungers with champagne service at sunset", span: "md:col-span-2 md:row-span-1" },
-  { src: salonImg, alt: "Interior salon with cream leather seating and ambient lighting", span: "md:col-span-2 md:row-span-1" },
-  { src: detailJetskiImg, alt: "Jetski riding alongside the yacht at golden hour", span: "md:col-span-2 md:row-span-2" },
-  { src: aerialImg, alt: "Aerial view of the yacht anchored off Miami at dusk", span: "md:col-span-4 md:row-span-2" },
-  { src: detailInteriorImg, alt: "Champagne service in the yacht salon", span: "md:col-span-3 md:row-span-1" },
+  { src: deckImg, alt: "Aerial view of the 80ft Sunseeker SMU under way off Miami", span: "md:col-span-2 md:row-span-1" },
+  { src: salonImg, alt: "Overhead drone view of SMU's deck layout and sun pads", span: "md:col-span-2 md:row-span-1" },
+  { src: detailJetskiImg, alt: "Drone shot of SMU cutting through turquoise Biscayne Bay water", span: "md:col-span-2 md:row-span-2" },
+  { src: aerialImg, alt: "Aerial view of SMU anchored off Miami", span: "md:col-span-4 md:row-span-2" },
+  { src: detailInteriorImg, alt: "Top-down drone view of the SMU sun deck", span: "md:col-span-3 md:row-span-1" },
   { src: swimImg, alt: "Swim platform with jetski and floating mat", span: "md:col-span-3 md:row-span-1" },
   { src: breakerGoldenImg, alt: "Golden hour aerial over Biscayne Bay", span: "md:col-span-4 md:row-span-1" },
   { src: stepSwimImg, alt: "Guests swimming at the Miami sandbar beside the yacht", span: "md:col-span-2 md:row-span-1" },
@@ -75,11 +75,11 @@ const GALLERY = [
 const ALL_PHOTOS: LightboxPhoto[] = [
   ...GALLERY.map(({ src, alt }) => ({ src, alt })),
   { src: breakerSkylineImg, alt: "Downtown Miami skyline at blue hour from the bow" },
-  { src: amenitiesImg, alt: "Golden-hour deck lounge and water toys" },
+  { src: amenitiesImg, alt: "Aerial view of SMU's bow and foredeck lounge" },
   { src: stepBoardingImg, alt: "Boarding at Miami Beach Marina" },
-  { src: stepBriefingImg, alt: "Crew safety briefing on deck" },
-  { src: stepCruiseImg, alt: "Cruising past Star Island" },
-  { src: stepReturnImg, alt: "Golden-hour return into the marina" },
+  { src: stepBriefingImg, alt: "Drone view of SMU at speed with wake trailing behind" },
+  { src: stepCruiseImg, alt: "Aerial profile of the 80ft Sunseeker SMU" },
+  { src: stepReturnImg, alt: "Aerial view of SMU returning across Biscayne Bay" },
   { src: videoPosterImg, alt: "SMU crossing Biscayne Bay against the Miami skyline" },
 ];
 
