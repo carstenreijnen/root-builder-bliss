@@ -157,6 +157,7 @@ function YachtDetailPage() {
   const [date, setDate] = useState("");
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [formOpen, setFormOpen] = useState(false);
 
   
 
