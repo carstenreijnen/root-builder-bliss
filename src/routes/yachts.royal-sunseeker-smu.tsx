@@ -560,8 +560,8 @@ function YachtDetailPage() {
       {/* ---------- PHOTO BREAKER 2 ---------- */}
       <PhotoBreaker
         src={breakerSkylineImg}
-        alt="Miami downtown skyline at blue hour seen from the bow of a yacht"
-        eyebrow="Downtown Miami"
+        alt="Miami downtown skyline in bright midday sun seen across turquoise Biscayne Bay"
+        eyebrow="Downtown Miami, midday"
         line="The skyline, from the only seat that matters."
       />
 
