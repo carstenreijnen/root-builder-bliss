@@ -541,8 +541,9 @@ function YachtDetailPage() {
               <div className="min-w-0">
                 <SectionLabel>Enhance your charter</SectionLabel>
                 <h3 className="mt-3 font-teko text-4xl font-bold uppercase tracking-[0.06em] md:text-5xl">
-                  Concierge <span className="text-gold">services</span>
+                  Popular <span className="text-gold">add-ons</span>
                 </h3>
+                <p className="mt-2 text-sm text-muted-foreground">Chosen by most charters</p>
               </div>
               <Sparkles className="h-6 w-6 shrink-0 text-gold/50" />
             </div>
