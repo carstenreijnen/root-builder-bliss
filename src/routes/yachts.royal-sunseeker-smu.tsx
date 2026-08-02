@@ -34,15 +34,21 @@ const breakerSkylineImg = `${PHOTO_BASE}1785349414487-DJI_0139.jpg`;
 const amenitiesImg = `${PHOTO_BASE}1785349413252-DJI_0119.jpg`;
 const stepBoardingImg = `${PHOTO_BASE}1785349409091-DJI_0132__1_.jpg`;
 const stepBriefingImg = `${PHOTO_BASE}1785349410325-DJI_0240.jpg`;
-const stepCruiseImg = `${PHOTO_BASE}1785349411612-DJI_0187.jpg`;
-const stepSwimImg = `${PHOTO_BASE}1785349400637-DJI_0170.jpg`;
-const stepReturnImg = deckImg;
+// Wake / under-way shots
+const wakeCruiseImg = `${PHOTO_BASE}1785349411612-DJI_0187.jpg`;
+const wakeReturnImg = deckImg;
+// Anchored top-down with the floating mat
+const anchoredMatImg = `${PHOTO_BASE}1785349400637-DJI_0170.jpg`;
+const stepCruiseImg = wakeCruiseImg;
+const stepSwimImg = anchoredMatImg;
+const stepReturnImg = wakeReturnImg;
 const detailInteriorImg = salonImg;
 const detailJetskiImg = swimImg;
 const videoPosterImg = aerialImg;
 import smuFilm from "@/assets/smu-film.mp4.asset.json";
 import { GalleryLightbox, type LightboxPhoto } from "@/components/site/gallery-lightbox";
 import { VideoBlock } from "@/components/site/video-block";
+import { BookingRequestModal } from "@/components/site/booking-request-modal";
 
 const WHATSAPP = "16452149666";
 
@@ -57,31 +63,40 @@ const DURATIONS = [
   { hours: 8, price: 7200, label: "8 Hours", note: "Full day" },
 ] as const;
 
-// Inline mosaic is capped — the page never renders more than these tiles,
-// regardless of how many photos the yacht has.
-const GALLERY = [
-  { src: heroImg, alt: "Royal Sunseeker SMU cruising off Miami Beach at golden hour", span: "md:col-span-4 md:row-span-2" },
-  { src: deckImg, alt: "Aerial view of the 80ft Sunseeker SMU under way off Miami", span: "md:col-span-2 md:row-span-1" },
-  { src: salonImg, alt: "Overhead drone view of SMU's deck layout and sun pads", span: "md:col-span-2 md:row-span-1" },
-  { src: detailJetskiImg, alt: "Drone shot of SMU cutting through turquoise Biscayne Bay water", span: "md:col-span-2 md:row-span-2" },
-  { src: aerialImg, alt: "Aerial view of SMU anchored off Miami", span: "md:col-span-4 md:row-span-2" },
-  { src: detailInteriorImg, alt: "Top-down drone view of the SMU sun deck", span: "md:col-span-3 md:row-span-1" },
-  { src: swimImg, alt: "Swim platform with jetski and floating mat", span: "md:col-span-3 md:row-span-1" },
-  { src: breakerGoldenImg, alt: "Golden hour aerial over Biscayne Bay", span: "md:col-span-4 md:row-span-1" },
-  { src: stepSwimImg, alt: "Guests swimming at the Miami sandbar beside the yacht", span: "md:col-span-2 md:row-span-1" },
+// The complete photo set for this yacht. Every photo here appears in the gallery
+// (mosaic tiles + "View all" lightbox). Other sections reuse these same photos.
+const ALL_PHOTOS: LightboxPhoto[] = [
+  { src: heroImg, alt: "Royal Sunseeker SMU cruising off Miami Beach at golden hour" },
+  { src: deckImg, alt: "Aerial view of the 80ft Sunseeker SMU under way off Miami" },
+  { src: salonImg, alt: "Overhead drone view of SMU's deck layout and sun pads" },
+  { src: swimImg, alt: "Drone shot of SMU cutting through turquoise Biscayne Bay water" },
+  { src: aerialImg, alt: "Aerial view of SMU anchored off Miami" },
+  { src: breakerGoldenImg, alt: "Golden hour aerial over Biscayne Bay" },
+  { src: breakerSkylineImg, alt: "Downtown Miami skyline seen across the bay from SMU" },
+  { src: amenitiesImg, alt: "Aerial view of SMU's bow and foredeck lounge" },
+  { src: stepBoardingImg, alt: "SMU alongside at Miami Beach Marina" },
+  { src: stepBriefingImg, alt: "Drone view of SMU with the crew preparing the deck" },
+  { src: wakeCruiseImg, alt: "SMU at cruising speed with wake trailing behind" },
+  { src: anchoredMatImg, alt: "Top-down view of SMU anchored with the floating mat deployed" },
 ];
 
-// Full set — only rendered inside the fullscreen lightbox.
-const ALL_PHOTOS: LightboxPhoto[] = [
-  ...GALLERY.map(({ src, alt }) => ({ src, alt })),
-  { src: breakerSkylineImg, alt: "Downtown Miami skyline at blue hour from the bow" },
-  { src: amenitiesImg, alt: "Aerial view of SMU's bow and foredeck lounge" },
-  { src: stepBoardingImg, alt: "Boarding at Miami Beach Marina" },
-  { src: stepBriefingImg, alt: "Drone view of SMU at speed with wake trailing behind" },
-  { src: stepCruiseImg, alt: "Aerial profile of the 80ft Sunseeker SMU" },
-  { src: stepReturnImg, alt: "Aerial view of SMU returning across Biscayne Bay" },
-  { src: videoPosterImg, alt: "SMU crossing Biscayne Bay against the Miami skyline" },
+// Mosaic tile spans — index-matched to ALL_PHOTOS.
+const TILE_SPANS = [
+  "md:col-span-4 md:row-span-2",
+  "md:col-span-2 md:row-span-1",
+  "md:col-span-2 md:row-span-1",
+  "md:col-span-2 md:row-span-2",
+  "md:col-span-4 md:row-span-2",
+  "md:col-span-3 md:row-span-1",
+  "md:col-span-3 md:row-span-1",
+  "md:col-span-4 md:row-span-1",
+  "md:col-span-2 md:row-span-1",
 ];
+const GALLERY = ALL_PHOTOS.slice(0, TILE_SPANS.length).map((p, i) => ({
+  ...p,
+  span: TILE_SPANS[i],
+}));
+
 
 
 const AMENITIES = [
