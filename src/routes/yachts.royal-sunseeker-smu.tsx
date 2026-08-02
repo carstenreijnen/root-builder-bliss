@@ -203,7 +203,7 @@ function YachtDetailPage() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         {/* Uniform dark tint across the entire hero photo for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/40 to-black/35" />
+        <div className="absolute inset-0 bg-black/50" />
 
         {/* oversized ghost wordmark */}
         <div
