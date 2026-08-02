@@ -511,8 +511,8 @@ function YachtDetailPage() {
                 alt="Guests relaxing on a floating mat in turquoise water next to a luxury yacht"
                 loading="lazy"
                 width={1024}
-                height={1280}
-                className="absolute -bottom-8 -right-4 hidden w-40 rounded-[16px] border border-gold/30 object-cover shadow-luxe lg:block"
+                height={1024}
+                className="absolute -bottom-8 -right-4 hidden w-48 rounded-[16px] border border-gold/30 object-cover shadow-luxe lg:block"
               />
             </div>
 
@@ -640,14 +640,14 @@ function YachtDetailPage() {
       />
 
 
-      {/* ---------- CINEMATIC VIDEO (conditional: renders as a still breaker when no videoSrc) ---------- */}
+      {/* ---------- VIDEO (contained 16:9 card; the whole section disappears when a yacht has no film) ---------- */}
       <VideoBlock
         poster={videoPosterImg}
         posterAlt="Royal Sunseeker SMU crossing Biscayne Bay against the Miami skyline at dusk"
         videoSrc={SMU_VIDEO_SRC}
         eyebrow="The film"
         headline="SMU on the water"
-        caption={SMU_VIDEO_SRC ? "SMU on the water — 0:45" : "Biscayne Bay, golden hour"}
+        caption="SMU on the water — 0:45"
       />
 
       {/* ---------- ABOUT / HERITAGE ---------- */}
