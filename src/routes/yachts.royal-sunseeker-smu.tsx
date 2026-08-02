@@ -194,13 +194,13 @@ function YachtDetailPage() {
         </div>
 
 
-        <div className="relative mx-auto flex min-h-[92vh] max-w-[1400px] flex-col justify-end px-5 pb-16 pt-32 md:px-8 md:pb-24">
-          <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.3em] text-gold">
-            <span className="h-px w-10 bg-gold/70" />
-            Miami Beach Marina · Flagship Fleet
+        <div className="relative mx-auto flex min-h-[88svh] max-w-[1400px] flex-col justify-end px-5 pb-14 pt-28 sm:pb-16 md:min-h-[92vh] md:px-8 md:pb-24 md:pt-32">
+          <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.25em] text-gold sm:text-[11px] sm:tracking-[0.3em]">
+            <span className="h-px w-8 shrink-0 bg-gold/70 sm:w-10" />
+            <span className="min-w-0">Miami Beach Marina · Flagship Fleet</span>
           </div>
 
-          <h1 className="mt-5 font-teko text-[clamp(3.2rem,11vw,9rem)] font-bold uppercase leading-[0.85] tracking-[0.04em]">
+          <h1 className="mt-5 break-words font-teko text-[clamp(2.6rem,9.5vw,7.5rem)] font-bold uppercase leading-[0.85] tracking-[0.04em]">
             Royal Sunseeker
             <span className="block text-gold">&lsquo;SMU&rsquo; · 80FT</span>
           </h1>
