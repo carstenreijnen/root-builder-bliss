@@ -4,7 +4,6 @@ import {
   Anchor,
   CalendarDays,
   Clock,
-  Clock,
   Compass,
   Fan,
   LifeBuoy,
