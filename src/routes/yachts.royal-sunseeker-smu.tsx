@@ -236,10 +236,10 @@ function YachtDetailPage() {
           <div className="relative mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
 
             <div>
-              <div className="text-[10px] uppercase tracking-[0.25em] text-caption">From</div>
+              <div className="text-[10px] uppercase tracking-[0.25em] text-white/85">From</div>
               <div className="font-teko text-5xl font-bold leading-none tracking-[0.03em] text-gold">
                 $4,700
-                <span className="ml-2 font-sans text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                <span className="ml-2 font-sans text-xs font-medium uppercase tracking-[0.2em] text-white/85">
                   / 4 hrs
                 </span>
               </div>
