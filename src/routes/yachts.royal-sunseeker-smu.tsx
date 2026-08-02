@@ -54,8 +54,11 @@ import addonPhotographer from "@/assets/addons/photographer.jpg";
 import addonTransport from "@/assets/addons/transport.jpg";
 import addonBartender from "@/assets/addons/bartender.jpg";
 import addonGuide from "@/assets/addons/guide.jpg";
+import lifestyleJetski from "@/assets/lifestyle/jetski-turquoise.jpg";
+import lifestyleFloatingMat from "@/assets/lifestyle/floating-mat.jpg";
 import { GalleryLightbox, type LightboxPhoto } from "@/components/site/gallery-lightbox";
 import { VideoBlock } from "@/components/site/video-block";
+
 import { BookingRequestModal } from "@/components/site/booking-request-modal";
 
 const WHATSAPP = "16452149666";
@@ -114,6 +117,8 @@ const AMENITIES = [
   { icon: Fan, title: "Full A/C", copy: "Climate-controlled salon and cabins." },
   { icon: Music4, title: "Premium Sound", copy: "Zoned audio, deck to salon, Bluetooth." },
   { icon: LifeBuoy, title: "Swim Platform", copy: "Hydraulic access straight to the water." },
+  { icon: LifeBuoy, title: "Floats", copy: "Inflatable loungers for the sandbar." },
+  { icon: Waves, title: "Floating Pool", copy: "Netted sea pool off the stern." },
 ];
 
 const ADDONS = [
@@ -122,12 +127,13 @@ const ADDONS = [
   { title: "Yacht Decoration", copy: "Florals, balloons and signage for the occasion.", img: addonDecoration },
   { title: "Private DJ", copy: "Live sets on deck, zoned sound, sunset to night.", img: addonDj },
   { title: "Private Chef", copy: "Plated multi-course dining aboard.", img: addonChef },
-  { title: "Private Hostess / Waiters", copy: "Full service crew for your guests.", img: addonHostess },
-  { title: "Private Photo / Videographer", copy: "Editorial coverage, edited gallery in 48h.", img: addonPhotographer },
+  { title: "Hostess & Wait Staff", copy: "Full service crew for your guests.", img: addonHostess },
+  { title: "Photo & Video", copy: "Editorial coverage, edited gallery in 48h.", img: addonPhotographer },
   { title: "VIP Transport", copy: "Chauffeured arrivals from hotel or airport.", img: addonTransport },
   { title: "Private Bartender", copy: "Craft cocktails mixed to order onboard.", img: addonBartender },
   { title: "Private Tour Guide", copy: "Star Island stories and Miami landmarks.", img: addonGuide },
 ];
+
 
 
 const TIMELINE = [
