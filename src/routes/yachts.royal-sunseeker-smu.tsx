@@ -41,7 +41,6 @@ const stepCruiseImg = wakeCruiseImg;
 const stepSwimImg = anchoredMatImg;
 const stepReturnImg = wakeReturnImg;
 const detailInteriorImg = salonImg;
-const detailJetskiImg = swimImg;
 const videoPosterImg = aerialImg;
 import smuFilm from "@/assets/smu-film.mp4.asset.json";
 import addonCatering from "@/assets/addons/catering.jpg";
@@ -490,8 +489,7 @@ function YachtDetailPage() {
       <PhotoBreaker
         src={breakerGoldenImg}
         alt="Aerial view of Biscayne Bay at golden hour with a luxury yacht cutting across the water"
-        eyebrow="Biscayne Bay"
-        line="Golden hour, exactly on time."
+        eyebrow="Biscayne Bay · Miami"
       />
 
       {/* ---------- AMENITIES ---------- */}
@@ -501,16 +499,16 @@ function YachtDetailPage() {
             {/* Photo side */}
             <div className="relative">
               <img
-                src={amenitiesImg}
-                alt="Sun deck loungers, champagne and the jetski at the swim platform"
+                src={lifestyleJetski}
+                alt="Guest riding a jetski across turquoise water beside Miami Beach"
                 loading="lazy"
                 width={1024}
                 height={1280}
                 className="aspect-[4/5] w-full rounded-[16px] border border-border object-cover shadow-luxe"
               />
               <img
-                src={detailJetskiImg}
-                alt="Jetski riding alongside the yacht"
+                src={lifestyleFloatingMat}
+                alt="Guests relaxing on a floating mat in turquoise water next to a luxury yacht"
                 loading="lazy"
                 width={1024}
                 height={1280}
@@ -638,8 +636,7 @@ function YachtDetailPage() {
       <PhotoBreaker
         src={breakerSkylineImg}
         alt="Miami downtown skyline in bright midday sun seen across turquoise Biscayne Bay"
-        eyebrow="Downtown Miami, midday"
-        line="The skyline, from the only seat that matters."
+        eyebrow="Miami Beach Marina"
       />
 
 
@@ -842,12 +839,10 @@ function PhotoBreaker({
   src,
   alt,
   eyebrow,
-  line,
 }: {
   src: string;
   alt: string;
   eyebrow: string;
-  line: string;
 }) {
   return (
     <section className="relative h-[60vh] min-h-[380px] w-full overflow-hidden md:h-[75vh]">
@@ -867,9 +862,6 @@ function PhotoBreaker({
           <span className="h-px w-10 bg-gold/70" />
           {eyebrow}
         </div>
-        <p className="mt-4 max-w-3xl font-teko text-[clamp(2.2rem,6vw,5rem)] font-bold uppercase leading-[0.9] tracking-[0.05em]">
-          {line}
-        </p>
       </div>
     </section>
   );
