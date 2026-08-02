@@ -21,22 +21,25 @@ import {
 } from "lucide-react";
 import { SiteNav } from "@/components/site/nav";
 import { SiteFooter } from "@/components/site/footer";
-import heroImg from "@/assets/smu-hero.jpg";
-import deckImg from "@/assets/smu-deck.jpg";
-import salonImg from "@/assets/smu-salon.jpg";
-import swimImg from "@/assets/smu-swim.jpg";
-import aerialImg from "@/assets/smu-aerial.jpg";
-import breakerGoldenImg from "@/assets/smu-breaker-goldenhour.jpg";
-import breakerSkylineImg from "@/assets/smu-breaker-skyline.jpg";
-import amenitiesImg from "@/assets/smu-amenities.jpg";
-import stepBoardingImg from "@/assets/smu-step-boarding.jpg";
-import stepBriefingImg from "@/assets/smu-step-briefing.jpg";
-import stepCruiseImg from "@/assets/smu-step-cruise.jpg";
-import stepSwimImg from "@/assets/smu-step-swim.jpg";
-import stepReturnImg from "@/assets/smu-step-return.jpg";
-import detailInteriorImg from "@/assets/smu-detail-interior.jpg";
-import detailJetskiImg from "@/assets/smu-detail-jetski.jpg";
-import videoPosterImg from "@/assets/smu-video-poster.jpg";
+// Real photography of the Royal Sunseeker 'SMU' (hotlinked from media storage).
+const PHOTO_BASE =
+  "https://xteonchtqeoppjxmlmgm.supabase.co/storage/v1/object/public/media/yachts/";
+const heroImg = `${PHOTO_BASE}1785349407570-DJI_0115__2_.jpg`;
+const deckImg = `${PHOTO_BASE}1785334643255-DJI_0143.jpg`;
+const salonImg = `${PHOTO_BASE}1785334647774-DJI_0223.jpg`;
+const swimImg = `${PHOTO_BASE}1785349404891-DJI_0110.jpg`;
+const aerialImg = `${PHOTO_BASE}1785349403596-DJI_0198.jpg`;
+const breakerGoldenImg = `${PHOTO_BASE}1785349406197-DJI_0161.jpg`;
+const breakerSkylineImg = `${PHOTO_BASE}1785349414487-DJI_0139.jpg`;
+const amenitiesImg = `${PHOTO_BASE}1785349413252-DJI_0119.jpg`;
+const stepBoardingImg = `${PHOTO_BASE}1785349409091-DJI_0132__1_.jpg`;
+const stepBriefingImg = `${PHOTO_BASE}1785349410325-DJI_0240.jpg`;
+const stepCruiseImg = `${PHOTO_BASE}1785349411612-DJI_0187.jpg`;
+const stepSwimImg = `${PHOTO_BASE}1785349400637-DJI_0170.jpg`;
+const stepReturnImg = deckImg;
+const detailInteriorImg = salonImg;
+const detailJetskiImg = swimImg;
+const videoPosterImg = aerialImg;
 import smuFilm from "@/assets/smu-film.mp4.asset.json";
 import { GalleryLightbox, type LightboxPhoto } from "@/components/site/gallery-lightbox";
 import { VideoBlock } from "@/components/site/video-block";
@@ -58,11 +61,11 @@ const DURATIONS = [
 // regardless of how many photos the yacht has.
 const GALLERY = [
   { src: heroImg, alt: "Royal Sunseeker SMU cruising off Miami Beach at golden hour", span: "md:col-span-4 md:row-span-2" },
-  { src: deckImg, alt: "Sun deck loungers with champagne service at sunset", span: "md:col-span-2 md:row-span-1" },
-  { src: salonImg, alt: "Interior salon with cream leather seating and ambient lighting", span: "md:col-span-2 md:row-span-1" },
-  { src: detailJetskiImg, alt: "Jetski riding alongside the yacht at golden hour", span: "md:col-span-2 md:row-span-2" },
-  { src: aerialImg, alt: "Aerial view of the yacht anchored off Miami at dusk", span: "md:col-span-4 md:row-span-2" },
-  { src: detailInteriorImg, alt: "Champagne service in the yacht salon", span: "md:col-span-3 md:row-span-1" },
+  { src: deckImg, alt: "Aerial view of the 80ft Sunseeker SMU under way off Miami", span: "md:col-span-2 md:row-span-1" },
+  { src: salonImg, alt: "Overhead drone view of SMU's deck layout and sun pads", span: "md:col-span-2 md:row-span-1" },
+  { src: detailJetskiImg, alt: "Drone shot of SMU cutting through turquoise Biscayne Bay water", span: "md:col-span-2 md:row-span-2" },
+  { src: aerialImg, alt: "Aerial view of SMU anchored off Miami", span: "md:col-span-4 md:row-span-2" },
+  { src: detailInteriorImg, alt: "Top-down drone view of the SMU sun deck", span: "md:col-span-3 md:row-span-1" },
   { src: swimImg, alt: "Swim platform with jetski and floating mat", span: "md:col-span-3 md:row-span-1" },
   { src: breakerGoldenImg, alt: "Golden hour aerial over Biscayne Bay", span: "md:col-span-4 md:row-span-1" },
   { src: stepSwimImg, alt: "Guests swimming at the Miami sandbar beside the yacht", span: "md:col-span-2 md:row-span-1" },
@@ -72,11 +75,11 @@ const GALLERY = [
 const ALL_PHOTOS: LightboxPhoto[] = [
   ...GALLERY.map(({ src, alt }) => ({ src, alt })),
   { src: breakerSkylineImg, alt: "Downtown Miami skyline at blue hour from the bow" },
-  { src: amenitiesImg, alt: "Golden-hour deck lounge and water toys" },
+  { src: amenitiesImg, alt: "Aerial view of SMU's bow and foredeck lounge" },
   { src: stepBoardingImg, alt: "Boarding at Miami Beach Marina" },
-  { src: stepBriefingImg, alt: "Crew safety briefing on deck" },
-  { src: stepCruiseImg, alt: "Cruising past Star Island" },
-  { src: stepReturnImg, alt: "Golden-hour return into the marina" },
+  { src: stepBriefingImg, alt: "Drone view of SMU at speed with wake trailing behind" },
+  { src: stepCruiseImg, alt: "Aerial profile of the 80ft Sunseeker SMU" },
+  { src: stepReturnImg, alt: "Aerial view of SMU returning across Biscayne Bay" },
   { src: videoPosterImg, alt: "SMU crossing Biscayne Bay against the Miami skyline" },
 ];
 
