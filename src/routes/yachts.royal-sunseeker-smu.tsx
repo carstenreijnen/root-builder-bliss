@@ -215,7 +215,7 @@ function YachtDetailPage() {
 
 
         <div className="relative mx-auto flex min-h-[88svh] max-w-[1400px] flex-col justify-end px-5 pb-14 pt-28 sm:pb-16 md:min-h-[92vh] md:px-8 md:pb-24 md:pt-32">
-          <div className="relative flex items-center gap-3 text-[10px] uppercase tracking-[0.25em] text-gold sm:text-[11px] sm:tracking-[0.3em]">
+          <div className="relative flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-gold sm:text-[12px] sm:tracking-[0.3em]">
             <span className="h-px w-8 shrink-0 bg-gold/70 sm:w-10" />
             <span className="min-w-0 [text-shadow:0_1px_10px_rgba(0,0,0,0.8)]">
               Miami Beach Marina · Flagship Fleet
