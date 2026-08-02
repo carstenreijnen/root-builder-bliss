@@ -315,11 +315,12 @@ function YachtDetailPage() {
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/75 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-95" />
                   {i === GALLERY.length - 1 ? (
-                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-background/55">
-                      <span className="rounded-pill border border-gold px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.2em] text-gold transition-colors duration-500 group-hover:bg-gold group-hover:text-gold-foreground">
+                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-background/80 backdrop-blur-[2px]">
+                      <span className="rounded-pill border border-foreground/80 bg-background/40 px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground transition-colors duration-500 group-hover:bg-foreground group-hover:text-background">
                         View all {ALL_PHOTOS.length} photos
                       </span>
                     </div>
+
                   ) : (
                     <figcaption className="pointer-events-none absolute inset-x-4 bottom-3 translate-y-2 text-[10px] uppercase tracking-[0.22em] text-foreground/85 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                       {g.alt}
