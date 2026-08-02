@@ -41,7 +41,6 @@ const stepCruiseImg = wakeCruiseImg;
 const stepSwimImg = anchoredMatImg;
 const stepReturnImg = wakeReturnImg;
 const detailInteriorImg = salonImg;
-const detailJetskiImg = swimImg;
 const videoPosterImg = aerialImg;
 import smuFilm from "@/assets/smu-film.mp4.asset.json";
 import addonCatering from "@/assets/addons/catering.jpg";
@@ -54,8 +53,11 @@ import addonPhotographer from "@/assets/addons/photographer.jpg";
 import addonTransport from "@/assets/addons/transport.jpg";
 import addonBartender from "@/assets/addons/bartender.jpg";
 import addonGuide from "@/assets/addons/guide.jpg";
+import lifestyleJetski from "@/assets/lifestyle/jetski-turquoise.jpg";
+import lifestyleFloatingMat from "@/assets/lifestyle/floating-mat.jpg";
 import { GalleryLightbox, type LightboxPhoto } from "@/components/site/gallery-lightbox";
 import { VideoBlock } from "@/components/site/video-block";
+
 import { BookingRequestModal } from "@/components/site/booking-request-modal";
 
 const WHATSAPP = "16452149666";
@@ -114,6 +116,8 @@ const AMENITIES = [
   { icon: Fan, title: "Full A/C", copy: "Climate-controlled salon and cabins." },
   { icon: Music4, title: "Premium Sound", copy: "Zoned audio, deck to salon, Bluetooth." },
   { icon: LifeBuoy, title: "Swim Platform", copy: "Hydraulic access straight to the water." },
+  { icon: LifeBuoy, title: "Floats", copy: "Inflatable loungers for the sandbar." },
+  { icon: Waves, title: "Floating Pool", copy: "Netted sea pool off the stern." },
 ];
 
 const ADDONS = [
@@ -122,12 +126,13 @@ const ADDONS = [
   { title: "Yacht Decoration", copy: "Florals, balloons and signage for the occasion.", img: addonDecoration },
   { title: "Private DJ", copy: "Live sets on deck, zoned sound, sunset to night.", img: addonDj },
   { title: "Private Chef", copy: "Plated multi-course dining aboard.", img: addonChef },
-  { title: "Private Hostess / Waiters", copy: "Full service crew for your guests.", img: addonHostess },
-  { title: "Private Photo / Videographer", copy: "Editorial coverage, edited gallery in 48h.", img: addonPhotographer },
+  { title: "Hostess & Wait Staff", copy: "Full service crew for your guests.", img: addonHostess },
+  { title: "Photo & Video", copy: "Editorial coverage, edited gallery in 48h.", img: addonPhotographer },
   { title: "VIP Transport", copy: "Chauffeured arrivals from hotel or airport.", img: addonTransport },
   { title: "Private Bartender", copy: "Craft cocktails mixed to order onboard.", img: addonBartender },
   { title: "Private Tour Guide", copy: "Star Island stories and Miami landmarks.", img: addonGuide },
 ];
+
 
 
 const TIMELINE = [
@@ -211,22 +216,31 @@ function YachtDetailPage() {
 
 
         <div className="relative mx-auto flex min-h-[88svh] max-w-[1400px] flex-col justify-end px-5 pb-14 pt-28 sm:pb-16 md:min-h-[92vh] md:px-8 md:pb-24 md:pt-32">
-          <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.25em] text-gold sm:text-[11px] sm:tracking-[0.3em]">
+          {/* Localized soft scrim behind the text block only — the photo stays bright */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute bottom-0 left-0 h-[62%] w-full max-w-3xl rounded-t-[48px] bg-[radial-gradient(120%_100%_at_10%_100%,rgba(0,0,0,0.78)_0%,rgba(0,0,0,0.55)_45%,transparent_78%)] blur-[2px]"
+          />
+          <div className="relative flex items-center gap-3 text-[10px] uppercase tracking-[0.25em] text-gold sm:text-[11px] sm:tracking-[0.3em]">
             <span className="h-px w-8 shrink-0 bg-gold/70 sm:w-10" />
-            <span className="min-w-0">Miami Beach Marina · Flagship Fleet</span>
+            <span className="min-w-0 [text-shadow:0_1px_10px_rgba(0,0,0,0.8)]">
+              Miami Beach Marina · Flagship Fleet
+            </span>
           </div>
 
-          <h1 className="mt-5 break-words font-teko text-[clamp(2.6rem,9.5vw,7.5rem)] font-bold uppercase leading-[0.85] tracking-[0.04em]">
+
+          <h1 className="relative mt-5 break-words font-teko text-[clamp(2.6rem,9.5vw,7.5rem)] font-bold uppercase leading-[0.85] tracking-[0.04em]">
             Royal Sunseeker
             <span className="block text-gold">&lsquo;SMU&rsquo; · 80FT</span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+          <p className="relative mt-6 max-w-xl text-base leading-relaxed text-foreground/80 md:text-lg">
             A British-built flagship sport yacht, crewed and provisioned for thirteen guests.
             Golden hour on Biscayne Bay, exactly as it should be done.
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
+          <div className="relative mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
+
             <div>
               <div className="text-[10px] uppercase tracking-[0.25em] text-caption">From</div>
               <div className="font-teko text-5xl font-bold leading-none tracking-[0.03em] text-gold">
@@ -258,7 +272,7 @@ function YachtDetailPage() {
             { icon: Compass, label: "Crew", value: "Captain + Mate" },
           ].map((s) => (
             <div key={s.label} className="flex items-center gap-4 px-5 py-7 md:px-8 md:py-9">
-              <s.icon className="h-5 w-5 shrink-0 text-gold" />
+              <s.icon strokeWidth={1.25} className="h-7 w-7 shrink-0 text-gold" />
               <div className="min-w-0">
                 <div className="text-[10px] uppercase tracking-[0.25em] text-caption">{s.label}</div>
                 <div className="truncate font-teko text-3xl font-semibold leading-none tracking-[0.03em]">
@@ -341,7 +355,7 @@ function YachtDetailPage() {
                   key={t.title}
                   className="rounded-[16px] border border-border bg-card px-5 py-5"
                 >
-                  <t.icon className="h-5 w-5 text-gold" />
+                  <t.icon strokeWidth={1.25} className="h-7 w-7 text-gold" />
                   <div className="mt-3 font-teko text-2xl font-semibold uppercase tracking-[0.08em]">
                     {t.title}
                   </div>
@@ -422,7 +436,7 @@ function YachtDetailPage() {
                   Charter date
                 </div>
                 <div className="relative mt-2">
-                  <CalendarDays className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gold" />
+                  <CalendarDays strokeWidth={1.25} className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gold" />
                   <input
                     type="date"
                     value={date}
@@ -475,8 +489,7 @@ function YachtDetailPage() {
       <PhotoBreaker
         src={breakerGoldenImg}
         alt="Aerial view of Biscayne Bay at golden hour with a luxury yacht cutting across the water"
-        eyebrow="Biscayne Bay"
-        line="Golden hour, exactly on time."
+        eyebrow="Biscayne Bay · Miami"
       />
 
       {/* ---------- AMENITIES ---------- */}
@@ -486,20 +499,20 @@ function YachtDetailPage() {
             {/* Photo side */}
             <div className="relative">
               <img
-                src={amenitiesImg}
-                alt="Sun deck loungers, champagne and the jetski at the swim platform"
+                src={lifestyleJetski}
+                alt="Guest riding a jetski across turquoise water beside Miami Beach"
                 loading="lazy"
                 width={1024}
                 height={1280}
                 className="aspect-[4/5] w-full rounded-[16px] border border-border object-cover shadow-luxe"
               />
               <img
-                src={detailJetskiImg}
-                alt="Jetski riding alongside the yacht"
+                src={lifestyleFloatingMat}
+                alt="Guests relaxing on a floating mat in turquoise water next to a luxury yacht"
                 loading="lazy"
                 width={1024}
-                height={1280}
-                className="absolute -bottom-8 -right-4 hidden w-40 rounded-[16px] border border-gold/30 object-cover shadow-luxe lg:block"
+                height={1024}
+                className="absolute -bottom-8 -right-4 hidden w-48 rounded-[16px] border border-gold/30 object-cover shadow-luxe lg:block"
               />
             </div>
 
@@ -522,7 +535,7 @@ function YachtDetailPage() {
                   >
                     <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-gold/[0.07] blur-2xl transition-opacity duration-500 group-hover:bg-gold/[0.16]" />
                     <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 text-gold">
-                      <a.icon className="h-4.5 w-4.5" />
+                      <a.icon strokeWidth={1.25} className="h-5 w-5" />
                     </div>
                     <div className="mt-4 font-teko text-2xl font-semibold uppercase tracking-[0.08em]">
                       {a.title}
@@ -543,9 +556,8 @@ function YachtDetailPage() {
                 <h3 className="mt-3 font-teko text-4xl font-bold uppercase tracking-[0.06em] md:text-5xl">
                   Popular <span className="text-gold">add-ons</span>
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground">Chosen by most charters</p>
-              </div>
-              <Sparkles className="h-6 w-6 shrink-0 text-gold/50" />
+                              </div>
+              <Sparkles strokeWidth={1.25} className="h-7 w-7 shrink-0 text-gold/50" />
             </div>
 
             <div className="-mx-5 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-3 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-5">
@@ -624,19 +636,18 @@ function YachtDetailPage() {
       <PhotoBreaker
         src={breakerSkylineImg}
         alt="Miami downtown skyline in bright midday sun seen across turquoise Biscayne Bay"
-        eyebrow="Downtown Miami, midday"
-        line="The skyline, from the only seat that matters."
+        eyebrow="Miami Beach Marina"
       />
 
 
-      {/* ---------- CINEMATIC VIDEO (conditional: renders as a still breaker when no videoSrc) ---------- */}
+      {/* ---------- VIDEO (contained 16:9 card; the whole section disappears when a yacht has no film) ---------- */}
       <VideoBlock
         poster={videoPosterImg}
         posterAlt="Royal Sunseeker SMU crossing Biscayne Bay against the Miami skyline at dusk"
         videoSrc={SMU_VIDEO_SRC}
         eyebrow="The film"
         headline="SMU on the water"
-        caption={SMU_VIDEO_SRC ? "SMU on the water — 0:45" : "Biscayne Bay, golden hour"}
+        caption="SMU on the water — 0:45"
       />
 
       {/* ---------- ABOUT / HERITAGE ---------- */}
@@ -705,7 +716,7 @@ function YachtDetailPage() {
               Similar yachts
             </h2>
           </div>
-          <Anchor className="h-6 w-6 shrink-0 text-gold/50" />
+          <Anchor strokeWidth={1.25} className="h-7 w-7 shrink-0 text-gold/50" />
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -828,12 +839,10 @@ function PhotoBreaker({
   src,
   alt,
   eyebrow,
-  line,
 }: {
   src: string;
   alt: string;
   eyebrow: string;
-  line: string;
 }) {
   return (
     <section className="relative h-[60vh] min-h-[380px] w-full overflow-hidden md:h-[75vh]">
@@ -853,9 +862,6 @@ function PhotoBreaker({
           <span className="h-px w-10 bg-gold/70" />
           {eyebrow}
         </div>
-        <p className="mt-4 max-w-3xl font-teko text-[clamp(2.2rem,6vw,5rem)] font-bold uppercase leading-[0.9] tracking-[0.05em]">
-          {line}
-        </p>
       </div>
     </section>
   );
