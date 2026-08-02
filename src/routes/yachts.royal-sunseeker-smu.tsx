@@ -181,8 +181,9 @@ function YachtDetailPage() {
           height={1280}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/25" />
-        <div className="absolute inset-0 bg-[radial-gradient(130%_75%_at_50%_105%,transparent_25%,var(--color-background)_100%)]" />
+        {/* Overlay only where the text sits — keeps the photo bright */}
+        <div className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-background via-background/70 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background/70 to-transparent" />
 
         {/* oversized ghost wordmark */}
         <div
