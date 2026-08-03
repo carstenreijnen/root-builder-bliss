@@ -199,12 +199,31 @@ function NewsletterBand() {
 
 export function SiteFooter() {
   return (
-    <footer className="bg-navy text-navy-foreground">
+    <footer className="relative isolate overflow-hidden text-navy-foreground">
+      {/* Photographic base */}
+      <img
+        src={oceanBg}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        width={1920}
+        height={1280}
+        className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+      />
+      {/* Navy gradient overlay: readable text, photo texture still showing */}
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          background:
+            "linear-gradient(180deg, color-mix(in oklab, var(--navy) 88%, transparent) 0%, color-mix(in oklab, var(--navy) 82%, transparent) 45%, color-mix(in oklab, var(--navy) 92%, transparent) 100%)",
+        }}
+      />
+
       <NewsletterBand />
 
       {/* Main footer */}
-      <div className="mx-auto max-w-[1400px] px-5 py-16 md:px-10 md:py-24">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+      <div className="mx-auto max-w-[1400px] px-5 py-20 md:px-10 md:py-28">
+        <div className="grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-12 lg:gap-12">
           {/* Brand column */}
           <div className="sm:col-span-2 lg:col-span-4 lg:pr-10">
             <img
