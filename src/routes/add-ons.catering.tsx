@@ -335,7 +335,7 @@ function CateringPage() {
                 height={900}
                 className="aspect-[4/3] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/10" />
               <div className="absolute inset-x-0 bottom-0 p-6">
                 <m.icon strokeWidth={1.25} className="h-6 w-6 text-gold" />
                 <div className="mt-3 flex flex-wrap items-baseline gap-x-3">
