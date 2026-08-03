@@ -13,6 +13,7 @@ import {
   MapPin,
   Bitcoin,
 } from "lucide-react";
+import { useLocation } from "@tanstack/react-router";
 import logo from "@/assets/logo.svg";
 
 function TikTokIcon({ className }: { className?: string }) {
@@ -20,6 +21,65 @@ function TikTokIcon({ className }: { className?: string }) {
     <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.71a8.16 8.16 0 0 0 4.77 1.52V6.79a4.85 4.85 0 0 1-1.84-.1Z" />
     </svg>
+  );
+}
+
+function USFlag({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 20 14" aria-hidden="true">
+      <rect width="20" height="14" fill="#B22234" rx="2" />
+      <path d="M0 1.08h20M0 3.23h20M0 5.38h20M0 7.54h20M0 9.69h20M0 11.85h20" stroke="#fff" strokeWidth="1.08" />
+      <rect width="8" height="7.54" fill="#3C3B6E" rx="1" />
+      <g fill="#fff">
+        <circle cx="1.6" cy="0.75" r="0.35" /><circle cx="4" cy="0.75" r="0.35" /><circle cx="6.4" cy="0.75" r="0.35" />
+        <circle cx="2.8" cy="1.75" r="0.35" /><circle cx="5.2" cy="1.75" r="0.35" /><circle cx="7.6" cy="1.75" r="0.35" />
+        <circle cx="1.6" cy="2.75" r="0.35" /><circle cx="4" cy="2.75" r="0.35" /><circle cx="6.4" cy="2.75" r="0.35" />
+        <circle cx="2.8" cy="3.75" r="0.35" /><circle cx="5.2" cy="3.75" r="0.35" /><circle cx="7.6" cy="3.75" r="0.35" />
+        <circle cx="1.6" cy="4.75" r="0.35" /><circle cx="4" cy="4.75" r="0.35" /><circle cx="6.4" cy="4.75" r="0.35" />
+        <circle cx="2.8" cy="5.75" r="0.35" /><circle cx="5.2" cy="5.75" r="0.35" /><circle cx="7.6" cy="5.75" r="0.35" />
+      </g>
+    </svg>
+  );
+}
+
+function SpainFlag({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 20 14" aria-hidden="true">
+      <rect width="20" height="14" fill="#AA151B" rx="2" />
+      <rect y="3.5" width="20" height="7" fill="#F1BF00" />
+      <rect y="10.5" width="20" height="3.5" fill="#AA151B" />
+    </svg>
+  );
+}
+
+function FooterLangSwitch() {
+  const { pathname } = useLocation();
+  const isEs = pathname.startsWith("/es");
+  return (
+    <span className="flex items-center gap-2">
+      <a
+        href="/"
+        aria-label="English"
+        className={`inline-flex h-5 w-7 items-center justify-center rounded-[4px] border transition ${
+          isEs
+            ? "border-transparent opacity-55 hover:opacity-100"
+            : "border-gold/60 opacity-100 shadow-[0_0_0_1px_rgba(186,163,108,0.35)]"
+        }`}
+      >
+        <USFlag className="h-3.5 w-5 rounded-[3px]" />
+      </a>
+      <a
+        href="/es"
+        aria-label="Español"
+        className={`inline-flex h-5 w-7 items-center justify-center rounded-[4px] border transition ${
+          isEs
+            ? "border-gold/60 opacity-100 shadow-[0_0_0_1px_rgba(186,163,108,0.35)]"
+            : "border-transparent opacity-55 hover:opacity-100"
+        }`}
+      >
+        <SpainFlag className="h-3.5 w-5 rounded-[3px]" />
+      </a>
+    </span>
   );
 }
 
@@ -195,11 +255,7 @@ export function SiteFooter() {
           <p className="text-xs leading-relaxed text-muted-foreground">
             © 2026 Royal Yachts Miami is a trade name of Experience Rental Group LLC · all rights reserved
           </p>
-          <span className="flex items-center gap-2 font-teko text-[13px] uppercase tracking-[0.18em]">
-            <a href="/" className="text-gold transition hover:opacity-80">EN</a>
-            <span className="text-foreground/25">|</span>
-            <a href="/es" className="text-foreground/55 transition hover:text-gold">ES</a>
-          </span>
+          <FooterLangSwitch />
         </div>
       </div>
     </footer>
