@@ -4,13 +4,8 @@ import {
   Anchor,
   ArrowRight,
   BadgeCheck,
-  Calendar,
-  Compass,
   Droplets,
   LifeBuoy,
-  Quote,
-  Ship,
-  ShieldCheck,
   Star,
   Users,
   Waves,
@@ -18,7 +13,7 @@ import {
 import { SiteNav } from "@/components/site/nav";
 import { SiteFooter } from "@/components/site/footer";
 import { BookNowModal } from "@/components/site/book-now-modal";
-import { InquiryForm } from "@/components/site/inquiry-form";
+import { QuoteForm } from "@/components/site/quote-form";
 
 import expBachelorette from "@/assets/exp-bachelorette.jpg";
 import expBirthday from "@/assets/exp-birthday.jpg";
@@ -36,8 +31,9 @@ import addonDecoration from "@/assets/addons/decoration.jpg";
 import addonPhotographer from "@/assets/addons/photographer.jpg";
 import addonTransport from "@/assets/addons/transport.jpg";
 import aboutYacht from "@/assets/about-yacht.jpg";
-import lifestyleJetski from "@/assets/lifestyle/jetski-turquoise.jpg";
 import floatingMat from "@/assets/lifestyle/floating-mat.jpg";
+import lifestyleJetski from "@/assets/lifestyle/jetski-turquoise.jpg";
+import bookingSide from "@/assets/booking-side.jpg";
 
 const PHOTO_BASE =
   "https://xteonchtqeoppjxmlmgm.supabase.co/storage/v1/object/public/media/yachts/";
@@ -46,83 +42,58 @@ const yachtA = `${PHOTO_BASE}1785349407570-DJI_0115__2_.jpg`;
 const yachtB = `${PHOTO_BASE}1785334643255-DJI_0143.jpg`;
 const yachtC = `${PHOTO_BASE}1785349404891-DJI_0110.jpg`;
 
-const FLEET = [
-  { name: "Sunseeker 96ft", slug: "/yachts/royal-sunseeker-smu", img: heroImg, guests: 13, from: "$3,900" },
+const FEATURED = {
+  name: "Sunseeker 96ft",
+  slug: "/yachts/royal-sunseeker-smu",
+  img: heroImg,
+  guests: 13,
+  from: "$3,900",
+  copy: "The flagship of the fleet. A climate controlled salon, a full beam sun deck and a hydraulic swim platform that turns the sandbar into a private beach club.",
+  facts: [
+    { k: "Length", v: "96 ft" },
+    { k: "Guests", v: "13" },
+    { k: "Cruise", v: "Biscayne Bay" },
+  ],
+};
+
+const FLEET_ROW = [
   { name: "Sunseeker 80ft", slug: "/yachts/royal-sunseeker-smu", img: yachtA, guests: 12, from: "$2,800" },
   { name: "Azimut 78ft", slug: "/our-yachts", img: yachtB, guests: 12, from: "$2,400" },
   { name: "Ferretti 72ft", slug: "/our-yachts", img: yachtC, guests: 12, from: "$1,950" },
-  { name: "Prestige 62ft", slug: "/our-yachts", img: yachtA, guests: 12, from: "$1,600" },
-  { name: "Galeon 55ft", slug: "/our-yachts", img: yachtB, guests: 12, from: "$1,250" },
-  { name: "Cranchi 50ft", slug: "/our-yachts", img: yachtC, guests: 12, from: "$950" },
-  { name: "Sea Ray 45ft", slug: "/our-yachts", img: yachtA, guests: 10, from: "$750" },
 ];
 
-const TRUST_POINTS = [
-  {
-    icon: Ship,
-    title: "A fleet of more than forty yachts",
-    copy: "From 45 foot day boats to 96 foot flagships, each one inspected and detailed before every charter.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Fully insured, fully licensed",
-    copy: "USCG licensed captains, current commercial insurance and safety equipment checked before departure.",
-  },
-  {
-    icon: Compass,
-    title: "Miami locals who grew up on the water",
-    copy: "A young team that knows the sandbars, the tides and the anchorages worth the extra ten minutes.",
-  },
-  {
-    icon: Users,
-    title: "Personalized from the first message",
-    copy: "One advisor plans your day end to end, from the yacht to the playlist to the ride to the dock.",
-  },
+const FLEET_LIST = [
+  { name: "Prestige 62ft", guests: 12, from: "$1,600" },
+  { name: "Galeon 55ft", guests: 12, from: "$1,250" },
+  { name: "Cranchi 50ft", guests: 12, from: "$950" },
+  { name: "Sea Ray 45ft", guests: 10, from: "$750" },
 ];
 
 const EXPERIENCES = [
-  { title: "Bachelorette", href: "/packages/bachelorette", img: expBachelorette },
-  { title: "Birthday", href: "/packages/birthday", img: expBirthday },
-  { title: "Corporate Event", href: "/packages/corporate", img: expCorporate },
-  { title: "Sunset Cruise", href: "/packages/yacht-party", img: expSunset },
-  { title: "Wedding", href: "/packages/wedding", img: expWedding },
-  { title: "New Year's Eve", href: "/packages/new-years-eve", img: expNye },
-];
-
-const STEPS = [
-  {
-    icon: Compass,
-    title: "Choose your yacht",
-    copy: "Browse the fleet, pick your date and the hours that suit your group.",
-  },
-  {
-    icon: Calendar,
-    title: "Reach us your way",
-    copy: "WhatsApp, phone, email or the booking form. An advisor confirms availability and holds the yacht.",
-  },
-  {
-    icon: Waves,
-    title: "Set sail",
-    copy: "Meet your captain, step aboard and spend the day on the water. Everything is ready.",
-  },
+  { title: "Bachelorette", href: "/packages/bachelorette", img: expBachelorette, span: "lg:col-span-7 aspect-[16/10]" },
+  { title: "Sunset Cruise", href: "/packages/yacht-party", img: expSunset, span: "lg:col-span-5 aspect-[16/10]" },
+  { title: "Birthday", href: "/packages/birthday", img: expBirthday, span: "lg:col-span-4 aspect-[4/5] lg:aspect-[3/4]" },
+  { title: "Corporate Event", href: "/packages/corporate", img: expCorporate, span: "lg:col-span-4 aspect-[4/5] lg:aspect-[3/4]" },
+  { title: "Wedding", href: "/packages/wedding", img: expWedding, span: "lg:col-span-4 aspect-[4/5] lg:aspect-[3/4]" },
+  { title: "New Year's Eve", href: "/packages/new-years-eve", img: expNye, span: "lg:col-span-12 aspect-[16/9] lg:aspect-[21/8]" },
 ];
 
 const TESTIMONIALS = [
   {
     quote:
-      "We booked the 80 foot Sunseeker for my sister's bachelorette and the whole day ran perfectly. The captain found us a quiet spot at the sandbar and the crew handled everything.",
+      "The captain found us a quiet corner of the sandbar and the crew handled every detail. Nobody in our group had to think about anything all day.",
     name: "Alexandra R.",
     detail: "Bachelorette charter, June",
   },
   {
     quote:
-      "Our team flew in from Chicago and we needed something that felt serious for clients. Invoicing by email was simple and the yacht was spotless. We are already planning the next one.",
+      "We flew clients in from Chicago. Invoicing by email was simple, the yacht was spotless and the timing held to the minute.",
     name: "Daniel K.",
     detail: "Corporate charter, March",
   },
   {
     quote:
-      "Answered on WhatsApp within a few minutes, sent real photos of the actual boat and never pushed anything on us. The sunset run past the skyline was the highlight of our trip.",
+      "Real photos of the actual boat, an answer in minutes and no pressure. The run past the skyline at sunset was the best hour of our trip.",
     name: "Marisol V.",
     detail: "Sunset cruise, October",
   },
@@ -159,7 +130,7 @@ const POSTS = [
   },
   {
     title: "What great charter catering looks like",
-    excerpt: "From raw bars to private chefs, the food choices that turn a good charter into a great one.",
+    excerpt: "From raw bars to private chefs, the food that turns a good charter into a great one.",
     img: blogCatering,
     href: "/blog",
   },
@@ -170,7 +141,7 @@ const JSON_LD = {
   "@type": "LocalBusiness",
   name: "Royal Yachts Miami",
   description:
-    "Luxury private yacht charters in Miami. A fleet of more than forty yachts, licensed captains and all inclusive day charters across Miami and Biscayne Bay.",
+    "Private luxury yacht charters across Miami and Biscayne Bay. A fleet of more than forty yachts with USCG licensed captains.",
   url: "https://royalyachtsmiami.com/",
   telephone: "+1-645-214-9666",
   foundingDate: "2018",
@@ -193,7 +164,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Private luxury yacht charters across Miami and Biscayne Bay. More than forty yachts, USCG licensed captains and booking by WhatsApp, phone, email or form.",
+          "Private luxury yacht charters across Miami and Biscayne Bay. More than forty yachts, USCG licensed captains and a charter advisor on every channel.",
       },
       { property: "og:title", content: "Luxury Yacht Rentals in Miami | Royal Yachts Miami" },
       {
@@ -211,9 +182,17 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const eyebrow = "font-teko text-[12px] font-bold uppercase tracking-[0.24em] text-gold md:text-[13px]";
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-gold">
+      <span className="h-px w-8 bg-gold/60" />
+      {children}
+    </div>
+  );
+}
+
 const goldBtn =
-  "inline-flex h-[52px] items-center justify-center gap-2 rounded-full bg-gold px-8 font-teko text-[15px] font-bold uppercase tracking-[0.14em] text-gold-foreground transition-all duration-300 hover:shadow-[0_8px_30px_rgba(186,163,108,0.4)]";
+  "inline-flex h-[54px] items-center justify-center gap-2 rounded-full bg-gold px-9 font-teko text-[16px] font-bold uppercase tracking-[0.16em] text-gold-foreground transition-all duration-300 hover:shadow-[0_8px_30px_rgba(186,163,108,0.4)]";
 
 function Home() {
   const [bookOpen, setBookOpen] = useState(false);
@@ -223,111 +202,182 @@ function Home() {
     <div className="min-h-screen bg-background">
       <SiteNav />
       <main>
-        {/* 1. HERO */}
-        <section className="relative isolate flex min-h-[92vh] items-end overflow-hidden">
+        {/* ---------- 1. HERO ---------- */}
+        <section className="relative isolate flex min-h-[94vh] items-end overflow-hidden">
           <img
             src={heroImg}
-            alt="Aerial view of a Sunseeker yacht cruising the turquoise water off Miami"
+            alt="Aerial view of a Sunseeker yacht cruising off Miami"
             width={1920}
             height={1280}
             className="absolute inset-0 -z-20 h-full w-full object-cover"
           />
           <div className="absolute inset-0 -z-10 bg-black/55" />
-          <div className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-black/70 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 -z-10 h-2/3 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
 
-          <div className="mx-auto w-full max-w-[1400px] px-5 pb-20 pt-36 md:px-10 md:pb-28">
-            <span className={eyebrow}>Private charters since 2018</span>
-            <h1 className="mt-4 max-w-4xl font-display text-[38px] leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-[64px]">
-              Luxury Yacht Rentals in Miami
+          <div className="mx-auto w-full max-w-[1400px] px-5 pb-16 pt-40 md:px-8 md:pb-24">
+            <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-gold">
+              <span className="h-px w-10 bg-gold/70" />
+              Private charters since 2018
+            </div>
+            <h1 className="mt-6 max-w-5xl font-teko text-[clamp(2.8rem,9vw,7rem)] font-bold uppercase leading-[0.85] tracking-[0.04em] text-white">
+              <span className="block">Luxury Yacht</span>
+              <span className="block text-gold">Rentals in Miami</span>
             </h1>
-            <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-white/85 md:text-[18px]">
-              Private day charters across Miami and Biscayne Bay, captained, fully equipped and
-              planned around your group.
+            <p className="mt-7 max-w-lg text-[16px] leading-relaxed text-white/85 md:text-[18px]">
+              Private day charters across Miami and Biscayne Bay, captained and planned around your
+              group.
             </p>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
               <button type="button" onClick={openBooking} className={goldBtn}>
                 Book Now <ArrowRight className="h-4 w-4" strokeWidth={1.25} />
               </button>
               <a
                 href="/our-yachts"
-                className="inline-flex h-[52px] items-center justify-center gap-2 rounded-full border border-white/50 px-8 font-teko text-[15px] font-bold uppercase tracking-[0.14em] text-white transition-all duration-300 hover:border-gold hover:text-gold"
+                className="inline-flex h-[54px] items-center justify-center rounded-full border border-white/45 px-9 font-teko text-[16px] font-bold uppercase tracking-[0.16em] text-white transition-all duration-300 hover:border-gold hover:text-gold"
               >
                 View the Fleet
               </a>
             </div>
 
-            <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-white/15 pt-6">
-              {[
-                { icon: Star, label: "4.9 Guest Rating on Google and TripAdvisor" },
-                { icon: BadgeCheck, label: "USCG Licensed" },
-                { icon: Anchor, label: "500+ Charters" },
-                { icon: Calendar, label: "Since 2018" },
-              ].map(({ icon: Icon, label }) => (
-                <span key={label} className="flex items-center gap-2.5">
-                  <Icon className="h-[18px] w-[18px] text-gold" strokeWidth={1.25} />
-                  <span className="font-teko text-[14px] font-bold uppercase tracking-[0.14em] text-white/90">
-                    {label}
-                  </span>
-                </span>
-              ))}
+            <div className="mt-14 flex flex-wrap items-center gap-x-10 gap-y-3 border-t border-white/15 pt-6 text-[10px] uppercase tracking-[0.28em] text-white/80">
+              <span className="flex items-center gap-2.5">
+                <Star className="h-4 w-4 fill-gold text-gold" strokeWidth={1.25} /> 4.9 guest rating
+              </span>
+              <span className="flex items-center gap-2.5">
+                <BadgeCheck className="h-4 w-4 text-gold" strokeWidth={1.25} /> USCG licensed captains
+              </span>
+              <span className="flex items-center gap-2.5">
+                <Anchor className="h-4 w-4 text-gold" strokeWidth={1.25} /> Chartering since 2018
+              </span>
             </div>
           </div>
         </section>
 
-        {/* 2. MOST BOOKED YACHTS */}
-        <section className="bg-navy py-20 text-navy-foreground md:py-28">
-          <div className="mx-auto max-w-[1400px] px-5 md:px-10">
-            <div className="flex flex-wrap items-end justify-between gap-6">
-              <div>
-                <span className={eyebrow}>The Fleet</span>
-                <h2 className="mt-3 font-display text-3xl text-navy-foreground md:text-[44px]">
-                  Most Booked Yachts in Miami
-                </h2>
-              </div>
-              <p className="max-w-md text-[15px] leading-relaxed text-navy-foreground/65">
-                Day charters from 45 to 96 feet, all captained, fueled and ready across Miami and
-                Biscayne Bay.
-              </p>
+        {/* ---------- 2. THE FLEET ---------- */}
+        <section className="relative overflow-hidden bg-background py-24 md:py-32">
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-6 top-10 select-none font-teko text-[16vw] leading-[0.75] tracking-[0.14em] text-foreground/[0.04]"
+          >
+            FLEET
+          </span>
+
+          <div className="relative mx-auto max-w-[1400px] px-5 md:px-8">
+            <div className="max-w-2xl">
+              <SectionLabel>Most booked</SectionLabel>
+              <h2 className="mt-4 font-teko text-5xl font-bold uppercase leading-[0.9] tracking-[0.06em] md:text-6xl">
+                The yachts Miami <span className="text-gold">books first</span>
+              </h2>
             </div>
 
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {FLEET.map((y) => (
-                <a
-                  key={y.name + y.from}
-                  href={y.slug}
-                  className="group overflow-hidden rounded-[16px] border border-navy-border bg-navy-foreground/[0.03] transition-all duration-300 hover:border-gold/50 hover:shadow-luxe"
-                >
-                  <div className="relative aspect-[4/3] overflow-hidden">
+            {/* featured */}
+            <div className="mt-16 grid items-center gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-16">
+              <a href={FEATURED.slug} className="group relative block overflow-hidden rounded-[16px] border border-border shadow-luxe">
+                <img
+                  src={FEATURED.img}
+                  alt={`${FEATURED.name} charter yacht in Miami`}
+                  loading="lazy"
+                  className="aspect-[16/11] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent" />
+                <div className="absolute bottom-5 left-6 text-[10px] uppercase tracking-[0.3em] text-white/85">
+                  Flagship of the fleet
+                </div>
+              </a>
+
+              <div className="relative">
+                <SectionLabel>Featured</SectionLabel>
+                <h3 className="mt-4 font-teko text-5xl font-bold uppercase leading-[0.9] tracking-[0.05em]">
+                  Sunseeker <span className="text-gold">96ft</span>
+                </h3>
+                <p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted-foreground">
+                  {FEATURED.copy}
+                </p>
+                <div className="mt-8 grid grid-cols-3 gap-4 border-y border-border py-6">
+                  {FEATURED.facts.map((f) => (
+                    <div key={f.k}>
+                      <div className="text-[10px] uppercase tracking-[0.25em] text-caption">{f.k}</div>
+                      <div className="mt-1 font-teko text-2xl font-semibold uppercase tracking-[0.06em]">
+                        {f.v}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-7 flex flex-wrap items-end justify-between gap-5">
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.28em] text-caption">From</div>
+                    <div className="font-teko text-5xl font-bold leading-none tracking-[0.02em] text-gold">
+                      {FEATURED.from}
+                      <span className="ml-2 font-sans text-[12px] font-normal uppercase tracking-[0.2em] text-caption">
+                        / 4 hrs
+                      </span>
+                    </div>
+                  </div>
+                  <a
+                    href={FEATURED.slug}
+                    className="inline-flex h-[50px] items-center gap-2 rounded-full border border-gold/50 px-7 font-teko text-[14px] font-bold uppercase tracking-[0.18em] text-gold transition-all duration-300 hover:bg-gold hover:text-gold-foreground"
+                  >
+                    View yacht <ArrowRight className="h-4 w-4" strokeWidth={1.25} />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* refined row */}
+            <div className="mt-20 grid gap-8 md:grid-cols-3">
+              {FLEET_ROW.map((y) => (
+                <a key={y.name} href={y.slug} className="group block">
+                  <div className="overflow-hidden rounded-[16px] border border-border">
                     <img
                       src={y.img}
                       alt={`${y.name} charter yacht in Miami`}
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                     />
                   </div>
-                  <div className="p-5">
-                    <h3 className="font-teko text-[22px] font-bold uppercase leading-none tracking-[0.08em] text-navy-foreground">
-                      {y.name}
-                    </h3>
-                    <p className="mt-2 flex items-center gap-2 text-[13px] text-navy-foreground/60">
-                      <Users className="h-4 w-4 text-gold" strokeWidth={1.25} /> Up to {y.guests} guests
-                    </p>
-                    <div className="mt-4 flex items-center justify-between border-t border-navy-border pt-4">
-                      <span className="font-teko text-[19px] font-bold uppercase tracking-[0.08em] text-gold">
-                        From {y.from}
-                        <span className="ml-1 text-[13px] text-navy-foreground/55">/ 4 hours</span>
-                      </span>
-                      <span className="flex items-center gap-1 font-teko text-[13px] font-bold uppercase tracking-[0.14em] text-navy-foreground/80 transition-colors group-hover:text-gold">
-                        Enquire <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.25} />
-                      </span>
+                  <div className="mt-5 flex items-end justify-between gap-4 border-b border-border pb-5">
+                    <div>
+                      <h3 className="font-teko text-3xl font-semibold uppercase leading-none tracking-[0.06em] transition-colors group-hover:text-gold">
+                        {y.name}
+                      </h3>
+                      <div className="mt-2 flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-caption">
+                        <Users className="h-3.5 w-3.5 text-gold" strokeWidth={1.25} /> Up to {y.guests} guests
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-[10px] uppercase tracking-[0.25em] text-caption">From</div>
+                      <div className="font-teko text-2xl font-bold leading-none tracking-[0.02em] text-gold">
+                        {y.from}
+                      </div>
                     </div>
                   </div>
                 </a>
               ))}
             </div>
 
-            <div className="mt-12 flex justify-center">
+            {/* compact list */}
+            <div className="mt-14 divide-y divide-border border-y border-border">
+              {FLEET_LIST.map((y) => (
+                <a
+                  key={y.name}
+                  href="/our-yachts"
+                  className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-6 py-5 md:grid-cols-[minmax(0,1fr)_auto_auto]"
+                >
+                  <span className="font-teko text-2xl font-semibold uppercase tracking-[0.08em] transition-colors group-hover:text-gold">
+                    {y.name}
+                  </span>
+                  <span className="hidden text-[10px] uppercase tracking-[0.25em] text-caption md:block">
+                    Up to {y.guests} guests
+                  </span>
+                  <span className="font-teko text-xl font-bold uppercase tracking-[0.06em] text-gold">
+                    From {y.from}
+                  </span>
+                </a>
+              ))}
+            </div>
+
+            <div className="mt-14">
               <a href="/our-yachts" className={goldBtn}>
                 View All Yachts <ArrowRight className="h-4 w-4" strokeWidth={1.25} />
               </a>
@@ -335,48 +385,60 @@ function Home() {
           </div>
         </section>
 
-        {/* 3. MEET ROYAL (light) */}
-        <section className="bg-sand py-20 text-sand-foreground md:py-28">
-          <div className="mx-auto grid max-w-[1400px] items-center gap-12 px-5 md:px-10 lg:grid-cols-2 lg:gap-16">
+        {/* ---------- 3. BRAND STORY (light) ---------- */}
+        <section className="bg-sand py-24 text-sand-foreground md:py-32">
+          <div className="mx-auto grid max-w-[1400px] items-center gap-14 px-5 md:px-8 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
             <div className="relative">
-              <div className="overflow-hidden rounded-[16px] border border-sand-border">
-                <img
-                  src={aboutYacht}
-                  alt="Royal Yachts Miami crew preparing a yacht for a private charter"
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
+              <img
+                src={aboutYacht}
+                alt="Royal Yachts Miami crew preparing a yacht before a private charter"
+                loading="lazy"
+                className="aspect-[4/5] w-full rounded-[16px] border border-sand-border object-cover shadow-luxe"
+              />
+              <div className="absolute -bottom-7 -right-3 hidden rounded-[16px] border border-gold/40 bg-sand/95 px-7 py-6 backdrop-blur-md md:block">
+                <div className="font-teko text-5xl font-bold leading-none tracking-[0.03em] text-gold">
+                  2018
+                </div>
+                <div className="mt-1 text-[10px] uppercase tracking-[0.25em] text-sand-muted">
+                  First yacht, Miami
+                </div>
               </div>
-              <div className="absolute -bottom-6 -right-2 hidden w-40 overflow-hidden rounded-[16px] border-4 border-sand shadow-card sm:block lg:-right-6 lg:w-52">
-                <img
-                  src={lifestyleJetski}
-                  alt="Guest riding a jetski in turquoise water beside a charter yacht"
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-              </div>
+              <img
+                src={lifestyleJetski}
+                alt="Guest riding a jetski in turquoise water beside a charter yacht"
+                loading="lazy"
+                className="absolute -left-4 -top-8 hidden w-40 rounded-[16px] border-4 border-sand object-cover shadow-card lg:block"
+              />
             </div>
 
             <div>
-              <span className={eyebrow}>Meet Royal</span>
-              <h2 className="mt-3 font-display text-3xl md:text-[44px]">
-                Founded in 2018 by people who never left the water
+              <SectionLabel>Meet Royal</SectionLabel>
+              <h2 className="mt-4 font-teko text-5xl font-bold uppercase leading-[0.9] tracking-[0.06em] md:text-6xl">
+                One boat, then <span className="text-gold">forty</span>
               </h2>
-              <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-sand-muted">
-                Royal Yachts Miami started with one boat and a simple belief that a charter should
-                feel personal. Today the fleet passes forty yachts and the approach has not changed.
-                You speak with the same team that runs the docks, and the day is built around your
-                group rather than a package.
+              <p className="mt-7 max-w-xl text-[16px] leading-relaxed text-sand-muted">
+                Royal Yachts Miami started in 2018 with a single boat and a belief that a charter
+                should feel personal. The fleet has passed forty yachts and the approach has not
+                changed. You speak with the same team that runs the docks.
+              </p>
+              <p className="mt-4 max-w-xl text-[16px] leading-relaxed text-sand-muted">
+                We are young Miami locals who grew up on this water. Every yacht is fully insured
+                and every day is built around your group rather than a package.
               </p>
 
-              <div className="mt-10 grid gap-6 sm:grid-cols-2">
-                {TRUST_POINTS.map(({ icon: Icon, title, copy }) => (
-                  <div key={title}>
-                    <Icon className="h-6 w-6 text-gold" strokeWidth={1.25} />
-                    <h3 className="mt-3 font-teko text-[19px] font-bold uppercase tracking-[0.08em]">
-                      {title}
-                    </h3>
-                    <p className="mt-2 text-[14px] leading-relaxed text-sand-muted">{copy}</p>
+              <div className="mt-12 grid gap-8 border-t border-sand-border pt-10 sm:grid-cols-3">
+                {[
+                  { k: "40+", v: "Yachts in the fleet" },
+                  { k: "500+", v: "Charters completed" },
+                  { k: "4.9", v: "Guest rating" },
+                ].map((s) => (
+                  <div key={s.k}>
+                    <div className="font-teko text-5xl font-bold leading-none tracking-[0.02em] text-gold">
+                      {s.k}
+                    </div>
+                    <div className="mt-2 text-[10px] uppercase tracking-[0.25em] text-sand-muted">
+                      {s.v}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -384,40 +446,43 @@ function Home() {
           </div>
         </section>
 
-        {/* 4. EXPERIENCES (dark) */}
-        <section className="bg-background py-20 md:py-28">
-          <div className="mx-auto max-w-[1400px] px-5 md:px-10">
-            <div className="max-w-2xl">
-              <span className={eyebrow}>Experiences</span>
-              <h2 className="mt-3 font-display text-3xl md:text-[44px]">Charter for Any Occasion</h2>
-              <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
+        {/* ---------- 4. EXPERIENCES (lookbook) ---------- */}
+        <section className="bg-navy py-24 text-navy-foreground md:py-32">
+          <div className="mx-auto max-w-[1400px] px-5 md:px-8">
+            <div className="grid items-end gap-6 md:grid-cols-[minmax(0,1fr)_auto]">
+              <div className="max-w-2xl">
+                <SectionLabel>The lookbook</SectionLabel>
+                <h2 className="mt-4 font-teko text-5xl font-bold uppercase leading-[0.9] tracking-[0.06em] text-navy-foreground md:text-6xl">
+                  Charter for <span className="text-gold">any occasion</span>
+                </h2>
+              </div>
+              <p className="max-w-sm text-[15px] leading-relaxed text-navy-foreground/60">
                 Every charter is private. Tell us the occasion and we shape the route, the timing
                 and the extras around it.
               </p>
             </div>
 
-            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-14 grid gap-5 lg:grid-cols-12">
               {EXPERIENCES.map((e) => (
                 <a
                   key={e.title}
                   href={e.href}
-                  className="group relative isolate flex aspect-[4/3] items-end overflow-hidden rounded-[16px] border border-border transition-all duration-300 hover:border-gold/50"
+                  className={`group relative isolate flex items-end overflow-hidden rounded-[16px] border border-navy-border transition-all duration-500 hover:border-gold/50 ${e.span}`}
                 >
                   <img
                     src={e.img}
                     alt={`${e.title} yacht charter in Miami`}
                     loading="lazy"
-                    className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                   />
-                  <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
-                  <div className="flex w-full items-center justify-between gap-4 p-6">
-                    <h3 className="font-teko text-[24px] font-bold uppercase leading-none tracking-[0.1em] text-white">
+                  <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+                  <div className="w-full p-7">
+                    <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-gold opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                      <span className="h-px w-8 bg-gold/70" /> View package
+                    </div>
+                    <h3 className="mt-2 font-teko text-3xl font-bold uppercase leading-none tracking-[0.1em] text-white md:text-4xl">
                       {e.title}
                     </h3>
-                    <ArrowRight
-                      className="h-5 w-5 text-gold transition-transform duration-300 group-hover:translate-x-1"
-                      strokeWidth={1.25}
-                    />
                   </div>
                 </a>
               ))}
@@ -425,76 +490,75 @@ function Home() {
           </div>
         </section>
 
-        {/* 5. HOW IT WORKS (light) */}
-        <section className="bg-sand py-20 text-sand-foreground md:py-28">
-          <div className="mx-auto max-w-[1400px] px-5 md:px-10">
-            <div className="mx-auto max-w-2xl text-center">
-              <span className={eyebrow}>How it works</span>
-              <h2 className="mt-3 font-display text-3xl md:text-[44px]">Three steps to the water</h2>
+        {/* ---------- 5. BOOKING FORM ---------- */}
+        <section id="reserve" className="border-y border-border bg-section-deep">
+          <div className="mx-auto grid max-w-[1600px] lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="relative min-h-[320px] overflow-hidden">
+              <img
+                src={bookingSide}
+                alt="Yacht anchored in calm turquoise water near Miami"
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-black/20" />
+              <div className="absolute inset-x-0 bottom-0 p-8 md:p-12">
+                <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-gold">
+                  <span className="h-px w-10 bg-gold/70" /> Availability
+                </div>
+                <h2 className="mt-4 font-teko text-5xl font-bold uppercase leading-[0.9] tracking-[0.06em] text-white md:text-6xl">
+                  Request <span className="text-gold">a quote</span>
+                </h2>
+                <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-white/80">
+                  Send your date and we come back with the yachts available and a written price.
+                </p>
+              </div>
             </div>
 
-            <div className="mt-14 grid gap-10 md:grid-cols-3">
-              {STEPS.map(({ icon: Icon, title, copy }, i) => (
-                <div key={title} className="text-center">
-                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-gold/40 bg-sand">
-                    <Icon className="h-7 w-7 text-gold" strokeWidth={1.25} />
-                  </div>
-                  <div className="mt-5 font-teko text-[13px] font-bold uppercase tracking-[0.24em] text-gold">
-                    Step {i + 1}
-                  </div>
-                  <h3 className="mt-2 font-teko text-[22px] font-bold uppercase tracking-[0.08em]">
-                    {title}
-                  </h3>
-                  <p className="mx-auto mt-3 max-w-xs text-[14px] leading-relaxed text-sand-muted">
-                    {copy}
-                  </p>
-                </div>
-              ))}
+            <div className="px-5 py-20 md:px-16 md:py-28">
+              <div className="mx-auto max-w-xl">
+                <QuoteForm />
+              </div>
             </div>
           </div>
         </section>
 
-        {/* 6. TESTIMONIALS (dark) */}
-        <section className="relative isolate overflow-hidden bg-navy py-20 text-navy-foreground md:py-28">
+        {/* ---------- 6. TESTIMONIALS ---------- */}
+        <section className="relative isolate overflow-hidden bg-background py-24 md:py-32">
           <img
             src={yachtC}
             alt=""
             aria-hidden="true"
             loading="lazy"
-            className="absolute inset-0 -z-20 h-full w-full object-cover opacity-25"
+            className="absolute inset-0 -z-20 h-full w-full object-cover opacity-[0.14]"
           />
-          <div className="absolute inset-0 -z-10 bg-navy/85" />
-          <div className="mx-auto max-w-[1400px] px-5 md:px-10">
-            <div className="mx-auto max-w-2xl text-center">
-              <span className={eyebrow}>Guest reviews</span>
-              <h2 className="mt-3 font-display text-3xl text-navy-foreground md:text-[44px]">
-                What Our Clients Say
+          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background/80 to-background" />
+
+          <div className="mx-auto max-w-[1400px] px-5 md:px-8">
+            <div className="max-w-2xl">
+              <SectionLabel>Guest reviews</SectionLabel>
+              <h2 className="mt-4 font-teko text-5xl font-bold uppercase leading-[0.9] tracking-[0.06em] md:text-6xl">
+                What our <span className="text-gold">clients say</span>
               </h2>
-              <div className="mt-5 flex items-center justify-center gap-2">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-gold text-gold" strokeWidth={1.25} />
-                ))}
-                <span className="ml-2 font-teko text-[14px] font-bold uppercase tracking-[0.14em] text-navy-foreground/80">
-                  4.9 across Google and TripAdvisor
-                </span>
-              </div>
             </div>
 
-            <div className="mt-14 grid gap-6 md:grid-cols-3">
+            <div className="mt-16 grid gap-14 md:grid-cols-3 md:gap-10">
               {TESTIMONIALS.map((t) => (
-                <figure
-                  key={t.name}
-                  className="rounded-[16px] border border-navy-border bg-navy-foreground/[0.04] p-7 backdrop-blur-[2px]"
-                >
-                  <Quote className="h-7 w-7 text-gold" strokeWidth={1.25} />
-                  <blockquote className="mt-5 text-[15px] leading-relaxed text-navy-foreground/85">
+                <figure key={t.name} className="border-t border-gold/30 pt-8">
+                  <div className="flex gap-1">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="h-3.5 w-3.5 fill-gold text-gold" strokeWidth={1.25} />
+                    ))}
+                  </div>
+                  <blockquote className="mt-6 font-display text-[19px] leading-[1.6] text-foreground/90">
                     {t.quote}
                   </blockquote>
-                  <figcaption className="mt-6 border-t border-navy-border pt-5">
-                    <div className="font-teko text-[18px] font-bold uppercase tracking-[0.1em] text-navy-foreground">
+                  <figcaption className="mt-7">
+                    <div className="font-teko text-2xl font-semibold uppercase tracking-[0.08em]">
                       {t.name}
                     </div>
-                    <div className="mt-1 text-[13px] text-navy-foreground/55">{t.detail}</div>
+                    <div className="mt-1 text-[10px] uppercase tracking-[0.25em] text-caption">
+                      {t.detail}
+                    </div>
                   </figcaption>
                 </figure>
               ))}
@@ -502,52 +566,50 @@ function Home() {
           </div>
         </section>
 
-        {/* 7. ONBOARD SERVICES (light) */}
-        <section className="bg-sand py-20 text-sand-foreground md:py-28">
-          <div className="mx-auto max-w-[1400px] px-5 md:px-10">
-            <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+        {/* ---------- 7. ONBOARD + ADD-ONS (light) ---------- */}
+        <section className="bg-sand py-24 text-sand-foreground md:py-32">
+          <div className="mx-auto max-w-[1400px] px-5 md:px-8">
+            <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_1fr] lg:gap-20">
               <div>
-                <span className={eyebrow}>Onboard</span>
-                <h2 className="mt-3 font-display text-3xl md:text-[44px]">
-                  Included with every charter
+                <SectionLabel>Onboard</SectionLabel>
+                <h2 className="mt-4 font-teko text-5xl font-bold uppercase leading-[0.9] tracking-[0.06em] md:text-6xl">
+                  Included with <span className="text-gold">every charter</span>
                 </h2>
-                <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-sand-muted">
+                <p className="mt-6 max-w-lg text-[16px] leading-relaxed text-sand-muted">
                   The essentials are never an upsell. Your captain and crew, cold water and ice,
                   fresh towels and floating mats come with every yacht in the fleet.
                 </p>
-                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                <div className="mt-10 grid gap-6 sm:grid-cols-2">
                   {INCLUDED.map(({ icon: Icon, label }) => (
-                    <div
-                      key={label}
-                      className="flex items-center gap-3 rounded-[12px] border border-sand-border bg-card/40 px-5 py-4"
-                    >
-                      <Icon className="h-5 w-5 shrink-0 text-gold" strokeWidth={1.25} />
-                      <span className="font-teko text-[17px] font-bold uppercase tracking-[0.1em]">
+                    <div key={label} className="flex items-center gap-4 border-t border-sand-border pt-5">
+                      <Icon className="h-6 w-6 shrink-0 text-gold" strokeWidth={1.25} />
+                      <span className="font-teko text-2xl font-semibold uppercase tracking-[0.08em]">
                         {label}
                       </span>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="overflow-hidden rounded-[16px] border border-sand-border">
-                <img
-                  src={floatingMat}
-                  alt="Guests relaxing on a floating mat beside a yacht in Biscayne Bay"
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-              </div>
+
+              <img
+                src={floatingMat}
+                alt="Guests relaxing on a floating mat beside a yacht in Biscayne Bay"
+                loading="lazy"
+                className="aspect-[4/3] w-full rounded-[16px] border border-sand-border object-cover shadow-luxe"
+              />
             </div>
 
-            <div className="mt-20">
-              <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="mt-24">
+              <div className="grid items-end gap-6 md:grid-cols-[minmax(0,1fr)_auto]">
                 <div>
-                  <span className={eyebrow}>Enhance your charter</span>
-                  <h2 className="mt-3 font-display text-3xl md:text-[40px]">Popular add-ons</h2>
+                  <SectionLabel>Enhance your charter</SectionLabel>
+                  <h2 className="mt-4 font-teko text-4xl font-bold uppercase tracking-[0.06em] md:text-5xl">
+                    Popular <span className="text-gold">add-ons</span>
+                  </h2>
                 </div>
                 <a
                   href="/add-ons"
-                  className="flex items-center gap-2 font-teko text-[14px] font-bold uppercase tracking-[0.14em] text-sand-foreground transition-colors hover:text-gold"
+                  className="flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] text-sand-foreground transition-colors hover:text-gold"
                 >
                   All add-ons <ArrowRight className="h-4 w-4" strokeWidth={1.25} />
                 </a>
@@ -558,16 +620,16 @@ function Home() {
                   <a
                     key={a.title}
                     href={a.href}
-                    className="group relative isolate flex aspect-[16/10] items-end overflow-hidden rounded-[16px] border border-sand-border transition-all duration-300 hover:border-gold/60"
+                    className="group relative isolate flex aspect-[16/9] items-end overflow-hidden rounded-[16px] border border-sand-border transition-all duration-500 hover:border-gold/60"
                   >
                     <img
                       src={a.img}
-                      alt={`${a.title} add-on for a Miami yacht charter`}
+                      alt={`${a.title} for a Miami yacht charter`}
                       loading="lazy"
-                      className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                     />
-                    <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
-                    <h3 className="p-6 font-teko text-[22px] font-bold uppercase leading-none tracking-[0.1em] text-white">
+                    <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+                    <h3 className="p-6 font-teko text-2xl font-semibold uppercase leading-none tracking-[0.1em] text-white">
                       {a.title}
                     </h3>
                   </a>
@@ -577,68 +639,48 @@ function Home() {
           </div>
         </section>
 
-        {/* 8. BLOG (dark) */}
-        <section className="bg-background py-20 md:py-28">
-          <div className="mx-auto max-w-[1400px] px-5 md:px-10">
-            <div className="flex flex-wrap items-end justify-between gap-6">
+        {/* ---------- 8. BLOG (light) ---------- */}
+        <section className="bg-section-alt py-24 md:py-32">
+          <div className="mx-auto max-w-[1400px] px-5 md:px-8">
+            <div className="grid items-end gap-6 md:grid-cols-[minmax(0,1fr)_auto]">
               <div>
-                <span className={eyebrow}>Journal</span>
-                <h2 className="mt-3 font-display text-3xl md:text-[44px]">From the blog</h2>
+                <SectionLabel>Journal</SectionLabel>
+                <h2 className="mt-4 font-teko text-4xl font-bold uppercase tracking-[0.06em] md:text-5xl">
+                  From the <span className="text-gold">blog</span>
+                </h2>
               </div>
               <a
                 href="/blog"
-                className="flex items-center gap-2 font-teko text-[14px] font-bold uppercase tracking-[0.14em] text-foreground transition-colors hover:text-gold"
+                className="flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] transition-colors hover:text-gold"
               >
                 All articles <ArrowRight className="h-4 w-4" strokeWidth={1.25} />
               </a>
             </div>
 
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="mt-12 grid gap-10 md:grid-cols-3">
               {POSTS.map((p) => (
-                <a
-                  key={p.title}
-                  href={p.href}
-                  className="group overflow-hidden rounded-[16px] border border-border bg-card transition-all duration-300 hover:border-gold/50 hover:shadow-luxe"
-                >
-                  <div className="aspect-[16/10] overflow-hidden">
+                <a key={p.title} href={p.href} className="group block">
+                  <div className="overflow-hidden rounded-[16px] border border-border">
                     <img
                       src={p.img}
                       alt={p.title}
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                     />
                   </div>
-                  <div className="p-6">
-                    <h3 className="font-teko text-[21px] font-bold uppercase leading-tight tracking-[0.06em] transition-colors group-hover:text-gold">
-                      {p.title}
-                    </h3>
-                    <p className="mt-3 text-[14px] leading-relaxed text-muted-foreground">
-                      {p.excerpt}
-                    </p>
-                  </div>
+                  <h3 className="mt-6 font-teko text-2xl font-semibold uppercase leading-tight tracking-[0.06em] transition-colors group-hover:text-gold">
+                    {p.title}
+                  </h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
+                    {p.excerpt}
+                  </p>
                 </a>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Booking form target */}
-        <section id="reserve" className="bg-section-alt py-20 md:py-28">
-          <div className="mx-auto max-w-[900px] px-5 md:px-10">
-            <div className="text-center">
-              <span className={eyebrow}>Booking form</span>
-              <h2 className="mt-3 font-display text-3xl md:text-[40px]">Request your charter</h2>
-              <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-muted-foreground">
-                Send the details and an advisor replies with availability and a written quote.
-              </p>
-            </div>
-            <div className="mt-10 rounded-[16px] border border-border bg-card p-6 md:p-10">
-              <InquiryForm />
-            </div>
-          </div>
-        </section>
-
-        {/* 9. FINAL CTA */}
+        {/* ---------- 9. FINAL CTA (approved) ---------- */}
         <section className="relative isolate flex min-h-[60vh] items-center overflow-hidden">
           <img
             src={yachtB}
@@ -648,7 +690,9 @@ function Home() {
           />
           <div className="absolute inset-0 -z-10 bg-black/60" />
           <div className="mx-auto w-full max-w-[1400px] px-5 py-24 text-center md:px-10">
-            <span className={eyebrow}>Your day on the water</span>
+            <span className="font-teko text-[12px] font-bold uppercase tracking-[0.24em] text-gold md:text-[13px]">
+              Your day on the water
+            </span>
             <h2 className="mx-auto mt-4 max-w-3xl font-display text-3xl text-white md:text-[48px]">
               Ready to get on the water?
             </h2>
