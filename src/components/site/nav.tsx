@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import logo from "@/assets/logo.svg";
@@ -63,12 +63,61 @@ function Dropdown({ label, items }: { label: string; items: { label: string; hre
   );
 }
 
-function LangSwitch({ className = "" }: { className?: string }) {
+function USFlag({ className }: { className?: string }) {
   return (
-    <span className={`flex items-center gap-2 font-teko text-[13px] uppercase tracking-[0.18em] ${className}`}>
-      <a href="/" className="text-gold transition hover:opacity-80">EN</a>
-      <span className="text-foreground/25">|</span>
-      <a href="/es" className="text-foreground/55 transition hover:text-gold">ES</a>
+    <svg className={className} viewBox="0 0 20 14" aria-hidden="true">
+      <rect width="20" height="14" fill="#B22234" rx="2" />
+      <path d="M0 1.08h20M0 3.23h20M0 5.38h20M0 7.54h20M0 9.69h20M0 11.85h20" stroke="#fff" strokeWidth="1.08" />
+      <rect width="8" height="7.54" fill="#3C3B6E" rx="1" />
+      <g fill="#fff">
+        <circle cx="1.6" cy="0.75" r="0.35" /><circle cx="4" cy="0.75" r="0.35" /><circle cx="6.4" cy="0.75" r="0.35" />
+        <circle cx="2.8" cy="1.75" r="0.35" /><circle cx="5.2" cy="1.75" r="0.35" /><circle cx="7.6" cy="1.75" r="0.35" />
+        <circle cx="1.6" cy="2.75" r="0.35" /><circle cx="4" cy="2.75" r="0.35" /><circle cx="6.4" cy="2.75" r="0.35" />
+        <circle cx="2.8" cy="3.75" r="0.35" /><circle cx="5.2" cy="3.75" r="0.35" /><circle cx="7.6" cy="3.75" r="0.35" />
+        <circle cx="1.6" cy="4.75" r="0.35" /><circle cx="4" cy="4.75" r="0.35" /><circle cx="6.4" cy="4.75" r="0.35" />
+        <circle cx="2.8" cy="5.75" r="0.35" /><circle cx="5.2" cy="5.75" r="0.35" /><circle cx="7.6" cy="5.75" r="0.35" />
+      </g>
+    </svg>
+  );
+}
+
+function SpainFlag({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 20 14" aria-hidden="true">
+      <rect width="20" height="14" fill="#AA151B" rx="2" />
+      <rect y="3.5" width="20" height="7" fill="#F1BF00" />
+      <rect y="10.5" width="20" height="3.5" fill="#AA151B" />
+    </svg>
+  );
+}
+
+function LangSwitch({ className = "" }: { className?: string }) {
+  const { pathname } = useLocation();
+  const isEs = pathname.startsWith("/es");
+  return (
+    <span className={`flex items-center gap-2 ${className}`}>
+      <a
+        href="/"
+        aria-label="English"
+        className={`inline-flex h-5 w-7 items-center justify-center rounded-[4px] border transition ${
+          isEs
+            ? "border-transparent opacity-55 hover:opacity-100"
+            : "border-gold/60 opacity-100 shadow-[0_0_0_1px_rgba(186,163,108,0.35)]"
+        }`}
+      >
+        <USFlag className="h-3.5 w-5 rounded-[3px]" />
+      </a>
+      <a
+        href="/es"
+        aria-label="Español"
+        className={`inline-flex h-5 w-7 items-center justify-center rounded-[4px] border transition ${
+          isEs
+            ? "border-gold/60 opacity-100 shadow-[0_0_0_1px_rgba(186,163,108,0.35)]"
+            : "border-transparent opacity-55 hover:opacity-100"
+        }`}
+      >
+        <SpainFlag className="h-3.5 w-5 rounded-[3px]" />
+      </a>
     </span>
   );
 }
