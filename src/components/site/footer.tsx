@@ -255,11 +255,7 @@ export function SiteFooter() {
           <p className="text-xs leading-relaxed text-muted-foreground">
             © 2026 Royal Yachts Miami is a trade name of Experience Rental Group LLC · all rights reserved
           </p>
-          <span className="flex items-center gap-2 font-teko text-[13px] uppercase tracking-[0.18em]">
-            <a href="/" className="text-gold transition hover:opacity-80">EN</a>
-            <span className="text-foreground/25">|</span>
-            <a href="/es" className="text-foreground/55 transition hover:text-gold">ES</a>
-          </span>
+          <FooterLangSwitch />
         </div>
       </div>
     </footer>
