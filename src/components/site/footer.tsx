@@ -154,10 +154,10 @@ function NewsletterBand() {
   };
 
   return (
-    <div className="relative overflow-hidden border-b border-navy-border bg-navy">
+    <div className="relative overflow-hidden border-b border-navy-foreground/10">
       <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-gold/5 to-transparent" />
-      <div className="relative mx-auto max-w-[1400px] px-5 py-14 md:px-10 md:py-20">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-16">
+      <div className="relative mx-auto max-w-[1400px] px-5 py-20 md:px-10 md:py-28">
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-end lg:gap-20">
           <div>
             <span className="mb-3 inline-block font-teko text-[13px] font-bold uppercase tracking-[0.18em] text-gold">
               Insider Access
