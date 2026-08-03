@@ -299,8 +299,8 @@ export function SiteFooter() {
       </div>
 
       {/* Trust + payment strip */}
-      <div className="border-y border-navy-border bg-navy-foreground/[0.02]">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-8 px-5 py-8 md:grid-cols-2 md:px-10">
+      <div className="border-y border-navy-foreground/10 bg-navy/40 backdrop-blur-[2px]">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-8 px-5 py-10 md:grid-cols-2 md:px-10 md:py-12">
           <div className="flex flex-wrap items-center gap-4 md:gap-5 lg:gap-7">
             <div className="flex items-center gap-2">
               <ShieldCheck className="h-[18px] w-[18px] text-gold" strokeWidth={1.25} />
