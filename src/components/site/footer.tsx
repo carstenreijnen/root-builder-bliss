@@ -163,10 +163,10 @@ function NewsletterBand() {
               The Royal List
             </span>
             <h2 className="font-teko text-4xl font-bold uppercase tracking-[0.1em] text-navy-foreground md:text-5xl lg:text-6xl">
-              Invitations, not newsletters
+              Come aboard the list
             </h2>
             <p className="mt-3 max-w-md text-[15px] leading-relaxed text-navy-foreground/70">
-              A quiet list for guests who charter often. New yachts before they publish, private rates, and the occasional Miami itinerary worth keeping.
+              New yachts before they go public, private rates for returning guests, and a few Miami itineraries we only share here.
             </p>
           </div>
 
@@ -183,7 +183,7 @@ function NewsletterBand() {
                 type="submit"
                 className="inline-flex h-[52px] items-center justify-center gap-2 rounded-full bg-gold px-8 font-teko text-[15px] font-bold uppercase tracking-[0.14em] text-gold-foreground transition-all duration-300 hover:shadow-[0_8px_30px_rgba(186,163,108,0.35)]"
               >
-                {status === "success" ? "Access requested" : "Request Access"}
+                {status === "success" ? "Joined" : "Join the list"}
                 <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
               </button>
             </form>
