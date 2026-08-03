@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { useLocation } from "@tanstack/react-router";
 import logo from "@/assets/logo.svg";
+import oceanBg from "@/assets/footer-ocean.jpg";
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -153,10 +154,10 @@ function NewsletterBand() {
   };
 
   return (
-    <div className="relative overflow-hidden border-b border-navy-border bg-navy">
+    <div className="relative overflow-hidden border-b border-navy-foreground/10">
       <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-gold/5 to-transparent" />
-      <div className="relative mx-auto max-w-[1400px] px-5 py-14 md:px-10 md:py-20">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-16">
+      <div className="relative mx-auto max-w-[1400px] px-5 py-20 md:px-10 md:py-28">
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-end lg:gap-20">
           <div>
             <span className="mb-3 inline-block font-teko text-[13px] font-bold uppercase tracking-[0.18em] text-gold">
               Insider Access
@@ -198,12 +199,31 @@ function NewsletterBand() {
 
 export function SiteFooter() {
   return (
-    <footer className="bg-navy text-navy-foreground">
+    <footer className="relative isolate overflow-hidden text-navy-foreground">
+      {/* Photographic base */}
+      <img
+        src={oceanBg}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        width={1920}
+        height={1280}
+        className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+      />
+      {/* Navy gradient overlay: readable text, photo texture still showing */}
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          background:
+            "linear-gradient(180deg, color-mix(in oklab, var(--navy) 88%, transparent) 0%, color-mix(in oklab, var(--navy) 82%, transparent) 45%, color-mix(in oklab, var(--navy) 92%, transparent) 100%)",
+        }}
+      />
+
       <NewsletterBand />
 
       {/* Main footer */}
-      <div className="mx-auto max-w-[1400px] px-5 py-16 md:px-10 md:py-24">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+      <div className="mx-auto max-w-[1400px] px-5 py-20 md:px-10 md:py-28">
+        <div className="grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-12 lg:gap-12">
           {/* Brand column */}
           <div className="sm:col-span-2 lg:col-span-4 lg:pr-10">
             <img
@@ -279,8 +299,8 @@ export function SiteFooter() {
       </div>
 
       {/* Trust + payment strip */}
-      <div className="border-y border-navy-border bg-navy-foreground/[0.02]">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-8 px-5 py-8 md:grid-cols-2 md:px-10">
+      <div className="border-y border-navy-foreground/10 bg-navy/40 backdrop-blur-[2px]">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-8 px-5 py-10 md:grid-cols-2 md:px-10 md:py-12">
           <div className="flex flex-wrap items-center gap-4 md:gap-5 lg:gap-7">
             <div className="flex items-center gap-2">
               <ShieldCheck className="h-[18px] w-[18px] text-gold" strokeWidth={1.25} />
@@ -306,7 +326,7 @@ export function SiteFooter() {
             {PAYMENTS.map((p) => (
               <span
                 key={p}
-                className="rounded-md border border-navy-border bg-navy-foreground/5 px-3 py-1.5 text-[11px] uppercase tracking-[0.12em] text-navy-foreground/65"
+                className="rounded-md border border-navy-foreground/15 bg-navy-foreground/[0.06] px-3 py-1.5 text-[11px] uppercase tracking-[0.12em] text-navy-foreground/70"
               >
                 {p}
               </span>
@@ -322,8 +342,8 @@ export function SiteFooter() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-navy-border">
-        <div className="mx-auto flex max-w-[1400px] flex-col gap-4 px-5 py-6 md:flex-row md:items-center md:justify-between md:px-10">
+      <div className="border-t border-navy-foreground/10 bg-navy/50">
+        <div className="mx-auto flex max-w-[1400px] flex-col gap-4 px-5 py-8 md:flex-row md:items-center md:justify-between md:px-10">
           <p className="text-xs leading-relaxed text-navy-foreground/50">
             © 2026 Royal Yachts Miami is a trade name of Experience Rental Group LLC. All rights reserved.
           </p>
