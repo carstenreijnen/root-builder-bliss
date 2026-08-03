@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { useLocation } from "@tanstack/react-router";
 import logo from "@/assets/logo.svg";
+import oceanBg from "@/assets/footer-ocean.jpg";
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
