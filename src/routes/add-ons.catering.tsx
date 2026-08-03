@@ -325,7 +325,7 @@ function CateringPage() {
           {MENU.map((m) => (
             <article
               key={m.title}
-              className={`group relative overflow-hidden rounded-[16px] border border-border bg-card transition-all duration-500 hover:border-gold/40 hover:shadow-luxe ${m.span}`}
+              className={`group relative flex min-h-[300px] items-end overflow-hidden rounded-[16px] border border-border bg-card transition-all duration-500 hover:border-gold/40 hover:shadow-luxe lg:min-h-[360px] ${m.span}`}
             >
               <img
                 src={m.img}
@@ -333,10 +333,11 @@ function CateringPage() {
                 loading="lazy"
                 width={1200}
                 height={900}
-                className="aspect-[4/3] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/10" />
-              <div className="absolute inset-x-0 bottom-0 p-6">
+              <div className="relative w-full p-6">
+
                 <m.icon strokeWidth={1.25} className="h-6 w-6 text-gold" />
                 <div className="mt-3 flex flex-wrap items-baseline gap-x-3">
                   <h3 className="font-teko text-3xl font-semibold uppercase tracking-[0.08em] text-white">
