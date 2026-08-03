@@ -182,7 +182,7 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-function SectionLabel({ children, tone = "gold" }: { children: React.ReactNode; tone?: "gold" }) {
+function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-gold">
       <span className="h-px w-8 bg-gold/60" />
