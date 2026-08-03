@@ -1,4 +1,18 @@
-import { Instagram, Facebook, Youtube, ShieldCheck, CreditCard, BadgeCheck, Star, Phone, Mail, MessageCircle, MapPin } from "lucide-react";
+import {
+  Instagram,
+  Facebook,
+  Youtube,
+  Send,
+  ShieldCheck,
+  CreditCard,
+  BadgeCheck,
+  Star,
+  Phone,
+  Mail,
+  MessageCircle,
+  MapPin,
+  Bitcoin,
+} from "lucide-react";
 import logo from "@/assets/logo.svg";
 
 function TikTokIcon({ className }: { className?: string }) {
@@ -18,49 +32,69 @@ const TRUST = [
 
 const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   {
-    title: "Our Yachts",
+    title: "Navigation",
     links: [
-      { label: "All Yachts", href: "/our-yachts" },
-      { label: "By Size", href: "/our-yachts?filter=size" },
-      { label: "By Marina", href: "/our-yachts?filter=marina" },
-      { label: "Superyachts", href: "/our-yachts?filter=superyachts" },
-      { label: "New Arrivals", href: "/our-yachts?filter=new" },
-    ],
-  },
-  {
-    title: "Experiences",
-    links: [
-      { label: "Sunset Cruises", href: "/packages/sunset-cruises" },
-      { label: "Watersports Charters", href: "/packages/watersports" },
-      { label: "Birthdays & Celebrations", href: "/packages/birthdays" },
-      { label: "Corporate Events", href: "/packages/corporate" },
-      { label: "Bachelorette Parties", href: "/packages/bachelorette" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
+      { label: "Home", href: "/" },
+      { label: "Our Yachts", href: "/our-yachts" },
       { label: "About Us", href: "/about" },
-      { label: "Blog", href: "/blog" },
-      { label: "FAQ", href: "/faq" },
+      { label: "Testimonials", href: "/testimonials" },
       { label: "Contact", href: "/contact" },
-      { label: "Reviews", href: "/reviews" },
+      { label: "Blog", href: "/blog" },
+    ],
+  },
+  {
+    title: "Packages",
+    links: [
+      { label: "Bachelorette", href: "/packages/bachelorette" },
+      { label: "Birthday", href: "/packages/birthday" },
+      { label: "Yacht Party", href: "/packages/yacht-party" },
+      { label: "Corporate", href: "/packages/corporate" },
+      { label: "Wedding", href: "/packages/wedding" },
+      { label: "New Year's Eve", href: "/packages/new-years-eve" },
+    ],
+  },
+  {
+    title: "Add-ons",
+    links: [
+      { label: "Catering", href: "/add-ons/catering" },
+      { label: "Watersports", href: "/add-ons/watersports" },
+      { label: "Yacht Decoration", href: "/add-ons/yacht-decoration" },
+      { label: "Private Chef", href: "/add-ons/private-chef" },
+      { label: "DJ", href: "/add-ons/private-dj" },
+      { label: "VIP Transport", href: "/add-ons/vip-transport" },
+    ],
+  },
+  {
+    title: "Help & Support",
+    links: [
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Work With Us", href: "/work-with-us" },
+      { label: "Blog", href: "/blog" },
     ],
   },
 ];
 
 const PAYMENTS = ["Visa", "Mastercard", "Amex", "Apple Pay", "Google Pay"];
 
+const SOCIALS = [
+  { href: "https://instagram.com/royalyachtmiami", label: "Instagram", Icon: Instagram },
+  { href: "https://www.facebook.com/RoyalYachtsMiami/", label: "Facebook", Icon: Facebook },
+  { href: "https://www.youtube.com/@royalyachtsmiami", label: "YouTube", Icon: Youtube },
+  { href: "https://www.tiktok.com/@royalyachtsmiami", label: "TikTok", Icon: TikTokIcon },
+  { href: "https://t.me/royalyachtsmiami", label: "Telegram", Icon: Send },
+];
+
 export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-section-alt">
       {/* Pre-footer trust bar */}
       <div className="border-b border-border/60 bg-section-deep">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-2 gap-y-6 px-5 py-7 md:grid-cols-4 md:px-10">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-2 gap-y-6 px-5 py-8 md:grid-cols-4 md:px-10">
           {TRUST.map(({ icon: Icon, label }) => (
             <div key={label} className="flex items-center justify-center gap-3 text-center">
-              <Icon className="h-[18px] w-[18px] shrink-0 text-gold" />
-              <span className="font-teko text-[15px] uppercase tracking-[0.12em] text-foreground/85 md:text-base">
+              <Icon className="h-5 w-5 shrink-0 text-gold" strokeWidth={1.25} />
+              <span className="font-teko text-[15px] font-bold uppercase tracking-[0.14em] text-foreground/85 md:text-base">
                 {label}
               </span>
             </div>
@@ -69,19 +103,14 @@ export function SiteFooter() {
       </div>
 
       {/* Main footer */}
-      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-14 px-5 pb-16 pt-20 md:grid-cols-12 md:gap-12 md:px-10 md:pt-24">
-        <div className="md:col-span-4 md:pr-10">
-          <img src={logo} alt="Royal Yachts Miami" className="h-16 w-auto md:h-20" loading="lazy" />
-          <p className="mt-6 text-[15px] leading-relaxed text-muted-foreground">
-            Luxury yacht charters in Miami.
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-14 px-5 pb-16 pt-20 md:grid-cols-12 md:gap-10 md:px-10 md:pt-24">
+        <div className="md:col-span-4 md:pr-8">
+          <img src={logo} alt="Royal Yachts Miami" className="h-24 w-auto md:h-28" loading="lazy" />
+          <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-muted-foreground">
+            The highest quality yacht charter company in Miami.
           </p>
 
           <ul className="mt-7 space-y-3 text-[15px] text-foreground/75">
-            <li>
-              <a href="tel:+16452149666" className="inline-flex items-center gap-3 transition hover:text-gold">
-                <Phone className="h-4 w-4 text-gold" /> +1 (645) 214-9666
-              </a>
-            </li>
             <li>
               <a
                 href="https://wa.me/16452399662"
@@ -89,26 +118,27 @@ export function SiteFooter() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 transition hover:text-gold"
               >
-                <MessageCircle className="h-4 w-4 text-gold" /> WhatsApp +1 (645) 239-9662
+                <MessageCircle className="h-4 w-4 text-gold" strokeWidth={1.25} /> WhatsApp +1 (645) 239-9662
+              </a>
+            </li>
+            <li>
+              <a href="tel:+16452149666" className="inline-flex items-center gap-3 transition hover:text-gold">
+                <Phone className="h-4 w-4 text-gold" strokeWidth={1.25} /> +1 (645) 214-9666
               </a>
             </li>
             <li>
               <a href="mailto:info@royalyachtsmiami.com" className="inline-flex items-center gap-3 transition hover:text-gold">
-                <Mail className="h-4 w-4 text-gold" /> info@royalyachtsmiami.com
+                <Mail className="h-4 w-4 text-gold" strokeWidth={1.25} /> info@royalyachtsmiami.com
               </a>
             </li>
-            <li className="inline-flex items-center gap-3 text-foreground/60">
-              <MapPin className="h-4 w-4 text-gold" /> Miami Beach, FL
+            <li className="flex items-start gap-3 text-foreground/60">
+              <MapPin className="mt-1 h-4 w-4 shrink-0 text-gold" strokeWidth={1.25} />
+              <span>333 SE 2nd Ave, Suite 2000, Miami, FL 33131</span>
             </li>
           </ul>
 
-          <div className="mt-8 flex gap-3">
-            {[
-              { href: "https://instagram.com/royalyachtmiami", label: "Instagram", Icon: Instagram },
-              { href: "https://www.facebook.com/RoyalYachtsMiami/", label: "Facebook", Icon: Facebook },
-              { href: "https://www.youtube.com/@royalyachtsmiami", label: "YouTube", Icon: Youtube },
-              { href: "https://www.tiktok.com/@royalyachtsmiami", label: "TikTok", Icon: TikTokIcon },
-            ].map(({ href, label, Icon }) => (
+          <div className="mt-8 flex flex-wrap gap-3">
+            {SOCIALS.map(({ href, label, Icon }) => (
               <a
                 key={label}
                 href={href}
@@ -124,8 +154,8 @@ export function SiteFooter() {
         </div>
 
         {COLUMNS.map((col) => (
-          <div key={col.title} className="md:col-span-2 lg:col-span-2">
-            <h5 className="mb-6 font-teko text-lg font-bold uppercase tracking-[0.14em] text-gold">
+          <div key={col.title} className="md:col-span-2">
+            <h5 className="mb-6 font-teko text-lg font-bold uppercase tracking-[0.16em] text-gold">
               {col.title}
             </h5>
             <ul className="space-y-3.5 text-[15px] text-foreground/70">
@@ -139,53 +169,37 @@ export function SiteFooter() {
             </ul>
           </div>
         ))}
+      </div>
 
-        <div className="md:col-span-2">
-          <h5 className="mb-6 font-teko text-lg font-bold uppercase tracking-[0.14em] text-gold">
-            Reserve
-          </h5>
-          <p className="mb-5 text-[15px] leading-relaxed text-muted-foreground">
-            Same-day availability. Fast WhatsApp response.
-          </p>
-          <a
-            href="https://wa.me/16452399662"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-11 items-center justify-center rounded-full border border-gold px-6 font-teko text-[15px] uppercase tracking-[0.14em] text-gold transition hover:bg-gold hover:text-gold-foreground"
-          >
-            Book via WhatsApp
-          </a>
+      {/* Payments row */}
+      <div className="border-t border-border/60">
+        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center gap-x-3 gap-y-3 px-5 py-6 md:px-10">
+          {PAYMENTS.map((p) => (
+            <span
+              key={p}
+              className="rounded-md border border-border bg-card px-3 py-1.5 text-[11px] uppercase tracking-[0.12em] text-foreground/65"
+            >
+              {p}
+            </span>
+          ))}
+          <span className="text-[11px] uppercase tracking-[0.14em] text-caption">Payments via Stripe</span>
+          <span className="inline-flex items-center gap-2 rounded-md border border-gold/30 px-3 py-1.5 text-[11px] uppercase tracking-[0.12em] text-gold">
+            <Bitcoin className="h-3.5 w-3.5" strokeWidth={1.25} /> Crypto accepted
+          </span>
         </div>
       </div>
 
       {/* Bottom bar */}
       <div className="border-t border-border/60">
-        <div className="mx-auto flex max-w-[1400px] flex-col gap-6 px-5 py-8 md:flex-row md:items-center md:justify-between md:px-10">
+        <div className="mx-auto flex max-w-[1400px] flex-col gap-4 px-5 py-7 md:flex-row md:items-center md:justify-between md:px-10">
           <p className="text-xs leading-relaxed text-muted-foreground">
-            © 2026 Royal Yachts Miami · Experience Rental Group LLC
+            © 2026 Royal Yachts Miami is a trade name of Experience Rental Group LLC · all rights reserved
           </p>
-
-          <div className="flex flex-wrap items-center gap-2">
-            {PAYMENTS.map((p) => (
-              <span
-                key={p}
-                className="rounded-md border border-border bg-card px-2.5 py-1 text-[11px] uppercase tracking-[0.1em] text-foreground/60"
-              >
-                {p}
-              </span>
-            ))}
-            <span className="ml-1 text-[11px] text-caption">Payments via Stripe</span>
-          </div>
-
-          <div className="flex items-center gap-5 text-xs text-muted-foreground">
-            <a href="/terms" className="transition hover:text-gold">Terms</a>
-            <a href="/privacy" className="transition hover:text-gold">Privacy</a>
-            <span className="flex items-center gap-2">
-              <a href="/" className="transition hover:text-gold">EN</a>
-              <span className="text-caption">|</span>
-              <a href="/es" className="transition hover:text-gold">ES</a>
-            </span>
-          </div>
+          <span className="flex items-center gap-2 font-teko text-[13px] uppercase tracking-[0.18em]">
+            <a href="/" className="text-gold transition hover:opacity-80">EN</a>
+            <span className="text-foreground/25">|</span>
+            <a href="/es" className="text-foreground/55 transition hover:text-gold">ES</a>
+          </span>
         </div>
       </div>
     </footer>
