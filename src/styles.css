@@ -37,6 +37,10 @@
   --color-navy: var(--navy);
   --color-navy-foreground: var(--navy-foreground);
   --color-navy-border: var(--navy-border);
+  --color-sand: var(--sand);
+  --color-sand-foreground: var(--sand-foreground);
+  --color-sand-muted: var(--sand-muted);
+  --color-sand-border: var(--sand-border);
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);
   --font-teko: var(--font-teko);
@@ -55,6 +59,10 @@
   --navy: oklch(0.15 0.025 250);
   --navy-foreground: oklch(0.95 0 0);
   --navy-border: oklch(0.28 0.02 250);
+  --sand: oklch(0.962 0.014 85);
+  --sand-foreground: oklch(0.21 0 0);
+  --sand-muted: oklch(0.48 0.012 85);
+  --sand-border: oklch(0.21 0 0 / 12%);
   --card: oklch(0.99 0.008 80);
   --card-foreground: oklch(0.21 0 0);
   --popover: oklch(0.99 0.008 80);
@@ -101,6 +109,10 @@
   --navy: oklch(0.15 0.025 250);
   --navy-foreground: oklch(0.95 0 0);
   --navy-border: oklch(0.28 0.02 250);
+  --sand: oklch(0.962 0.014 85);
+  --sand-foreground: oklch(0.21 0 0);
+  --sand-muted: oklch(0.48 0.012 85);
+  --sand-border: oklch(0.21 0 0 / 12%);
   --accent: oklch(0.3 0 0);
   --accent-foreground: oklch(0.957 0 0);
   --destructive: oklch(0.62 0.22 27);
