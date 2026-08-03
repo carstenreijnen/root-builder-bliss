@@ -342,8 +342,8 @@ export function SiteFooter() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-navy-border">
-        <div className="mx-auto flex max-w-[1400px] flex-col gap-4 px-5 py-6 md:flex-row md:items-center md:justify-between md:px-10">
+      <div className="border-t border-navy-foreground/10 bg-navy/50">
+        <div className="mx-auto flex max-w-[1400px] flex-col gap-4 px-5 py-8 md:flex-row md:items-center md:justify-between md:px-10">
           <p className="text-xs leading-relaxed text-navy-foreground/50">
             © 2026 Royal Yachts Miami is a trade name of Experience Rental Group LLC. All rights reserved.
           </p>
