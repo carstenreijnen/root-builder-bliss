@@ -326,7 +326,7 @@ export function SiteFooter() {
             {PAYMENTS.map((p) => (
               <span
                 key={p}
-                className="rounded-md border border-navy-border bg-navy-foreground/5 px-3 py-1.5 text-[11px] uppercase tracking-[0.12em] text-navy-foreground/65"
+                className="rounded-md border border-navy-foreground/15 bg-navy-foreground/[0.06] px-3 py-1.5 text-[11px] uppercase tracking-[0.12em] text-navy-foreground/70"
               >
                 {p}
               </span>
